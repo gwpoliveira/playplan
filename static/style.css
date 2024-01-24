@@ -1,0 +1,9 @@
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.hero {
+    margin-top: 70px; /* Ajuste conforme a altura do seu menu */
+}
