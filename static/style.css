@@ -7,3 +7,13 @@
 .hero {
     margin-top: 70px; /* Ajuste conforme a altura do seu menu */
 }
+
+body {
+    background-image: url('/static/img/bg5.jpg'); /* Substitua pela URL da sua imagem */    
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+}
+
+.texto-branco {
+    color: #fff; /* Código da cor branca */
+}
