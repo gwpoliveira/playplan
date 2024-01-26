@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="pt-br">
 
 <head>
@@ -57,8 +57,10 @@
     </header>
 
 
-    <main class="hero">
-        <!-- Conteúdo do main, como a imagem abaixo do menu -->
+    <main>
+        {% block content %}
+        
+        {% endblock %}
     </main>
 
 
