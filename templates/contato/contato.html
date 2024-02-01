@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Página de Contato{% endblock title %}
+
+{%block content%}
+
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 ">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="text-white display-4 fw-bold lh-1  mb-3">Contate-nos aqui!</h1>
+        <p class="text-white col-lg-10 fs-4">Mande uma mensagem para podermos saber qual o seu feedback sobre a página. </p>
+      </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form method="post" class=" bg-transparent p-4 p-md-5 ">
+        <section class=" bg-transparent container">
+            <div class="text-white mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Nome</label>
+              <input type='text' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Insira seu nome"></input>
+            </div>
+            <div class=" text-white mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Insira seu e-mail">
+              </div>
+              <div class="text-white mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreva sua mensagem"></textarea>
+              </div>
+              <button class=" text-white btn btn-dark" type="submit">Enviar Mensagem</button>
+        </section>
+
+        
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock content%}
+
+
+    

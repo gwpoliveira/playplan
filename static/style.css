@@ -13,3 +13,6 @@ body.fundo-do-site {
     display: flex;
     flex-direction: column;
 }
+h1#branco{
+    color:#fff
+}
