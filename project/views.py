@@ -11,3 +11,10 @@ class HomeView(TemplateView):
     
 class ContatoView(TemplateView):
     template_name = 'contato/contato.html'
+
+
+class BlogView(TemplateView):
+    template_name = 'blog/noticias.html'
+
+class NoticiaView(TemplateView):
+    template_name = 'blog/postagem.html'
