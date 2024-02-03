@@ -8,29 +8,128 @@
 
 <section class="Carrosel">
 
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/static/img/slide1.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="/static/img/slide2.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="/static/img/slide3.png" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/img/slide1.png" class="d-block w-100" alt="...">
       </div>
+      <div class="carousel-item">
+        <img src="/static/img/slide2.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/slide3.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
 </section>
 
 
-{% endblock %}
+<div class="container my-3">
+  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
+  <div class="row my-4">
+    <div class="col">
+      <div class="card float-right">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
+          </div>
+          <div class="col-sm-7">
+            <div class="card-block m-2">
+              <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
+              <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a autoestima
+              </p>
+
+              <!-- <br> -->
+              <a href="{% url 'o_que_e_tdah' %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card float-right">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
+          </div>
+          <div class="col-sm-7">
+            <div class="card-block m-2">
+              <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
+              <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
+                habilidades</p>
+
+              <!-- <br> -->
+              <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    
+    <button class="btn btn-primary" type="button">Mais Notícias</button>
+  </div> -->
+</div>
+
+<!-- DEPOIS VOU TERMINAR DE EDITAR O BLOG SOBRE TEA -->
+
+<div class="container my-3">
+  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TEA</h2>
+  <div class="row my-4">
+    <div class="col">
+      <div class="card float-right">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
+          </div>
+          <div class="col-sm-7">
+            <div class="card-block m-2">
+              <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
+              <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a autoestima
+              </p>
+
+              <!-- <br> -->
+              <a href="{% url 'o_que_e_tdah' %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card float-right">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
+          </div>
+          <div class="col-sm-7">
+            <div class="card-block m-2">
+              <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
+              <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
+                habilidades</p>
+
+              <!-- <br> -->
+              <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  {% endblock %}

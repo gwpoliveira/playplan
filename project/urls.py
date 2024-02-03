@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from .views import HomeView,ContatoView, BlogView, NoticiaView
+from .views import HomeView,ContatoView, BlogView, NoticiaView, OQueETDAH
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('contato/',ContatoView.as_view(), name='contato'),
     path('noticias/', BlogView.as_view(), name='noticias'),
     path('postagem/', NoticiaView.as_view(), name='postagem'),
+    path('noticia1/', OQueETDAH.as_view(), name='o_que_e_tdah'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
