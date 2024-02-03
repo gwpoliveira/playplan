@@ -6,31 +6,33 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-        <h1 class="text-white">Um título qualquer sobre o Alfie, o Teimoso</h1>
-        <p class="blog-post-meta text-white"><i class="fa-solid fa-calendar-days"></i>      Publicado no dia 31/01/2024 e atualizado no dia 03/02/2024
-            <br>
-            <i class="fa-solid fa-user"></i>   Publicado por <a class="text-white" href="#">Gleiser Wesley</a></p>
-        <img class="m-3" src="/static/img/alfie.jpg" width="700" alt="">
-        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident eius tenetur
-            aliquam necessitatibus voluptatum, magnam ipsam. Unde, quaerat nostrum veniam odit fugiat ducimus ipsum
-            incidunt expedita facere dolores. Repudiandae? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
-            ex eveniet ut similique! Eos tempora ab animi sapiente officiis quae adipisci aliquam velit mollitia,
-            veritatis, incidunt quibusdam voluptatibus eum dolore?</p>
-        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi debitis perspiciatis animi
-            in! Pariatur consectetur corporis reiciendis dignissimos repudiandae dolorem quaerat veritatis omnis? Magni
-            voluptatem voluptatum totam pariatur aliquam exercitationem. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Laboriosam commodi earum autem. Eligendi sequi esse similique perspiciatis, laboriosam
-            ratione aperiam accusantium sit dolores repellat at ipsum. Repudiandae quia pariatur saepe?</p>
-        <p class="text-white"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ipsum nesciunt possimus
-            molestias voluptate odio beatae officia cum. Quam repudiandae non sit libero sapiente dolorem quaerat porro
-            in reprehenderit quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nobis reiciendis
-            accusantium, incidunt quisquam inventore non ex consectetur quo quod, cumque rerum nam cum? Incidunt totam
-            aspernatur laboriosam reprehenderit quo.</p>
-        </div>
-        <div class="col-sm-4">
-            <!-- <h5 class="text-white">Notícias Relacionadas</h5>
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-white">Um título qualquer sobre o Alfie, o Teimoso</h1>
+      <p class="blog-post-meta text-white"><i class="fa-solid fa-calendar-days"></i> Publicado no dia 31/01/2024 e
+        atualizado no dia 03/02/2024
+        <br>
+        <i class="fa-solid fa-user"></i> Publicado por <a class="text-white" href="#">Gleiser Wesley</a>
+      </p>
+      <img class="m-3" src="/static/img/alfie.jpg" width="700" alt="">
+      <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident eius tenetur
+        aliquam necessitatibus voluptatum, magnam ipsam. Unde, quaerat nostrum veniam odit fugiat ducimus ipsum
+        incidunt expedita facere dolores. Repudiandae? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
+        ex eveniet ut similique! Eos tempora ab animi sapiente officiis quae adipisci aliquam velit mollitia,
+        veritatis, incidunt quibusdam voluptatibus eum dolore?</p>
+      <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi debitis perspiciatis animi
+        in! Pariatur consectetur corporis reiciendis dignissimos repudiandae dolorem quaerat veritatis omnis? Magni
+        voluptatem voluptatum totam pariatur aliquam exercitationem. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Laboriosam commodi earum autem. Eligendi sequi esse similique perspiciatis, laboriosam
+        ratione aperiam accusantium sit dolores repellat at ipsum. Repudiandae quia pariatur saepe?</p>
+      <p class="text-white"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ipsum nesciunt possimus
+        molestias voluptate odio beatae officia cum. Quam repudiandae non sit libero sapiente dolorem quaerat porro
+        in reprehenderit quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nobis reiciendis
+        accusantium, incidunt quisquam inventore non ex consectetur quo quod, cumque rerum nam cum? Incidunt totam
+        aspernatur laboriosam reprehenderit quo.</p>
+    </div>
+    <div class="col-sm-4 p-0">
+      <!-- <h5 class="text-white">Notícias Relacionadas</h5>
             <div class="card" style="width: 18rem;">
                 <img src="/static/img/alfie.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -48,24 +50,56 @@
                 </div>
               </div>
              -->
-             <div>
-                <!-- <h4 class="fst-italic">Recent posts</h4> -->
-                <h4 class="text-white">Notícias Relacionadas</h4>
-                <ul class="list-unstyled">
+      <div class="bg-secondary p-2 rounded row">
+
+        <!-- <h4 class="fst-italic">Recent posts</h4> -->
+        <h4>Notícias Relacionadas</h4>
+        <hr>
+        <div class="row justify-content-start p-0 my-2">
+          <div class="col-4">
+            <a href="{% url 'postagem' %}"><img src="/static/img/alfie.jpg" width="110" class="float-start"
+                alt=""></a>
+          </div>
+          <div class="col-8 p-0">
+            <a class="card-title text-decoration-none" href="{% url 'postagem' %}"><h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6></a>           
+          </div>
+        </div>
+        <hr>
+        <div class="row justify-content-start p-0 my-2">
+          <div class="col-4">
+            <a href="{% url 'postagem' %}"><img src="/static/img/alfie.jpg" width="110" class="float-start"
+                alt=""></a>
+          </div>
+          <div class="col-8 p-0">
+            <a class="card-title text-decoration-none" href="{% url 'postagem' %}"><h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6></a>                     
+          </div>
+        </div>
+        <hr>
+        <div class="row justify-content-start p-0 my-2">
+          <div class="col-4">
+            <a  href="{% url 'postagem' %}"><img src="/static/img/alfie.jpg" width="110" class="float-start"
+                alt=""></a>
+          </div>
+          <div class="col-8 p-0">
+            <a class="card-title text-decoration-none" href="{% url 'postagem' %}"><h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6></a>                
+          </div>
+        </div>
+        <!-- <ul class="list-unstyled">
                   <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                      <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-                      <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
+                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{% url 'postagem' %}"> -->
+        <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
+        <!-- <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
                       <div class="col-lg-8">
-                        <h6 class="mb-0 card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
+                        
+                        <h6 class="pr-1">Título de outras publicação sobre o Alfie, o Teimoso</h6>
                         <small class="text-body-secondary">January 15, 2023</small>
                       </div>
                     </a>
                   </li>
                   <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                        <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-                        <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
+                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#"> -->
+        <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
+        <!-- <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
                         <div class="col-lg-8">
                           <h6 class="mb-0 card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
                           <small class="text-body-secondary">January 15, 2023</small>
@@ -73,23 +107,23 @@
                       </a>
                   </li>
                   <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                        <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-                        <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
+                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#"> -->
+        <!-- <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
+        <!-- <img src="/static/img/alfie.jpg" height="90" width="100%" class="card-img-top" alt="...">
                         <div class="col-lg-8">
                           <h6 class="mb-0 card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
                           <small class="text-body-secondary">January 15, 2023</small>
                         </div>
                       </a>
                   </li>
-                </ul>
-              </div>
-        </div>
+                </ul> -->
+      </div>
     </div>
+  </div>
 
 </div>
 
 
-        
+
 
 {% endblock content %}
