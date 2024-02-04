@@ -21,3 +21,6 @@ class NoticiaView(TemplateView):
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
+    
+class ApoioView(TemplateView):
+    template_name = 'apoio/apoio.html'

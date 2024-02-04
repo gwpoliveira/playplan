@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Apoie{% endblock title %}
+
+{% block content %}
+
+<header class="bg-light p-5 text-center">
+    <h1 class="display-4">Apoie Esse Projeto</h1>
+    <p class="lead">Sua contribuição faz a diferença!</p>
+</header>
+
+<section id="apoio" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Seja um Apoiador</h2>
+    <p class="text-center">Mostre seu apoio à nosso prpjeto. Preencha o formulário abaixo para se identificar como apoiador caso deseje:</p>
+
+    <form id="formApoiador" class="row g-3 justify-content-center">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu Nome" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Seu E-mail" required>
+        </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Tornar-se Apoiador</button>
+        </div>
+    </form>
+</section>
+
+<section id="pix" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Contribua através do PIX</h2>
+    <p class="text-center">Escaneie o QR Code abaixo com seu aplicativo PIX para fazer sua contribuição:</p>
+
+    <!-- Substitua o valor do atributo 'src' com o seu QR Code PIX -->
+    <img src="/static/img/pix.png" alt="QR Code PIX" class="img-fluid mx-auto d-block my-3">
+
+    <p class="text-center">Ou utilize a chave PIX: <strong>1429c3d2-f69f-48de-b1d7-8b0eb502e6a5</strong></p>
+</section>
+
+<section id="apoiadores" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Apoiadores</h2>
+    <p class="text-center">Agradecemos aos seguintes apoiadores que tornaram esta causa possível:</p>
+
+    <!-- Aqui você pode exibir dinamicamente a lista de apoiadores -->
+    <ul id="listaApoiadores" class="list-group text-center">
+        <!-- Exemplo: <li class="list-group-item">Nome do Apoiador</li> -->
+    </ul>
+</section>
+
+{% endblock content %}
