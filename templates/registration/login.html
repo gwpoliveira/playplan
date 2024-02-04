@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+{% block title %}Área Restrita{% endblock %}
+
+{% block content %}
+<h1 class = 'text-center font-weight-bold text-light mb-5'>Login</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col texto-branco">
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% bootstrap_form form%}
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>
+  
+{% endblock %}
