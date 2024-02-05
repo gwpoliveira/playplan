@@ -1,32 +1,36 @@
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+# administration/views.py
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
 from .models import CarouselImage
+from .forms import CarouselImageForm
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-class CarrouselView(TemplateView):
-    template_name = 'administration/carrousel.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['carousel_images'] = CarouselImage.objects.all()
-        return context
-
-class CarouselCreateView(CreateView):
+class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
-    template_name = 'administration/carouselimage_form.html'
-    fields = ['image', 'description']
-    success_url = reverse_lazy('carrousel_view')
+    template_name = 'administration/image_list.html'
+    context_object_name = 'images'
 
-class CarouselDetailView(DetailView):
+class ImageCreateView(LoginRequiredMixin,CreateView):
     model = CarouselImage
-    template_name = 'administration/carouselimage_detail.html'
+    form_class = CarouselImageForm
+    template_name = 'administration/add_image.html'
+    success_url = reverse_lazy('image_list')
 
-class CarouselUpdateView(UpdateView):
+class ImageUpdateView(LoginRequiredMixin,UpdateView):
     model = CarouselImage
-    template_name = 'administration/carouselimage_form.html'
-    fields = ['image', 'description']
-    success_url = reverse_lazy('carrousel_view')
+    form_class = CarouselImageForm
+    template_name = 'administration/edit_image.html'
+    success_url = reverse_lazy('image_list')
 
-class CarouselDeleteView(DeleteView):
+class ImageDeleteView(LoginRequiredMixin,DeleteView):
     model = CarouselImage
-    template_name = 'administration/carouselimage_confirm_delete.html'
-    success_url = reverse_lazy('carrousel_view')
+    template_name = 'administration/delete_image.html'
+    success_url = reverse_lazy('image_list')
+
+    def post(self, request, *args, **kwargs):
+        if "cancel" in request.POST:
+            return redirect('image_list')
+        else:
+            return super().post(request, *args, **kwargs)

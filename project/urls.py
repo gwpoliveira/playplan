@@ -18,7 +18,7 @@ urlpatterns = [
     path('postagem/', NoticiaView.as_view(), name='postagem'),
     path('noticia1/', OQueETDAH.as_view(), name='o_que_e_tdah'),
     path('apoio/', ApoioView.as_view(), name='apoio'),
-    path('administration/', include('administration.urls')), 
+    path('administration/', include('administration.urls')),
     path('admin/', admin.site.urls),
 ]
 

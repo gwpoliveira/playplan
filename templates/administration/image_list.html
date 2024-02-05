@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="ml-auto me-5">                   
+    <a class="nav-link texto-branco" href="{% url 'login' %}">
+
+      <li class="nav-item"><a href="#" class="nav-link texto-branco">
+        {% if user.is_authenticated %}
+          <p class="text-light">Bem-vindo,{{ user.username }}</p>
+         estrita</h2>
+
+  <ul class="list-group">
+    {% for image in images %}
+      <li class="list-group-item">
+        <img src="{{ image.image.url }}" alt="Carousel Image" class="img-fluid">
+        <div class="btn-group mt-2" role="group">
+          <a href="{% url 'edit_image' pk=image.pk %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'delete_image' pk=image.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'add_image' %}" class="btn btn-success mt-3">Add Image</a>
+</div> 
+
+{% endblock %}
+
