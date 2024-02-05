@@ -3,4 +3,4 @@ from .models import CarouselImage
 class CarouselImageForm(forms.ModelForm):
     class Meta:
         model = CarouselImage
-        fields = ['image']
+        fields = ['image','description']

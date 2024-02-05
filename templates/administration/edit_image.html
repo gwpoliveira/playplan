@@ -8,12 +8,14 @@
 <div class="container mt-3">
   <h2 class="texto-branco">Editar Slide</h2>
 
-  <!-- Seu formulário de edição de imagem aqui -->
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary mt-2">Salvar Alterações</button>
-  </form>
+  <div class="containe texto-branco">
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary mt-2">Salvar Alterações</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
