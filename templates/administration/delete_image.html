@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Excluir Slide{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <h2 class="texto-branco">Excluir Slide</h2>
+
+  <p>Você tem certeza de que deseja excluir este slide?</p>
+
+  <!-- Seu formulário de exclusão de imagem aqui -->
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'image_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+
+{% endblock %}

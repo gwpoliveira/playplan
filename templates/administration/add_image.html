@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Adicionar Slide{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <h2 class="texto-branco">Adicionar Slide</h2>
+
+  <!-- Seu formulário de adição de imagem aqui -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary mt-2">Adicionar</button>
+  </form>
+</div>
+
+{% endblock %}
