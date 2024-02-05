@@ -7,13 +7,25 @@
 
 <div class="container">
 
+<div class="container">
   <div class="ml-auto me-5">                   
     <a class="nav-link texto-branco" href="{% url 'login' %}">
 
       <li class="nav-item"><a href="#" class="nav-link texto-branco">
         {% if user.is_authenticated %}
           <p class="text-light">Bem-vindo,{{ user.username }}</p>
-         estrita</h2>
+          <div class="d-inline-block ">
+          <a class="nav-link  texto-branco" href="{% url 'logout' %}">Sair</a></div>
+        {% else %}
+          <a class="nav-link texto-branco" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </li>
+    </a>
+                
+  </div>
+</div>
+
+  <h2 class="texto-branco">Banner Principal</h2>
 
   <ul class="list-group">
     {% for image in images %}
