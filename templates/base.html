@@ -54,7 +54,7 @@
                             <a class="nav-link texto-branco" href="{% url 'contato' %}">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'apoio' %}"><i class="fa-regular fa-lock"></i>    Apoie o Projeto</a>
+                            <a class="nav-link texto-branco" href="{% url 'apoio' %}">Apoie o Projeto</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -77,7 +77,7 @@
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'image_list' %}">Área Restrita</a>
+                            <a class="nav-link texto-branco" href="{% url 'image_list' %}"><i class="fa-solid fa-lock"></i>   Área Restrita</a>
                         </li>
                         {% endif %}
 
