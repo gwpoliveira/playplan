@@ -56,12 +56,24 @@
                         <li class="nav-item">
                             <a class="nav-link texto-branco" href="{% url 'apoio' %}">Apoie o Projeto</a>
                         </li>                        
-                        
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}" class="btn"><button id="sair">Sair</button></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="btn"><button id="login">LOGIN</button></a>
+
+                        </li>
+                        {% endif %}
+
+
+
                     </ul>
                     
                 </div>
             </div>
-            <div class="ml-auto me-5">                   
+            <!-- <div class="ml-auto me-5">                   
                 <a class="nav-link texto-branco" href="{% url 'login' %}">
 
                     <li class="nav-item"><a href="#" class="nav-link texto-branco">
@@ -75,7 +87,7 @@
                     </li>
                 </a>
                 
-            </div>
+            </div> -->
 
         </nav>
         <hr class="container ms-auto border-5 border-light">
