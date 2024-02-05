@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="container d-flex justify-content-end">
+    <a class="nav-link texto-branco" href="{% url 'login' %}">
+        <li class="nav-item">
+            <a href="#" class="nav-link texto-branco">
+                {% if user.is_authenticated %}
+                    <p class="text-light">Bem-vindo - {{ user.username }} {{user.emailname}}</p>
+                    <div class="d-inline-block">
+                        <a class="btn btn-primary" href="{% url 'logout' %}">Sair</a>
+                    </div>
+                {% else %}
+                    <a cclass="btn btn-primary" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </a>
+        </li>
+    </a>
+</div>
+
+  <h2 class="texto-branco">Banner Principal</h2>
+
+<div class="container d-flex justify-content-start ">
+  <ul class="list-group">
+    {% for image in images %}
+      <li class="list-group-item">
+        <img src="{{ image.image.url }}" alt="Carousel Image" width="600">
+        <div class="btn-group mt-2" role="group">
+          <a href="{% url 'edit_image' pk=image.pk %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'delete_image' pk=image.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+  <a href="{% url 'add_image' %}" class="btn btn-primary mt-3">Adionar Slide</a>
+</div> 
+
+{% endblock %}
+

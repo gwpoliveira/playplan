@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Adicionar Slide{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <h2 class="texto-branco">Adicionar Slide</h2>
+
+  <div class="container texto-branco">
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary mt-2">Adicionar</button>
+    </form>
+  </div>
+</div>
+  
+{% endblock %}
