@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import HomeView, UserProfileView
-from .views import HomeView, BlogView, NoticiaView, OQueETDAH, Painel
-from administration.views import ApoiadorCreateListView
+from .views import HomeView, BlogView, NoticiaView, OQueETDAH, Painel, QuemSomos
+from administration.views import ApoiadorCreateListView, ContatoCreateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
@@ -13,6 +13,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('profile/', UserProfileView.as_view(), name='profile'),
+    path('contato/', ContatoCreateView.as_view(), name='contato'),
+    path('quemsomos/', QuemSomos.as_view(), name='quem-somos'),
     path('', HomeView.as_view(), name='home'),
     path('noticias/', BlogView.as_view(), name='noticias'),
     path('postagem/', NoticiaView.as_view(), name='postagem'),
