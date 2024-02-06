@@ -43,3 +43,6 @@ class OQueETDAH(TemplateView):
 class ApoioView(TemplateView):
     template_name = 'apoio/apoio.html'
 
+class Painel(TemplateView):
+    template_name = 'administration/painel.html'
+

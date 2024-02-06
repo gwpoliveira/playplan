@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import HomeView, UserProfileView
-from .views import HomeView, BlogView, NoticiaView, OQueETDAH, ApoioView
+from .views import HomeView, BlogView, NoticiaView, OQueETDAH, ApoioView, Painel
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
@@ -19,6 +19,7 @@ urlpatterns = [
     path('apoio/', ApoioView.as_view(), name='apoio'),
     path('administration/', include('administration.urls')), 
     path('admin/', admin.site.urls),
+    path('painel/', Painel.as_view(), name='painel'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
