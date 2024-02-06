@@ -1,13 +1,14 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage, Contato
-from .forms import CarouselImageForm, ContatoForm
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib import messages
 
+    # ************ Carrossel *************** #
 class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
     template_name = 'administration/image_list.html'
@@ -36,7 +37,7 @@ class ImageDeleteView(LoginRequiredMixin,DeleteView):
         else:
             return super().post(request, *args, **kwargs)
         
-
+# ************ Contato *************** #
 class ContatoCreateView(CreateView):
     model = Contato
     form_class = ContatoForm
@@ -56,4 +57,44 @@ class ContatoDetailView(DetailView):
     model = Contato
     template_name = 'contato/contato_detail.html'
     context_object_name = 'contato'
+
+# ************ Blogger *************** #
+class BlogPostListView(ListView):
+    model = BlogPost
+    template_name = 'blog/blog_post_list.html'
+    context_object_name = 'posts'
+
+class BlogPostDetailView(View):
+    def get(self, request, pk):
+        post = get_object_or_404(BlogPost, pk=pk)
+        images = BlogPostImage.objects.filter(post=post)
+        return render(request, 'blog/blog_post_detail.html', {'post': post, 'images': images})
+
+class BlogPostCreateView(LoginRequiredMixin, CreateView):
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = 'blog/blog_post_form.html'
+    success_url = reverse_lazy('blog_post_list')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class BlogPostUpdateView(LoginRequiredMixin, UpdateView):
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = 'blog/blog_post_form.html'
+    success_url = reverse_lazy('blog_post_list')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
+    model = BlogPost
+    template_name = 'blog/blog_post_confirm_delete.html'
+    success_url = reverse_lazy('blog_post_list')
+
+
+
 
