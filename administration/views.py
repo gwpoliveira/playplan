@@ -1,11 +1,11 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage
-from .forms import CarouselImageForm
+from .models import CarouselImage, Contato
+from .forms import CarouselImageForm, ContatoForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
@@ -34,3 +34,20 @@ class ImageDeleteView(LoginRequiredMixin,DeleteView):
             return redirect('image_list')
         else:
             return super().post(request, *args, **kwargs)
+        
+
+class ContatoCreateView(CreateView):
+    model = Contato
+    form_class = ContatoForm
+    template_name = 'contato/contato.html'
+    success_url = reverse_lazy('home')
+
+class ContatoListView(LoginRequiredMixin,ListView):
+    model = Contato
+    template_name = 'contato/contato_list.html'
+    context_object_name = 'contatos'
+
+class ContatoDetailView(DetailView):
+    model = Contato
+    template_name = 'contato/contato_detail.html'
+    context_object_name = 'contato'

@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{% load bootstrap5 %}
+{%block title%}{{contato.nome}}{%endblock title%}
+{% block content %}
+<div class="container text-white">
+    <br>
+    <h2>Detalhes da Mensagem</h2>
+    <p>Nome: {{ contato.nome }}</p>
+    <p>Email: {{ contato.email }}</p> 
+    <p>Telefone: {{ contato.telefone }}</p> 
+    <p>Mensagem: {{contato.mensagem}}</p>
+    {% if contato.status == True %}
+    <p>Status: Respondido</p>
+    {% else %}
+    <p>Status: Não Respondido</p>
+    {% endif %}
+</div>
+{% endblock %}

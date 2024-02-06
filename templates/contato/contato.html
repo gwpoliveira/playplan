@@ -16,22 +16,10 @@
       </div>
     <div class="col-md-10 mx-auto col-lg-5">
       <form method="post" class=" bg-transparent p-4 p-md-5 ">
+        {% csrf_token %}
         <section class=" bg-transparent container">
-            <div class="text-white mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Nome</label>
-              *<input type='text' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Insira seu nome" required></input>
-            </div>
-            <div class=" text-white mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email</label>
-                *<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Insira seu e-mail" required>
-              </div>
-              <div class=" text-white mb-3">
-                <label for="exampleFormControlInput1" class="form-label">N° de Telefone</label>
-                *<input type="tel" class="form-control" id="exampleFormControlInput1" required placeholder="(xx) xxxxx-xxxx" required>
-              </div>
-              <div class="text-white mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreva sua mensagem"></textarea>
+          <div class="text-white mb-3">
+              {% bootstrap_form form%}
               </div>
               <button class=" text-white btn btn-dark" type="submit">Contatar</button>
         </section>

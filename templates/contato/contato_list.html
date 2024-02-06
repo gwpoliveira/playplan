@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block content %} 
+<div class="container">
+
+    <div class="container d-flex justify-content-end">
+      <a class="nav-link texto-branco" href="{% url 'login' %}">
+      </a>
+  </div>
+
+  <div class="container justify-content-start ">
+    
+    <ul class="">
+        <li class="bg-transparent list-group-item">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Mensagem</th>
+                    </tr>
+                </thead>
+                
+                {% for contato in contatos %}
+                <tbody>
+                  <tr>
+                    <th scope="row">{{contato.id}}</th>
+                    <td>{{contato.nome}}</td>
+                    <td>{{contato.email}}</td>
+                    <td>{{contato.telefone}}</td>
+                    <td><a href="{{contato.id}}">{{contato.mensagem}}</a></td>
+                        {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+        </li>
+    </ul>
+    
+  </div>
+{% endblock content %}

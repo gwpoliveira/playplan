@@ -30,9 +30,6 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         update_session_auth_hash(self.request, self.object)
         return response
     
-class ContatoView(TemplateView):
-    template_name = 'contato/contato.html'
-
 
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
@@ -45,3 +42,4 @@ class OQueETDAH(TemplateView):
     
 class ApoioView(TemplateView):
     template_name = 'apoio/apoio.html'
+
