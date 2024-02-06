@@ -43,8 +43,8 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
-    about = models.TextField("descrição", max_length=150)
-    date = models.DateField("data da publicação")
+    about = models.TextField("descrição")
+    date = models.DateField("data da publicação",)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = models.ImageField(upload_to='blog_featured_images/')
     text = models.TextField()
