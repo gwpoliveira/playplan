@@ -3,9 +3,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato
 from .forms import CarouselImageForm, ContatoForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.contrib import messages
 
 class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
@@ -42,6 +43,10 @@ class ContatoCreateView(CreateView):
     template_name = 'contato/contato.html'
     success_url = reverse_lazy('home')
 
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Mensagem enviada com sucesso!")
+        return reverse('home')
+
 class ContatoListView(LoginRequiredMixin,ListView):
     model = Contato
     template_name = 'contato/contato_list.html'
@@ -51,3 +56,4 @@ class ContatoDetailView(DetailView):
     model = Contato
     template_name = 'contato/contato_detail.html'
     context_object_name = 'contato'
+

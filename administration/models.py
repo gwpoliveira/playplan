@@ -15,7 +15,7 @@ class Contato(models.Model):
     )
     nome = models.CharField('nome', blank=False, null=False, max_length=155)
     email = models.EmailField('e-mail', blank=False, null=False,max_length=255)
-    telefone = models.CharField('telefone', blank=False,null=False,max_length=15)
+    telefone = models.CharField('telefone', blank=False,null=False,max_length=20)
     mensagem = models.TextField('mensagem', blank=True, null=True, max_length=500)
     status = models.BooleanField(
         max_length=30,
