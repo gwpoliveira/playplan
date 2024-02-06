@@ -25,3 +25,23 @@ class Contato(models.Model):
 
     def __str__(self):
         return f"{self.nome}"
+    
+    
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    featured_image = models.ImageField(upload_to='blog_featured_images/')
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class BlogPostImage(models.Model):
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='blog_images/')
