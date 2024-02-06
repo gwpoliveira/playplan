@@ -1,7 +1,8 @@
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from administration.models import CarouselImage
+from administration.models import CarouselImage, Apoiador
+from administration.forms import ApoiadorForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
@@ -40,8 +41,14 @@ class NoticiaView(TemplateView):
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
     
-class ApoioView(TemplateView):
-    template_name = 'apoio/apoio.html'
+# class ApoioView(TemplateView):
+#     template_name = 'apoio/apoio.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["apoiadores"] = Apoiador.objects.all()[:5]            
+#         return context
+    
 
 class Painel(TemplateView):
     template_name = 'administration/painel.html'

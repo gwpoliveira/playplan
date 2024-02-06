@@ -1,5 +1,5 @@
 from django import forms
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Apoiador
 
 class CarouselImageForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,9 @@ class BlogPostImageForm(forms.ModelForm):
     class Meta:
         model = BlogPostImage
         fields = ['image']
+
+
+class ApoiadorForm(forms.ModelForm):
+    class Meta:
+        model = Apoiador
+        fields='__all__'

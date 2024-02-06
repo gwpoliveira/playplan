@@ -15,8 +15,14 @@
     <h2 class="text-center mb-4">Seja um Apoiador</h2>
     <p class="text-center">Mostre seu apoio à nosso prpjeto. Preencha o formulário abaixo para se identificar como apoiador caso deseje:</p>
 
-    <form id="formApoiador" class="row g-3 justify-content-center">
-        <div class="col-md-6">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+      </form>
+    <!-- <form id="formApoiador" class="row g-3 justify-content-center">
+        <div class="col-md-6 ">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu Nome" required>
         </div>
@@ -29,7 +35,7 @@
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Tornar-se Apoiador</button>
         </div>
-    </form>
+    </form> -->
 </section>
 
 <section id="pix" class="container my-5 texto-branco ">
@@ -45,11 +51,14 @@
 <section id="apoiadores" class="container my-5 texto-branco ">
     <h2 class="text-center mb-4">Apoiadores</h2>
     <p class="text-center">Agradecemos aos seguintes apoiadores que tornaram esta causa possível:</p>
-
+    
     <!-- Aqui você pode exibir dinamicamente a lista de apoiadores -->
-    <ul id="listaApoiadores" class="list-group text-center">
-        <!-- Exemplo: <li class="list-group-item">Nome do Apoiador</li> -->
-    </ul>
+    <div class="border rounded bg-secondary.bg-gradient pt-3">
+    {% for apoiador in apoiadores %}  
+    <p class="text-center">{{apoiador.nome}}</p>
+    {% endfor %}
+    </div>
+    
 </section>
 
 {% endblock content %}

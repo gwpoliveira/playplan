@@ -1,8 +1,8 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -95,6 +95,24 @@ class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'blog/blog_post_confirm_delete.html'
     success_url = reverse_lazy('blog_post_list')
 
+
+
+# ************ Apoio *************** #
+    
+class ApoiadorCreateListView(CreateView, ListView):
+    model = Apoiador
+    form_class = ApoiadorForm
+    template_name = 'apoio/apoio.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["apoiadores"] = Apoiador.objects.all()[:5]            
+        return context
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Obrigado por apoiar nossa causa")
+        return reverse('apoio') 
+    
 
 
 
