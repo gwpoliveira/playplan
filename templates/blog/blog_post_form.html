@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
-{% block title %}Blogue{% endblock %}
+{% block title %}Criar Post{% endblock %}
 
 {% block content %}
 
+<div class="container bg-secondary-subtle p-5 rounded border">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-primary" type="submit">Cadastrar</button>
+  </form>
+</div>
   
 {% endblock %}
