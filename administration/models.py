@@ -13,10 +13,10 @@ class Contato(models.Model):
         (True, 'Respondida'),
         (False,'Não Respondida'),
     )
-    nome = models.CharField('nome', blank=False, null=False, max_length=155)
-    email = models.EmailField('e-mail', blank=False, null=False,max_length=255)
+    nome = models.CharField('nome', max_length=155)
+    email = models.EmailField('e-mail', max_length=255)
     telefone = models.CharField('telefone', blank=False,null=False,max_length=20)
-    mensagem = models.TextField('mensagem', blank=True, null=True, max_length=500)
+    mensagem = models.TextField('mensagem', max_length=500)
     status = models.BooleanField(
         max_length=30,
         choices=STATUS,
@@ -49,6 +49,10 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
 
 class BlogPostImage(models.Model):
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
