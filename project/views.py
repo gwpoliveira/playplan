@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from administration.models import CarouselImage, Apoiador, BlogPost, Category
+from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato
 from administration.forms import ApoiadorForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -62,11 +62,13 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         num_blogpost = BlogPost.objects.count()
         num_carousel = CarouselImage.objects.count()
         num_category = Category.objects.count()
+        num_contatos = Contato.objects.count()
 
         context['num_apoiadores'] = num_apoiadores
         context['num_carousel'] = num_carousel
         context['num_blogpost'] = num_blogpost
         context['num_category'] = num_category
+        context['num_contatos'] = num_contatos
         return context
 
 class QuemSomos(TemplateView):
