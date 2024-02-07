@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
     description = models.CharField('Descrição', max_length=255)
-    link = models.CharField('Link do Banner', max_length=300, blank=True, null=True)
+    link = models.URLField()
 
     def __str__(self):
         return self.description

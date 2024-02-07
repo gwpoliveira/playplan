@@ -10,9 +10,9 @@
   <div id="carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for image in images %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img src="{{ image.image.url }}"  class="d-block w-100" alt="Carousel Image">
-        </div>
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="{{image.link}}"><img src="{{ image.image.url }}" class="d-block w-100" alt="Carousel Image"></a>
+      </div>
       {% endfor %}
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -121,4 +121,4 @@
 
   </div>
 
-{% endblock %}
+  {% endblock %}
