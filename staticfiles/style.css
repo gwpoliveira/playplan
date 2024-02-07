@@ -30,6 +30,9 @@ h1#branco {
     color: #fff
 }
 
+.dist{
+    margin-right: 7px;
+}
 
 #login {
     border: 1px solid var(--blue);

@@ -49,7 +49,7 @@ class BlogPost(models.Model):
     date = models.DateField("Data da publicação",)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = models.ImageField(upload_to='blog_featured_images/')
-    text = RichTextField()
+    text = RichTextField('Texto : ')
 
     def __str__(self):
         return self.title
