@@ -1,3 +1,4 @@
+<!-- blog/blog_post_list.html -->
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
 {% block title %}Blogue{% endblock %}
@@ -12,11 +13,13 @@
     <a href="{% url 'blog_post_create' %}" class="btn btn-primary my-3">Adicionar Postagem</a>
   </div>
 
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for post in posts %}
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="{{ post.featured_image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}" style="max-height: 600px;">
+      <div class="col">
+        <div class="card my-4">
+          <div class="d-flex align-items-center justify-content-center">
+            <img src="{{ post.featured_image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}" style="max-width: 100%;">
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.about }}</p>
@@ -28,16 +31,24 @@
     {% endfor %}
   </div>
 
-  <div class="d-flex justify-content-center mt-4">
-    <ul class="pagination">
-      {% for num in posts.paginator.page_range %}
-        <li class="page-item {% if posts.number == num %}active{% endif %}">
-          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+  <div class="pagination">
+    <span class="step-links">
+      {% if posts.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+      </span>
+
+      {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
   </div>
-  
+
 </div>
   
 {% endblock %}

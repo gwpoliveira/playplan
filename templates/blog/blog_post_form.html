@@ -3,15 +3,16 @@
 {% block title %}Criar Post{% endblock %}
 
 {% block content %}
-
 <div class="container texto-branco">
-  
   <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Blog Post</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    
+    {# Adicione as tags CKEditor ao campo 'text' #}
+    {{ form.media }}
+    
     {% bootstrap_form form %}
     <button type="submit">Submit</button>
   </form>
-  
 </div>
 {% endblock %}
