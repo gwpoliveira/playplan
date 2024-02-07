@@ -50,8 +50,8 @@ class OQueETDAH(TemplateView):
 #         return context
     
 
-class Painel(LoginRequiredMixin, TemplateView):
-    template_name = 'administration/painel.html'
+# class Painel(LoginRequiredMixin, TemplateView):
+#     template_name = 'administration/painel.html'
 
 class PainelAdm(LoginRequiredMixin, TemplateView):
     template_name = 'administration/painel_adm.html'
