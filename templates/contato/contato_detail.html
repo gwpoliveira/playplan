@@ -1,6 +1,6 @@
 {%extends 'administration/painel.html'%}
 {% load bootstrap5 %}
-{%block title%}{{contato.nome}}{%endblock title%}
+{%block title%}Contato de {{contato.nome}}{%endblock title%}
 {% block conteudo %}
 <!-- <div class="container text-white">
     <br>
@@ -26,7 +26,8 @@
                 </a>
             </li>
             <li class="breadcrumb-item text-white">
-                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'contato_list' %}">Lista de Mensagens</a>
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+                    href="{% url 'contato_list' %}">Lista de Mensagens</a>
             </li>
             <li class="breadcrumb-item active text-white" aria-current="page">
                 Ler Mensagem
@@ -37,19 +38,25 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <h5 class="card-title"><i class="fa-solid fa-user"></i><span class="dist"></span></h5><p class="card-text">{{ contato.nome }}</p>
-        <h5 class="card-title"><i class="fa-solid fa-envelope"></i><span class="dist"></span>{{ contato.email }}</h5>
-        <h5 class="card-title"><i class="fa-solid fa-phone"></i><span class="dist"></span>{{ contato.email }}</h5>
-        <p class="card-text">Mensagem: {{contato.mensagem}}</p>
+        <p class="card-title"><i class="fa-solid fa-user"></i><span class="dist"></span><strong>Nome: </strong>{{
+            contato.nome }}</p>
+        <p class="card-title"><i class="fa-solid fa-envelope"></i><span class="dist"></span><strong>E-mail: </strong>{{
+            contato.email }}</p>
+        <p class="card-title"><i class="fa-solid fa-phone"></i><span class="dist"></span><strong>Telefone: </strong>{{
+            contato.email }}</p>
+        <p class="card-text"><i class="fa-solid fa-file-lines"></i><span class="dist"></span><strong>Mensagem:</strong>
+            {{contato.mensagem}}</p>
         <hr>
         {% if contato.status == True %}
-        <p class="card-text">Status: Não Respondida</p>        
-        <a href="#" class="btn btn-primary">Marcar como Lida</a>
+        <p class="card-text">Status: Respondida</p>
         {% else %}
-        <p class="card-text">Status: Respondida</p>  
-        <a href="#" class="btn btn-primary">Marcar como não Lida</a>
+        <p class="card-text">Status: Não Respondida</p>
         {% endif %}
-        
+
+        <a href="#" class="btn btn-primary">Atualizar Status</a>
+
+
+
     </div>
 </div>
 

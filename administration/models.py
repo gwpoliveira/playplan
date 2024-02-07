@@ -18,11 +18,13 @@ class Contato(models.Model):
     email = models.EmailField('e-mail', max_length=255)
     telefone = models.CharField('telefone', blank=False,null=False,max_length=20)
     mensagem = models.TextField('mensagem', max_length=500)
+    lida = models.BooleanField(default=False)
     status = models.BooleanField(
         max_length=30,
         choices=STATUS,
         default=False,
     )
+    
 
     def __str__(self):
         return f"{self.nome}"
@@ -32,8 +34,11 @@ class Contato(models.Model):
         verbose_name = "Contato"
         verbose_name_plural = "Contatos"
     
+# ************** categorias de postagem **************#
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    about = models.TextField("Descrição", max_length=150, blank=True, null=True)
 
     def __str__(self):
         return self.name

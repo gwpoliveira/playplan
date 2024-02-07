@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -165,4 +165,43 @@ class ApoiadorCreateView(LoginRequiredMixin, CreateView):
         messages.add_message(self.request, messages.SUCCESS, "Apoiador cadastrado com sucesso!")
         return reverse('lista_de_apoiadores')
 
+
+# ************ Categorias de Postagem *************** #
+    
+class CriarCategoria(LoginRequiredMixin, CreateView):
+    model = Category
+    template_name = 'categorys/criar_categoria.html'
+    form_class = CategoryForm
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Categoria criada com sucesso!")
+        return reverse('listar-categorias')
+    
+class ListarCategorias(LoginRequiredMixin, ListView):
+    model = Category
+    template_name = 'categorys/listar_categorias.html'
+    context_object_name ='categorias'
+
+class AtualizarCategoria(LoginRequiredMixin, UpdateView):
+    model = Category
+    template_name = 'categorys/atualizar_categoria.html'
+    form_class = CategoryForm
+    pk_url_kwarg='id'
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Categoria atualizada com sucesso!")
+        return reverse('listar-categorias')
+    
+class DetalharCategoria(LoginRequiredMixin, DetailView):
+    model = Category
+    template_name = 'categorys/detalhar_categoria.html'
+    context_object_name = 'categoria'
+
+class ApagarCategoria(LoginRequiredMixin, DeleteView):
+    model = Category
+    template_name = 'categorys/apagar_categoria.html'
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Categoria apagada com sucesso!")
+        return reverse('listar-categorias')
 

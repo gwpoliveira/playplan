@@ -1,0 +1,21 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Criar Categoria{% endblock title %}
+
+{% block conteudo %}
+
+<form method="post" class="bg-transparent p-4 p-md-5 ">
+    {% csrf_token %}
+    <section class=" bg-transparent container">
+        <div class="text-white mb-3">
+            {% bootstrap_form form%}
+        </div>
+        <button class=" text-white btn btn-dark" type="submit">Criar</button>
+    </section>
+
+
+</form>
+
+
+{% endblock conteudo %}

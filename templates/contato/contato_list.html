@@ -8,15 +8,31 @@
 
 
 
-<h1 class="text-white">Caixa de Mensagens</h1>
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+          <i class="fa-solid fa-house"></i><span class="dist"></span>
+          Painel
+        </a>
+      </li>
+      <li class="breadcrumb-item text-white active">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'contato_list' %}">Caixa
+          de Entrada</a>
+      </li>
+    </ol>
+  </nav>
+</div>
 
-<table class="table table-striped">
+<table class="table  table-striped rounded">
   <thead>
     <tr>
 
       <th scope="col">Nome</th>
       <th scope="col">E-mail</th>
       <th scope="col">Status</th>
+      <th scope="col">Resposta</th>
       <th scope="col">Opções</th>
     </tr>
   </thead>
@@ -28,17 +44,17 @@
 
       <td>{{contato.nome}}</td>
       <td>{{contato.email}}</td>
-      {% if contato.status == 'True' %}
-      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open-text"></i></button></td>
-      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a><span class="dist"></span><a class="btn btn-danger"
-          href="#" role="button">Marcar como não Lida</a></td>
-      {% else %}
+      {% if contato.lida == False %}
       <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-envelope"></i></button></td>
-      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a><span class="dist"></span><a class="btn btn-danger"
-          href="#" role="button">Marcar como Lida</a></td>
-
+      {% else %}
+      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open"></i></button></td>
       {% endif %}
-
+      {% if contato.status == True %}
+      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-reply"></i></button></td>
+      {% else %}
+      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-pause"></i></button></td>
+      {% endif %}
+      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a></td>
 
       {% endfor %}
     </tr>

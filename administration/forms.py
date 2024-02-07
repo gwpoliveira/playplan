@@ -1,6 +1,6 @@
 from ckeditor.fields import RichTextField
 from django import forms
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Apoiador
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Apoiador, Category
 
 class CarouselImageForm(forms.ModelForm):
     class Meta:
@@ -27,4 +27,10 @@ class BlogPostImageForm(forms.ModelForm):
 class ApoiadorForm(forms.ModelForm):
     class Meta:
         model = Apoiador
+        fields='__all__'
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
         fields='__all__'

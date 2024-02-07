@@ -36,7 +36,7 @@
             <div class="card-body">
                 <h5 class="card-title"><i class="fa-regular fa-handshake"></i><span class="dist"></span>Administrar Apoiadores</h5>
                 <p class="card-text">Eles são os que principalmente acreditam no nosso trabalho e incentivam para que o PlayPlan cresça mais a cada dia. Já são {{ num_apoiadores }} cadastrados como apoiador.</p>
-                <a href="#" class="btn btn-primary">Ver Apoiadores</a>
+                <a href="{% url 'lista_de_apoiadores' %}" class="btn btn-primary">Ver Apoiadores</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             <div class="card-body">
                 <h5 class="card-title"><i class="fa-regular fa-envelope"></i><span class="dist"></span>Gestão de Mensagens</h5>
                 <p class="card-text">No total, já foram realizados {{num_contatos}} com a nossa plataforma. Nossa intenção é de sempre manter um bom relacionamento com os nossos usuários e atendendo a todos os feedbacks.</p>
-                <a href="#" class="btn btn-primary">Caixa de Entrada</a>
+                <a href="{% url 'contato_list' %}" class="btn btn-primary">Caixa de Entrada</a>
             </div>
         </div>
     </div>
