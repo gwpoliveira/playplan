@@ -4,11 +4,26 @@
 
 {% block content %}
 
-<h2>{{ post.title }}</h2>
-<p>{{ post.text }}</p>
-<img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-{% for image in images %}
-  <img src="{{ image.image.url }}" alt="Gallery Image">
-{% endfor %}
+<div class="container texto-branco my-4">
+  <div class="card">
+    <img src="{{ post.featured_image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}">
+    <div class="card-body">
+      <h2 class="card-title">{{ post.title }}</h2>
+      <p class="card-text"><small class="text-muted">Publicado em {{ post.date }}</small></p>
+      <p class="card-text">{{ post.text }}</p>
+    </div>
+  </div>
+
+  {% if images %}
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+      {% for image in images %}
+        <div class="col">
+          <img src="{{ image.image.url }}" class="img-fluid" alt="Gallery Image">
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
 
 {% endblock %}

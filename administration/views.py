@@ -63,6 +63,7 @@ class BlogPostListView(ListView):
     model = BlogPost
     template_name = 'blog/blog_post_list.html'
     context_object_name = 'posts'
+    paginate_by = 9 
 
 class BlogPostDetailView(View):
     def get(self, request, pk):

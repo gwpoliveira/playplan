@@ -41,6 +41,7 @@ class Category(models.Model):
         verbose_name = "Categoria"
         verbose_name_plural = "Categorias"
 
+# ************** blog **************#
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
     about = models.TextField("descrição")

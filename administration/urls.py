@@ -14,10 +14,12 @@ urlpatterns = [
     # path('contato/', ContatoCreateView.as_view(), name='contato'),
     path('contato_list/', ContatoListView.as_view(), name='contato_list'),
     path('contato_list/<int:pk>', ContatoDetailView.as_view(), name='contato_list'),
-    path('', BlogPostListView.as_view(), name='blog_post_list'),
-    path('post/<int:pk>/', BlogPostDetailView.as_view(), name='blog_post_detail'),
-    path('post/new/', BlogPostCreateView.as_view(), name='blog_post_create'),
-    path('post/<int:pk>/edit/', BlogPostUpdateView.as_view(), name='blog_post_edit'),
-    path('post/<int:pk>/delete/', BlogPostDeleteView.as_view(), name='blog_post_delete'),
+    
+    #******************* Blog *******************#
+    path('blog_post_list/', BlogPostListView.as_view(), name='blog_post_list'),
+    path('blog/<int:pk>/', BlogPostDetailView.as_view(), name='blog_post_detail'),
+    path('blog_post_create/', BlogPostCreateView.as_view(), name='blog_post_create'),
+    path('blog/<int:pk>/edit/', BlogPostUpdateView.as_view(), name='blog_post_edit'),
+    path('blog/<int:pk>/delete/', BlogPostDeleteView.as_view(), name='blog_post_delete'),
     
 ]

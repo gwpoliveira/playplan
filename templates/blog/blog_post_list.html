@@ -9,14 +9,35 @@
   <h2>Blog</h2>
 
   <div class="d-flex justify-content-end">
-    <a href="{% url 'blog_post_form' %}" class="btn btn-primary my-3">Adicionar Post</a>
+    <a href="{% url 'blog_post_create' %}" class="btn btn-primary my-3">Adicionar Postagem</a>
   </div>
 
-  <ul>
+  <div class="row">
     {% for post in posts %}
-    <li><a href="{% url 'blog_post_detail' pk=post.pk %}">{{ post.title }}</a></li>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ post.featured_image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}" style="max-height: 600px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.about }}</p>
+            <p class="card-text"><small class="text-muted">Publicado em {{ post.date }}</small></p>
+            <a href="{% url 'blog_post_detail' pk=post.pk %}" class="btn btn-primary">Leia mais</a>
+          </div>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+      {% for num in posts.paginator.page_range %}
+        <li class="page-item {% if posts.number == num %}active{% endif %}">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
 </div>
   
 {% endblock %}

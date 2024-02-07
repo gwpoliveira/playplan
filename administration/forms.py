@@ -14,7 +14,7 @@ class ContatoForm(forms.ModelForm):
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'category', 'featured_image', 'text']
+        fields = ['title', 'about', 'date', 'category', 'featured_image', 'text']
 
 class BlogPostImageForm(forms.ModelForm):
     class Meta:
