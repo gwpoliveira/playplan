@@ -40,15 +40,14 @@
   {% for contato in contatos %}
 
   <tbody>
-    <tr>
+
+
+    {% if contato.lida == False %}
+    <tr class="table-dark">
 
       <td>{{contato.nome}}</td>
       <td>{{contato.email}}</td>
-      {% if contato.lida == False %}
       <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-envelope"></i></button></td>
-      {% else %}
-      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open"></i></button></td>
-      {% endif %}
       {% if contato.status == True %}
       <td><button type="button" class="btn btn-success"><i class="fa-solid fa-reply"></i></button></td>
       {% else %}
@@ -56,8 +55,23 @@
       {% endif %}
       <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a></td>
 
-      {% endfor %}
+      {% else %}
+
+      <td>{{contato.nome}}</td>
+      <td>{{contato.email}}</td>
+      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open"></i></button></td>
+      {% if contato.status == True %}
+      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-reply"></i></button></td>
+      {% else %}
+      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-pause"></i></button></td>
+      {% endif %}
+      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a></td>     
+      
+      
+      {% endif %}
+      
     </tr>
+    {% endfor %}
   </tbody>
 </table>
 
