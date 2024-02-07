@@ -187,12 +187,13 @@ class CriarCategoria(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria criada com sucesso!")
-        return reverse('listar-categorias')
+        return reverse('listar_categorias')
     
 class ListarCategorias(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'categorys/listar_categorias.html'
     context_object_name ='categorias'
+
 
 class AtualizarCategoria(LoginRequiredMixin, UpdateView):
     model = Category
@@ -202,7 +203,7 @@ class AtualizarCategoria(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria atualizada com sucesso!")
-        return reverse('listar-categorias')
+        return reverse('listar_categorias')
     
 class DetalharCategoria(LoginRequiredMixin, DetailView):
     model = Category
@@ -215,5 +216,5 @@ class ApagarCategoria(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria apagada com sucesso!")
-        return reverse('listar-categorias')
+        return reverse('listar_categorias')
 

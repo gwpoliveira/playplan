@@ -44,7 +44,7 @@ class Contato(models.Model):
 # ************** categorias de postagem **************#
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField("Nome", max_length=100)
     about = models.TextField("Descrição", max_length=150, blank=True, null=True)
 
     def __str__(self):
