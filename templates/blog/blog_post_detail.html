@@ -4,5 +4,11 @@
 
 {% block content %}
 
-  
+<h2>{{ post.title }}</h2>
+<p>{{ post.text }}</p>
+<img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+{% for image in images %}
+  <img src="{{ image.image.url }}" alt="Gallery Image">
+{% endfor %}
+
 {% endblock %}

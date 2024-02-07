@@ -5,26 +5,13 @@
 
 {% block content %}
 
-<div class="container">
-
-  <div class="container d-flex justify-content-end">
-    <a class="nav-link texto-branco" href="{% url 'login' %}">
-        <li class="nav-item">
-            <a href="#" class="nav-link texto-branco">
-                {% if user.is_authenticated %}
-                    <p class="text-light">Bem-vindo - {{ user.username }} {{user.emailname}}</p>
-                    <div class="d-inline-block">
-                        <a class="btn btn-primary" href="{% url 'logout' %}">Sair</a>
-                    </div>
-                {% else %}
-                    <a cclass="btn btn-primary" href="{% url 'login' %}">Login</a>
-                {% endif %}
-            </a>
-        </li>
-    </a>
-</div>
+<div class="container ">
 
   <h2 class="texto-branco">Banner Principal</h2>
+
+  <div class="d-flex justify-content-end">
+    <a href="{% url 'add_image' %}" class="btn btn-primary my-3">Adionar Slide</a>
+</div>
 
 <div class="container d-flex justify-content-start ">
   <ul class="list-group">
@@ -40,7 +27,7 @@
   </ul>
 </div>
 
-  <a href="{% url 'add_image' %}" class="btn btn-primary mt-3">Adionar Slide</a>
+  
 </div> 
 
 {% endblock %}

@@ -4,12 +4,14 @@
 
 {% block content %}
 
-<div class="container bg-secondary-subtle p-5 rounded border">
-<form method="post" enctype="multipart/form-data">
+<div class="container texto-branco">
+  
+  <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Blog Post</h2>
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button class="btn btn-primary" type="submit">Cadastrar</button>
+    <button type="submit">Submit</button>
   </form>
-</div>
   
+</div>
 {% endblock %}

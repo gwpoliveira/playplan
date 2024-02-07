@@ -4,5 +4,12 @@
 
 {% block content %}
 
+  <h2>Delete Blog Post</h2>
+  <p>Are you sure you want to delete the blog post "{{ object.title }}"?</p>
+  <form method="post" action="{% url 'blog_post_delete' object.pk %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'blog_post_list' %}">Cancel</a>
+  </form>
   
 {% endblock %}
