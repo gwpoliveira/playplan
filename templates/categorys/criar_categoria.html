@@ -5,17 +5,39 @@
 
 {% block conteudo %}
 
-<form method="post" class="bg-transparent p-4 p-md-5 ">
-    {% csrf_token %}
-    <section class=" bg-transparent container">
-        <div class="text-white mb-3">
-            {% bootstrap_form form%}
-        </div>
-        <button class=" text-white btn btn-dark" type="submit">Criar</button>
-    </section>
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="#">Lista de Categorias</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Criar Categoria
+            </li>
+        </ol>
+    </nav>
+</div>
 
 
-</form>
+<div class="bg-secondary-subtle rounded border">
+    <form method="post" class="bg-transparent p-4 p-md-5 ">
+        {% csrf_token %}
+        <section class=" bg-transparent container">
+            <div class="mb-3">
+                {% bootstrap_form form%}
+            </div>
+            <button class="text-white btn btn-dark" type="submit">Criar</button>
+        </section>
+
+
+    </form>
+</div>
 
 
 {% endblock conteudo %}
