@@ -7,7 +7,7 @@ from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Apoiador, C
 class CarouselImageForm(forms.ModelForm):
     class Meta:
         model = CarouselImage
-        fields = ['image','description']
+        fields = ['image','description', 'link']
 
 
 # ************ Formulário do Contato ****************

@@ -28,7 +28,7 @@
       <h5 class="card-title">{{apoiador.nome}}</h5>
       <p class="card-text">E-mail: {{apoiador.email}}</p>
       <a href="{% url 'atualizar_apoiador' apoiador.id %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a>
-      <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+      <a href="{% url 'apagar_apoiador' apoiador.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
     </div>
   </div>
 

@@ -5,10 +5,15 @@ from ckeditor.fields import RichTextField
 
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
-    description = models.CharField('Descrição',max_length=255)
+    description = models.CharField('Descrição', max_length=255)
+    link = models.CharField('Link do Banner', max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.description
+    
+    class Meta:
+        verbose_name = "Banner"
+        verbose_name_plural = "Banners"
     
 class Contato(models.Model):
     STATUS = (
