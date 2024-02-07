@@ -114,7 +114,7 @@ class ApoiadorCreateListView(CreateView, ListView):
         messages.add_message(self.request, messages.SUCCESS, "Obrigado por apoiar nossa causa")
         return reverse('apoio')
     
-class ListaApoiadores(ListView):
+class ListaApoiadores(LoginRequiredMixin, ListView):
     model = Apoiador
     template_name = 'apoio/lista.html'
     context_object_name='apoiadores'
@@ -129,13 +129,13 @@ class ListaApoiadores(ListView):
 
         return self.apoiadores
     
-class ApoiadorDetailView(DetailView):
+class ApoiadorDetailView(LoginRequiredMixin, DetailView):
     model=Apoiador
     template_name='apoio/detalhar_apoiador.html'
     context_object_name='apoiador'
     pk_url_kwarg='id'
     
-class ApoiadorDeleteView(DeleteView):
+class ApoiadorDeleteView(LoginRequiredMixin, DeleteView):
     model=Apoiador
     template_name='apoio/apagar_apoiador.html'
     pk_url_kwarg='id'
@@ -145,7 +145,7 @@ class ApoiadorDeleteView(DeleteView):
         return reverse('lista_de_apoiadores')
     
 
-class ApoiadorUpdateView(UpdateView):
+class ApoiadorUpdateView(LoginRequiredMixin, UpdateView):
     model=Apoiador
     template_name='apoio/atualizar_apoiador.html'
     form_class=ApoiadorForm
@@ -156,7 +156,7 @@ class ApoiadorUpdateView(UpdateView):
         return reverse('lista_de_apoiadores')
     
 
-class ApoiadorCreateView(CreateView):
+class ApoiadorCreateView(LoginRequiredMixin, CreateView):
     model=Apoiador
     template_name='apoio/novo_apoiador.html'
     form_class=ApoiadorForm

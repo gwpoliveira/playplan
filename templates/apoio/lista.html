@@ -5,7 +5,21 @@
 
 
 {% block conteudo %}
-<h1 class="text-white">Lista de Apoiadores</h1>
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white active">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'lista_de_apoiadores' %}">Lista de Apoiadores</a>
+            </li>
+        </ol>
+    </nav>
+</div>
 <ul class="list-group list-group-flush">
 
     <table class="table table-striped">
@@ -24,8 +38,7 @@
                 <th scope="row">{{ apoiador.id }}</th>
                 <td>{{apoiador.nome}}</td>
                 <td>{{apoiador.email}}</td>
-                <td><a class="btn btn-primary" href="#" role="button">Atualizar</a><span class="dist"></span><a class="btn btn-danger" href="#"
-                        role="button">Apagar</a></td>
+                <td><a class="btn btn-primary" href="{% url 'detalhar_apoiador' apoiador.id %}" role="button">Consultar Dados</a></td>
             </tr>
             {% endfor %}
         </tbody>

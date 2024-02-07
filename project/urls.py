@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import HomeView, UserProfileView
-from .views import HomeView, BlogView, NoticiaView, OQueETDAH, Painel, QuemSomos
+from .views import HomeView, BlogView, NoticiaView, OQueETDAH, Painel, QuemSomos, PainelAdm
 from administration.views import ApoiadorCreateListView, ContatoCreateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,6 +23,7 @@ urlpatterns = [
     path('administration/', include('administration.urls')), 
     path('admin/', admin.site.urls),
     path('painel/', Painel.as_view(), name='painel'),
+    path('paineladm/', PainelAdm.as_view(), name='painel_adm'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

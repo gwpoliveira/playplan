@@ -68,3 +68,10 @@ h1#branco {
     background: var(--red);
     color: white;
 }
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+        /* content: "/";
+        padding: 0 5px; */
+    color: white; /* cor do separador */
+}

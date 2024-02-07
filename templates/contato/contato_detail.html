@@ -1,18 +1,57 @@
-{%extends 'base.html'%}
+{%extends 'administration/painel.html'%}
 {% load bootstrap5 %}
 {%block title%}{{contato.nome}}{%endblock title%}
-{% block content %}
-<div class="container text-white">
+{% block conteudo %}
+<!-- <div class="container text-white">
     <br>
     <h2>Detalhes da Mensagem</h2>
     <p>Nome: {{ contato.nome }}</p>
-    <p>Email: {{ contato.email }}</p> 
-    <p>Telefone: {{ contato.telefone }}</p> 
+    <p>Email: {{ contato.email }}</p>
+    <p>Telefone: {{ contato.telefone }}</p>
     <p>Mensagem: {{contato.mensagem}}</p>
     {% if contato.status == True %}
     <p>Status: Respondido</p>
     {% else %}
     <p>Status: Não Respondido</p>
     {% endif %}
+</div> -->
+
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'contato_list' %}">Lista de Mensagens</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Ler Mensagem
+            </li>
+        </ol>
+    </nav>
 </div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fa-solid fa-user"></i><span class="dist"></span></h5><p class="card-text">{{ contato.nome }}</p>
+        <h5 class="card-title"><i class="fa-solid fa-envelope"></i><span class="dist"></span>{{ contato.email }}</h5>
+        <h5 class="card-title"><i class="fa-solid fa-phone"></i><span class="dist"></span>{{ contato.email }}</h5>
+        <p class="card-text">Mensagem: {{contato.mensagem}}</p>
+        <hr>
+        {% if contato.status == True %}
+        <p class="card-text">Status: Não Respondida</p>        
+        <a href="#" class="btn btn-primary">Marcar como Lida</a>
+        {% else %}
+        <p class="card-text">Status: Respondida</p>  
+        <a href="#" class="btn btn-primary">Marcar como não Lida</a>
+        {% endif %}
+        
+    </div>
+</div>
+
+
 {% endblock %}

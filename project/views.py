@@ -50,8 +50,19 @@ class OQueETDAH(TemplateView):
 #         return context
     
 
-class Painel(TemplateView):
+class Painel(LoginRequiredMixin, TemplateView):
     template_name = 'administration/painel.html'
+
+class PainelAdm(LoginRequiredMixin, TemplateView):
+    template_name = 'administration/painel_adm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        num_apoiadores = Apoiador.objects.count()
+        num_carousel = CarouselImage.objects.count()
+        context['num_apoiadores'] = num_apoiadores
+        context['num_carousel'] = num_carousel
+        return context
 
 class QuemSomos(TemplateView):
     template_name = 'quem-somos.html'
