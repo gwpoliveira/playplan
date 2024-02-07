@@ -61,6 +61,9 @@ class BlogPostImage(models.Model):
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='blog_images/')
 
+
+# ************** apoiador **************#
+
 class Apoiador(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField()
