@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from ckeditor.fields import RichTextField
 
 
@@ -17,6 +18,7 @@ class Contato(models.Model):
     nome = models.CharField('nome', max_length=155)
     email = models.EmailField('e-mail', max_length=255)
     telefone = models.CharField('telefone', blank=False,null=False,max_length=20)
+    data = models.DateTimeField(default=timezone.now)
     mensagem = models.TextField('mensagem', max_length=500)
     lida = models.BooleanField(default=False)
     status = models.BooleanField(

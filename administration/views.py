@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -48,22 +48,23 @@ class ContatoCreateView(CreateView):
         messages.add_message(self.request, messages.SUCCESS, "Mensagem enviada com sucesso!")
         return reverse('home')
 
-class ContatoListView(LoginRequiredMixin,ListView):
+class ContatoListView(LoginRequiredMixin, ListView):
     model = Contato
     template_name = 'contato/contato_list.html'
     context_object_name = 'contatos'
+    ordering='-data'
 
-class ContatoDetailView(DetailView):
+class ContatoDetailView(LoginRequiredMixin, DetailView):
     model = Contato
     template_name = 'contato/contato_detail.html'
     context_object_name = 'contato'
 
-class AtualizarContato(UpdateView):
+class AtualizarContato(LoginRequiredMixin, UpdateView):
     model = Contato
-    form_class = ContatoForm
+    form_class = UpdateContatoForm
     template_name = 'contato/atualizar_contato.html'
     pk_url_kwarg='id'
-    # fields = ['nome', 'email', 'telefone', 'mensagem', 'lida', 'status']
+    
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Contato atualizado com sucesso!")
