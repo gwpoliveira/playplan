@@ -47,13 +47,25 @@
         <p class="card-text"><i class="fa-solid fa-file-lines"></i><span class="dist"></span><strong>Mensagem:</strong>
             {{contato.mensagem}}</p>
         <hr>
-        {% if contato.status == True %}
-        <p class="card-text">Status: Respondida</p>
+
+        <p class="card-text"><STRong>STATUS</STRong></p>
+
+        {% if contato.lida == False %}
+        <p class="card-text"><strong>Lida: </strong>Não</p>
         {% else %}
-        <p class="card-text">Status: Não Respondida</p>
+        <p class="card-text"><strong>Lida: </strong>Sim</p>
         {% endif %}
 
-        <a href="#" class="btn btn-primary">Atualizar Status</a>
+        {% if contato.status == True %}
+        <p class="card-text"><strong>Resposta: </strong>Respondida</p>
+        {% else %}
+        <p class="card-text"><strong>Resposta: </strong>Não Respondida</p>
+        {% endif %}
+
+
+
+
+        <a href="{% url 'atualizar_contato' contato.id %}" class="btn btn-primary">Atualizar Status</a>
 
 
 

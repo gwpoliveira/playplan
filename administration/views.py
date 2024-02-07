@@ -58,6 +58,17 @@ class ContatoDetailView(DetailView):
     template_name = 'contato/contato_detail.html'
     context_object_name = 'contato'
 
+class AtualizarContato(UpdateView):
+    model = Contato
+    form_class = ContatoForm
+    template_name = 'contato/atualizar_contato.html'
+    pk_url_kwarg='id'
+    # fields = ['nome', 'email', 'telefone', 'mensagem', 'lida', 'status']
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Contato atualizado com sucesso!")
+        return reverse('contato_list')
+
 # ************ Blogger *************** #
 class BlogPostListView(ListView):
     model = BlogPost
