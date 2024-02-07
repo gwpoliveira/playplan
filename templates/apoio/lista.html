@@ -1,0 +1,37 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Lista de Apoiadores{% endblock title %}
+
+
+{% block conteudo %}
+<h1 class="text-white">Lista de Apoiadores</h1>
+<ul class="list-group list-group-flush">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for apoiador in apoiadores %}
+            <tr>
+                <th scope="row">{{ apoiador.id }}</th>
+                <td>{{apoiador.nome}}</td>
+                <td>{{apoiador.email}}</td>
+                <td><a class="btn btn-primary" href="#" role="button">Atualizar</a><span class="dist"></span><a class="btn btn-danger" href="#"
+                        role="button">Apagar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</ul>
+
+
+{% endblock conteudo %}

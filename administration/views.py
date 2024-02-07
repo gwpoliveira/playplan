@@ -112,8 +112,57 @@ class ApoiadorCreateListView(CreateView, ListView):
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Obrigado por apoiar nossa causa")
-        return reverse('apoio') 
+        return reverse('apoio')
+    
+class ListaApoiadores(ListView):
+    model = Apoiador
+    template_name = 'apoio/lista.html'
+    context_object_name='apoiadores'
+
+    def get_queryset(self):
+        search = self.request.GET.get("apoiador")
+        
+        if search:
+            self.apoiadores = Apoiador.objects.filter(nome__icontains=search)
+        else:
+            self.apoiadores = Apoiador.objects.all()
+
+        return self.apoiadores
+    
+class ApoiadorDetailView(DetailView):
+    model=Apoiador
+    template_name='apoio/detalhar_apoiador.html'
+    context_object_name='apoiador'
+    pk_url_kwarg='id'
+    
+class ApoiadorDeleteView(DeleteView):
+    model=Apoiador
+    template_name='apoio/apagar_apoiador.html'
+    pk_url_kwarg='id'
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Apoiador Apagado com sucesso!")
+        return reverse('lista_de_apoiadores')
     
 
+class ApoiadorUpdateView(UpdateView):
+    model=Apoiador
+    template_name='apoio/atualizar_apoiador.html'
+    form_class=ApoiadorForm
+    pk_url_kwarg='id'
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Apoiador atualizado com sucesso!")
+        return reverse('lista_de_apoiadores')
+    
+
+class ApoiadorCreateView(CreateView):
+    model=Apoiador
+    template_name='apoio/novo_apoiador.html'
+    form_class=ApoiadorForm
+    
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Apoiador cadastrado com sucesso!")
+        return reverse('lista_de_apoiadores')
 
 

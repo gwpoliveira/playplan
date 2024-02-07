@@ -1,45 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
 
-{% block title %}Área Administrativa{% endblock title %}
+{% block title %}Lista de Contatos{% endblock title %}
 
-{% block content %} 
-<div class="container">
+{% block conteudo %}
 
-    <div class="container d-flex justify-content-end">
-      <a class="nav-link texto-branco" href="{% url 'login' %}">
-      </a>
-  </div>
 
-  <div class="container justify-content-start ">
-    
-    <ul class="">
-        <li class="bg-transparent list-group-item">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Mensagem</th>
-                    </tr>
-                </thead>
-                
-                {% for contato in contatos %}
-                <tbody>
-                  <tr>
-                    <th scope="row">{{contato.id}}</th>
-                    <td>{{contato.nome}}</td>
-                    <td>{{contato.email}}</td>
-                    <td>{{contato.telefone}}</td>
-                    <td><a href="{{contato.id}}">{{contato.mensagem}}</a></td>
-                        {% endfor %}
-                  </tr>
-                </tbody>
-              </table>
-        </li>
-    </ul>
-    
-  </div>
-{% endblock content %}
+
+
+<h1 class="text-white">Caixa de Mensagens</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Status</th>
+      <th scope="col">Opções</th>
+    </tr>
+  </thead>
+
+  {% for contato in contatos %}
+
+  <tbody>
+    <tr>
+
+      <td>{{contato.nome}}</td>
+      <td>{{contato.email}}</td>
+      {% if contato.status == 'True' %}
+      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open-text"></i></button></td>
+      <td><a class="btn btn-primary" href="#" role="button">Ler</a><span class="dist"></span><a class="btn btn-danger"
+          href="#" role="button">Marcar como não Lida</a></td>
+      {% else %}
+      <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-envelope"></i></button></td>
+      <td><a class="btn btn-primary" href="#" role="button">Ler</a><span class="dist"></span><a class="btn btn-danger"
+          href="#" role="button">Marcar como Lida</a></td>
+
+      {% endif %}
+
+
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+{% endblock conteudo %}
