@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
+# from ckeditor.fields import RichTextField
 
 
 class CarouselImage(models.Model):
@@ -61,7 +62,7 @@ class BlogPost(models.Model):
     date = models.DateField("Data da publicação",)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = models.ImageField(upload_to='blog_featured_images/')
-    text = RichTextField('Texto : ')
+    text=CKEditor5Field('Post: ', config_name='extends')
 
     def __str__(self):
         return self.title
