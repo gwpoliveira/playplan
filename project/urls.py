@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('painel/', Painel.as_view(), name='painel'),
     path('paineladm/', PainelAdm.as_view(), name='painel_adm'),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
 ]
 
