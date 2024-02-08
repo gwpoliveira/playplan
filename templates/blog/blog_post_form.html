@@ -26,7 +26,7 @@
 
 <div class="container bg-light-subtle rounded p-5">
   <h2>{% if form.instance.pk %}Editar{% else %}Criar{% endif %} Blog Post</h2>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" action="{% url 'blog_post_create' %}" enctype="multipart/form-data">
     {% csrf_token %}
     
     {# Adicione as tags CKEditor ao campo 'text' #}

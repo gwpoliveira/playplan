@@ -26,10 +26,10 @@ class UpdateContatoForm(forms.ModelForm):
 # ************ Formulário do Blog ****************
 
 class BlogPostForm(forms.ModelForm):
-    text = RichTextField()
+    # description = RichTextField()
     class Meta:
         model = BlogPost
-        fields = ['title', 'about', 'date', 'category', 'featured_image', 'text']
+        fields = ('title', 'about', 'date', 'category', 'featured_image', 'description')
 
 class BlogPostImageForm(forms.ModelForm):
     class Meta:
