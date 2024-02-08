@@ -1,13 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django_ckeditor_5.fields import CKEditor5Field
-# from ckeditor.fields import RichTextField
-
 
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
     description = models.CharField('Descrição', max_length=255)
-    link = models.URLField()
+    link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.description
@@ -31,8 +29,7 @@ class Contato(models.Model):
         max_length=30,
         choices=STATUS,
         default=False,
-    )
-    
+    )    
 
     def __str__(self):
         return f"{self.nome}"
@@ -58,7 +55,7 @@ class Category(models.Model):
 # ************** blog **************#
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
-    about = models.TextField("Resumo", max_length=150)
+    about = models.TextField("Resumo", max_length=200)
     date = models.DateField("Data da publicação",)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = models.ImageField(upload_to='blog_featured_images/')
