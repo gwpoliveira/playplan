@@ -54,11 +54,11 @@ class Category(models.Model):
 
 # ************** blog **************#
 class BlogPost(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name="Título")
     about = models.TextField("Resumo", max_length=200)
     date = models.DateField("Data da publicação",)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    featured_image = models.ImageField(upload_to='blog_featured_images/')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Categoria")
+    featured_image = models.ImageField(upload_to='blog_featured_images/', verbose_name="Imagem de Destaque")
     text=CKEditor5Field('Post: ', config_name='extends')
 
     def __str__(self):

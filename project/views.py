@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User
 from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato
 from administration.forms import ApoiadorForm
@@ -32,8 +32,12 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         return response
     
 
-class BlogView(TemplateView):
+class BlogView(ListView):
     template_name = 'blog/noticias.html'
+    model = BlogPost
+    context_object_name='autores'
+    ordering='-date'
+    paginate_by = 5
 
 class NoticiaView(TemplateView):
     template_name = 'blog/postagem.html'
