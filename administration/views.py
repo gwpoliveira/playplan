@@ -108,7 +108,12 @@ class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'blog/blog_post_confirm_delete.html'
     success_url = reverse_lazy('blog_post_list')
 
-
+class ListaDeNotícias(LoginRequiredMixin, ListView):
+    model = BlogPost
+    template_name = 'administration/lista_de_noticias.html'
+    context_object_name='posts'
+    ordering='-date'
+    
 
 # ************ Apoio *************** #
     

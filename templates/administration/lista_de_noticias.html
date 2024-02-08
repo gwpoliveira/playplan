@@ -1,0 +1,48 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Lista de Notícias{% endblock title %}
+
+
+{% block conteudo %}
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white active">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="#">Lista de Notícias</a>
+            </li>
+        </ol>
+    </nav>
+</div>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            
+            <th scope="col">Título</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Data</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <th scope="row">{{ post.title }}</th>
+            <td>{{ post.category }}</td>
+            <td>{{ post.date }}</td>
+            <td><a class="btn btn-primary" href="#" role="button">Ler</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+
+
+{% endblock conteudo %}
