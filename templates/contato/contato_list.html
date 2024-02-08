@@ -49,9 +49,9 @@
       <td>{{contato.email}}</td>
       <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-envelope"></i></button></td>
       {% if contato.status == True %}
-      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-reply"></i></button></td>
+      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-check"></i></button></td>
       {% else %}
-      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-pause"></i></button></td>
+      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>
       {% endif %}
       <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a></td>
 
@@ -61,9 +61,9 @@
       <td>{{contato.email}}</td>
       <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open"></i></button></td>
       {% if contato.status == True %}
-      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-reply"></i></button></td>
+      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-check"></i></button></td>
       {% else %}
-      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-pause"></i></button></td>
+      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>
       {% endif %}
       <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button">Ler</a></td>     
       
