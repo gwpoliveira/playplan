@@ -32,12 +32,19 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         return response
     
 
-class BlogView(ListView):
-    template_name = 'blog/noticias.html'
+class TDAHBlogView(ListView):
+    template_name = 'blog/noticias_tdah.html'
     model = BlogPost
-    context_object_name='autores'
+    context_object_name='noticias'
     ordering='-date'
-    paginate_by = 5
+    paginate_by = 9
+
+class TEABlogView(ListView):
+    template_name = 'blog/noticias_tea.html'
+    model = BlogPost
+    context_object_name='noticias'
+    ordering='-date'
+    paginate_by = 9
 
 class NoticiaView(TemplateView):
     template_name = 'blog/postagem.html'
