@@ -23,19 +23,21 @@
 
 <body class="fundo-do-site">
 
+    
     <header class="header">
-        <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd0e;">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="/static/img/logo.png" alt="Logo" width="100">
-                </a>
-
-                <button class="hamburger navbar-toggler border-light" type="button" data-bs-toggle="collapse"
+            
+            <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd0e;">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="/static/img/logo.png" alt="Logo" width="100">
+                    </a>
+                    
+                    <button class="hamburger navbar-toggler border-light" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -63,18 +65,18 @@
                         <li class="nav-item">
                             <div class="dropdown text-end">
                                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/static/img/usuario.jpg" alt="mdo" width="32" height="32"
-                                        class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu text-small">
-                                    <li><a class="dropdown-item" href="{% url 'painel_adm' %}"><strong>Painel</strong></a></li>
-                                    <li><a class="dropdown-item" href="{% url 'image_list' %}">Inserir Banner</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'contato_list' %}">Mensagens</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'blog_post_list' %}">Publicar Post</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/static/img/usuario.jpg" alt="mdo" width="32" height="32"
+                                class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small">
+                                <li><a class="dropdown-item" href="{% url 'painel_adm' %}"><strong>Painel</strong></a></li>
+                                <li><a class="dropdown-item" href="{% url 'image_list' %}">Inserir Banner</a></li>
+                                <li><a class="dropdown-item" href="{% url 'contato_list' %}">Mensagens</a></li>
+                                <li><a class="dropdown-item" href="{% url 'blog_post_list' %}">Publicar Post</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
                                 </ul>
                             </div>
@@ -86,27 +88,28 @@
                             
                         </li>
                         {% endif %}
-
+                        
                     </ul>
-
+                    
                 </div>
             </div>
-
-
+            
+            
         </nav>
         <hr class="container ms-auto border-5 border-light">
+   
     </header>
 
     <div class="container">
         {% bootstrap_messages %}
+        <main>        
+            {% block content %}
+    
+            {% endblock %}
+        </main>
+    
     </div>
-    <main>
-        
-        {% block content %}
-
-        {% endblock %}
-    </main>
-
+    
 
     <section class='container'>
 
