@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato
 from administration.forms import ApoiadorForm
@@ -46,8 +46,12 @@ class TEABlogView(ListView):
     ordering='-date'
     paginate_by = 9
 
-class NoticiaView(TemplateView):
-    template_name = 'blog/postagem.html'
+class NoticiaView(DetailView):    
+    model=BlogPost
+    template_name = 'blog/postagem.html'    
+    context_object_name = 'post'
+    pk_url_kwarg='id'
+
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'

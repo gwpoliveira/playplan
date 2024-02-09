@@ -18,7 +18,7 @@ urlpatterns = [
     path('quemsomos/', QuemSomos.as_view(), name='quem-somos'),
     path('noticias_tdah/', TDAHBlogView.as_view(), name='noticias-tdah'),
     path('noticias_tea/', TEABlogView.as_view(), name='noticias-tea'),
-    path('postagem/', NoticiaView.as_view(), name='postagem'),
+    path('postagem/<int:id>', NoticiaView.as_view(), name='postagem'),
     path('noticia1/', OQueETDAH.as_view(), name='o_que_e_tdah'),
     path('apoio/', ApoiadorCreateListView.as_view(), name='apoio'),
     path('administration/', include('administration.urls')), 
