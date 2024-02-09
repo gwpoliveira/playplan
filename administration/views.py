@@ -1,8 +1,8 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -224,4 +224,35 @@ class ApagarCategoria(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria apagada com sucesso!")
         return reverse('listar_categorias')
+    
+
+# ************ Depoimento *************** # 
+class DepoimentoListView(ListView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_list.html'
+    context_object_name = 'depoimentos'
+
+class DepoimentoDetailView(DetailView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_detail.html'
+    context_object_name = 'depoimento'
+
+class DepoimentoCreateView(CreateView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_form.html'
+    form_class = DepoimentoForm
+    success_url = reverse_lazy('depoimento-list')
+    
+
+class DepoimentoUpdateView(UpdateView):
+    model = Depoimento
+    form_class = DepoimentoForm
+    success_url = reverse_lazy('depoimento-list')
+    template_name = 'depoimento/depoimento_form.html'
+
+class DepoimentoDeleteView(DeleteView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_confirm_delete.html'
+    success_url = reverse_lazy('depoimento-list')
+    
 

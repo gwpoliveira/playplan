@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Exclusão{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3 texto-branco">
+
+  <h2>Confirmar Exclusão</h2>
+  <p>Você tem certeza de que deseja excluir o depoimento {{ depoimento.nome }} - {{ depoimento.cargo }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Exclusão</button>
+  </form>
+  <a href="{% url 'depoimento-list' %}">Cancelar</a>
+
+</div>
+{% endblock %}

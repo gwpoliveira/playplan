@@ -85,3 +85,15 @@ class Apoiador(models.Model):
     class Meta:
         verbose_name = "Apoiador"
         verbose_name_plural = "Apoiadores"
+        
+
+# ************** depoimento **************#
+class Depoimento(models.Model):
+    imagem = models.ImageField(upload_to='depoimentos/')
+    nome = models.CharField(max_length=100)
+    cargo = models.CharField(max_length=100)
+    descricao = CKEditor5Field('Depoimento: ', blank=True, null=True)
+    imagem_fundo = models.ImageField(upload_to='depoimentos/backgrounds/', null=True, blank=True)
+
+    def __str__(self):
+        return self.nome

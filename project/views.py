@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
-from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato
+from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato, Depoimento
 from administration.forms import ApoiadorForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,7 +14,8 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["images"] = CarouselImage.objects.all()[:5]            
+        context["images"] = CarouselImage.objects.all()[:5]
+        context["depoimentos"] = Depoimento.objects.all()[:5]            
         return context
     
 class UserProfileView(LoginRequiredMixin, UpdateView):

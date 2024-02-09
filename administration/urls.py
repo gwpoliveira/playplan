@@ -3,7 +3,10 @@ from django.urls import path
 from .views import (
     ImageListView, ImageCreateView, ImageUpdateView, ImageDeleteView, 
     ContatoCreateView, ContatoListView, ContatoDetailView,
-    BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, ListaApoiadores, ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, CriarCategoria, ListarCategorias, AtualizarCategoria, DetalharCategoria, ApagarCategoria, ListaDeNotícias
+    BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
+    ListaApoiadores,ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, 
+    CriarCategoria, ListarCategorias, AtualizarCategoria, DetalharCategoria, ApagarCategoria, ListaDeNotícias,
+    DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView,
 )
 
 urlpatterns = [
@@ -41,7 +44,13 @@ urlpatterns = [
     path('categorias/detalhar/<int:id>', DetalharCategoria.as_view(), name='detalhar_categoria'),
     path('categorias/atualizar/<int:id>', AtualizarCategoria.as_view(), name='atualizar_categoria'),
     path('categorias/apagar/<int:id>', ApagarCategoria.as_view(), name='apagar_categoria'),
-
+    
+    #******************* Depoimento *******************#
+    path('depoimento/', DepoimentoListView.as_view(), name='depoimento-list'),
+    path('depoimento/<int:pk>/', DepoimentoDetailView.as_view(), name='depoimento-detail'),
+    path('depoimento/novo/', DepoimentoCreateView.as_view(), name='depoimento-create'),
+    path('depoimento/editar/<int:pk>/', DepoimentoUpdateView.as_view(), name='depoimento-update'),
+    path('depoimento/deletar/<int:pk>/', DepoimentoDeleteView.as_view(), name='depoimento-delete'),
     
     
 ]
