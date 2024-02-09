@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Depoimento{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3 texto-branco">
+
+  <h2>Detalhes do Depoimento</h2>
+  <h3>{{ depoimento.nome }} - {{ depoimento.cargo }}</h3>
+  <p>{{depoimento.imagem}}</p>
+  <p>{{ depoimento.descricao }}</p>
+  <a href="{% url 'depoimento-list' %}">Voltar para a lista de depoimentos</a>
+
+</div>
+{% endblock %}
