@@ -35,40 +35,23 @@
 
     <div class="col-4">
 
-      <h4>Notícias Relacionadas</h4>
-      <hr>
-      <div class="row justify-content-start p-0 my-2">
-        <div class="col-4">
-          <a href="#"><img src="/static/img/alfie.jpg" width="110" class="float-start" alt=""></a>
-        </div>
-        <div class="col-8 p-0">
-          <a class="card-title text-decoration-none" href="#">
-            <h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
-          </a>
+      <div class="card mb-3 bg-secondary-subtle mb-3" style="width: 23rem;">
+        <div class="card-body">
+          <h5 class="card-title">Sobre o Blog {{ post.category }}</h5>
+          <p class="card-text">{{ post.category.about }}</p>
+          
         </div>
       </div>
-      <hr>
-      <div class="row justify-content-start p-0 my-2">
-        <div class="col-4">
-          <a href="#"><img src="/static/img/alfie.jpg" width="110" class="float-start" alt=""></a>
-        </div>
-        <div class="col-8 p-0">
-          <a class="card-title text-decoration-none" href="#">
-            <h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
-          </a>
+      
+      <div class="card mb-3 bg-secondary-subtle" style="width: 23rem;">
+        <div class="card-body">
+          <h5 class="card-title">Outras notícias sobre {{ post.category }}</h5>
+          <p class="card-text">{{ post.category.about }}</p>
+          
         </div>
       </div>
-      <hr>
-      <div class="row justify-content-start p-0 my-2">
-        <div class="col-4">
-          <a href="#"><img src="/static/img/alfie.jpg" width="110" class="float-start" alt=""></a>
-        </div>
-        <div class="col-8 p-0">
-          <a class="card-title text-decoration-none" href="#">
-            <h6 class="card-title">Título de outras publicação sobre o Alfie, o Teimoso</h6>
-          </a>
-        </div>
-      </div>
+  
+      
 
     </div>
   </div>

@@ -40,7 +40,7 @@
                 <th scope="row">{{ apoiador.id }}</th>
                 <td>{{apoiador.nome}}</td>
                 <td>{{apoiador.email}}</td>
-                <td><a class="btn btn-primary" href="{% url 'detalhar_apoiador' apoiador.id %}" role="button">Consultar Dados</a></td>
+                <td><a class="btn btn-primary" href="{% url 'detalhar_apoiador' apoiador.id %}" role="button"><i class="fa-solid fa-eye"></i></a></td>
                 <td><a href="{% url 'atualizar_apoiador' apoiador.id %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a></td>
                 <td><a href="{% url 'apagar_apoiador' apoiador.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
             </tr>

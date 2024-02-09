@@ -43,7 +43,7 @@ class Contato(models.Model):
 
 class Category(models.Model):
     name = models.CharField("Nome", max_length=100)
-    about = models.TextField("Descrição", max_length=150, blank=True, null=True)
+    about = models.TextField("Descrição", max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.name
