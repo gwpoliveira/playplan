@@ -214,10 +214,12 @@ class DetalharCategoria(LoginRequiredMixin, DetailView):
     model = Category
     template_name = 'categorys/detalhar_categoria.html'
     context_object_name = 'categoria'
+    pk_url_kwarg='id'
 
 class ApagarCategoria(LoginRequiredMixin, DeleteView):
     model = Category
     template_name = 'categorys/apagar_categoria.html'
+    pk_url_kwarg='id'
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria apagada com sucesso!")

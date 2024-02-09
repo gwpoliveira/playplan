@@ -32,11 +32,11 @@
             
         </div>
         <div class="mt-2">
-            <a href="" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a>
+            <a href="{% url 'atualizar_categoria' categoria.id %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a>
             <span class="dist"></span>
-            <a href="" class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
+            <a href="{% url 'detalhar_categoria' categoria.id %}" class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
             <span class="dist"></span>
-            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+            <a href="{% url 'apagar_categoria' categoria.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
             
             
         </div>
