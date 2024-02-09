@@ -10,6 +10,7 @@
 
     <div class="row">
         {% for post in page_obj %}
+        {% if post.category.name == 'TDAH' %}
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
                 <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
@@ -25,6 +26,7 @@
                 </div>
             </div>
         </div>
+        {% endif %} 
         {% endfor %}
 
 
