@@ -79,12 +79,14 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         num_carousel = CarouselImage.objects.count()
         num_category = Category.objects.count()
         num_contatos = Contato.objects.count()
+        num_depoimentos = Depoimento.objects.count()
 
         context['num_apoiadores'] = num_apoiadores
         context['num_carousel'] = num_carousel
         context['num_blogpost'] = num_blogpost
         context['num_category'] = num_category
         context['num_contatos'] = num_contatos
+        context['num_depoimentos'] = num_depoimentos
         return context
 
 class QuemSomos(TemplateView):
