@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
 
 
-{% block title %}Exclusão{% endblock title %}
+{% block title %}Apagar Depoimento{% endblock title %}
 
-{% block content %}
+{% block conteudo %}
 
 <div class="container mt-3 texto-branco">
 
@@ -13,8 +13,9 @@
   <form method="post">
     {% csrf_token %}
     <button type="submit">Confirmar Exclusão</button>
+    <a class="btn btn-danger" href="{% url 'depoimento-list' %}">Cancelar</a>
   </form>
-  <a href="{% url 'depoimento-list' %}">Cancelar</a>
+  
 
 </div>
 {% endblock %}
