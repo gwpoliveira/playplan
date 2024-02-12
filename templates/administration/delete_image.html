@@ -1,22 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
 
 {% block title %}Excluir Slide{% endblock title %}
 
-{% block content %}
+{% block conteudo %}
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+          <i class="fa-solid fa-house"></i><span class="dist"></span>
+          Painel
+        </a>
+      </li>
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'image_list' %}">Lista de
+          Banners</a>
+      </li>
+      <li class="breadcrumb-item active text-white" aria-current="page">
+        Excluindo Slide
+      </li>
+    </ol>
+  </nav>
+</div>
 
-<div class="container mt-3">
-  <h2 class="texto-branco">Excluir Slide</h2>
 
-  <div class="container texto-branco">
-    
-    <p>Você tem certeza de que deseja excluir este slide?</p>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Excluir</button>
-      <a href="{% url 'image_list' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
-  </div>
+<div class="container bg-secondary-subtle rounded border p-3">
+
+
+
+  <h2>Excluir Slide</h2>
+  <p>Você tem certeza de que deseja excluir este slide?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'image_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+
 </div>
 
 {% endblock %}

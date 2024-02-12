@@ -5,24 +5,71 @@
 
 {% block conteudo %}
 
+
+
+<div>
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+          <li class="breadcrumb-item text-white">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                  <i class="fa-solid fa-house"></i><span class="dist"></span>
+                  Painel
+              </a>
+          </li>
+          <li class="breadcrumb-item text-white" aria-current="page">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'image_list' %}">Lista de Banners</a>
+          </li>
+      </ol>
+  </nav>
+</div>
+
 <div class="container ">
 
   <h2 class="texto-branco">Banner Principal</h2>
 
-  <div class="d-flex justify-content-end">
+  <!-- <div class="d-flex justify-content-end">
     <a href="{% url 'add_image' %}" class="btn btn-primary my-3">Adicionar Slide</a>
-</div>
+</div> -->
 
 <div class="container d-flex justify-content-start ">
   <ul class="list-group">
     {% for image in images %}
-      <li class="list-group-item">
+      <!-- <li class="list-group-item">
         <img src="{{ image.image.url }}" alt="Carousel Image" width="600">
         <div class="btn-group mt-2" role="group">
           <a href="{% url 'edit_image' pk=image.pk %}" class="btn btn-primary">Edit</a>
           <a href="{% url 'delete_image' pk=image.pk %}" class="btn btn-danger">Delete</a>
         </div>
-      </li>
+      </li> -->
+
+
+      <div class="card mb-3" style="max-width: 800px;">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="{{ image.image.url }}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">              
+              <p class="card-text"><i class="fa-regular fa-file-lines"></i> {{ image.description }}</p>
+              <p class="card-text"><i class="fa-regular fa-calendar"></i> {{ image.data }}</p>
+              {% if image.link %}
+              <p class="card-text"><i class="fa-solid fa-link"></i> {{ image.link }}</p>
+              {% else %}
+              <p class="card-text"><i class="fa-solid fa-link"></i> Sem Link</p>
+              {% endif %}
+              {% if image.ativo == True %}
+              <p class="card-text">Status: <i class="fa-regular fa-square-check"></i></p>
+              {% else %}
+              <p class="card-text">Status: <i class="fa-solid fa-ban"></i></p>
+              {% endif %}
+              <a class="btn btn-primary" href="{% url 'detail_image' pk=image.pk %}" role="button"><i class="fa-solid fa-eye"></i></a>
+              <a href="{% url 'edit_image' pk=image.pk %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a>
+              <a href="{% url 'delete_image' pk=image.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     {% endfor %}
   </ul>
 </div>

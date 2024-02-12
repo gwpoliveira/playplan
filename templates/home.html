@@ -11,7 +11,11 @@
     <div class="carousel-inner">
       {% for image in images %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        {% if image.link %}
         <a href="{{image.link}}"><img src="{{ image.image.url }}" class="d-block w-100" alt="Carousel Image"></a>
+        {% else %}
+        <a href="#"><img src="{{ image.image.url }}" class="d-block w-100" alt="Carousel Image"></a>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

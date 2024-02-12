@@ -14,9 +14,12 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["images"] = CarouselImage.objects.all()[:5]
+        context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
         context["depoimentos"] = Depoimento.objects.all()[:5]            
         return context
+    
+
+        
     
 class UserProfileView(LoginRequiredMixin, UpdateView):
     model = User
@@ -40,12 +43,28 @@ class TDAHBlogView(ListView):
     ordering='-date'
     paginate_by = 9
 
+# class BlogTDHA(TemplateView):
+#     template_name = 'blog_tdha.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["noticias"] = BlogPost.objects.filter(category='TDHA').order_by('-date')[:9]
+#         return context
+
 class TEABlogView(ListView):
     template_name = 'blog/noticias_tea.html'
     model = BlogPost
     context_object_name='noticias'
     ordering='-date'
     paginate_by = 9
+
+# class BlogTEA(TemplateView):
+#     template_name = 'blog_tea.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["noticias"] = BlogPost.objects.filter(category='TEA').order_by('-date')[:9]
+#         return context
 
 class NoticiaView(DetailView):    
     model=BlogPost

@@ -1,21 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
 
 {% block title %}Editar Slide{% endblock title %}
 
-{% block content %}
+{% block conteudo %}
 
-<div class="container mt-3">
-  <h2 class="texto-branco">Editar Slide</h2>
-
-  <div class="containe texto-branco">
-
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      <button type="submit" class="btn btn-primary mt-2">Salvar Alterações</button>
-    </form>
-  </div>
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+          <i class="fa-solid fa-house"></i><span class="dist"></span>
+          Painel
+        </a>
+      </li>
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'image_list' %}">Lista de
+          Banners</a>
+      </li>
+      <li class="breadcrumb-item active text-white" aria-current="page">
+        Atualizando Slide
+      </li>
+    </ol>
+  </nav>
 </div>
+
+<div class="container bg-secondary-subtle rounded border p-4">
+
+  <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button type="submit" class="btn btn-primary mt-2">Atualizar</button>
+  </form>
+</div>
+
 
 {% endblock %}

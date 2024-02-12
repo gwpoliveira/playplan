@@ -10,6 +10,11 @@ class CarouselImageForm(forms.ModelForm):
         fields = ['image','description', 'link']
 
 
+class AtualizaCarouselImageForm(forms.ModelForm):
+    class Meta:
+        model = CarouselImage
+        fields = ['image','description', 'link', 'ativo']
+
 # ************ Formulário do Contato ****************
 
 class ContatoForm(forms.ModelForm):

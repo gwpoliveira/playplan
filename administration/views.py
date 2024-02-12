@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -13,6 +13,7 @@ class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
     template_name = 'administration/image_list.html'
     context_object_name = 'images'
+    ordering='-data'
 
 class ImageCreateView(LoginRequiredMixin,CreateView):
     model = CarouselImage
@@ -20,9 +21,14 @@ class ImageCreateView(LoginRequiredMixin,CreateView):
     template_name = 'administration/add_image.html'
     success_url = reverse_lazy('image_list')
 
+class ImageDetail(LoginRequiredMixin, DetailView):
+    model = CarouselImage
+    template_name = 'administration/image_detail.html'
+    context_object_name = 'image'
+
 class ImageUpdateView(LoginRequiredMixin,UpdateView):
     model = CarouselImage
-    form_class = CarouselImageForm
+    form_class = AtualizaCarouselImageForm
     template_name = 'administration/edit_image.html'
     success_url = reverse_lazy('image_list')
 

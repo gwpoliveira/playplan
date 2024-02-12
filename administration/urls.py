@@ -1,7 +1,7 @@
 # administration/urls.py
 from django.urls import path
 from .views import (
-    ImageListView, ImageCreateView, ImageUpdateView, ImageDeleteView, 
+    ImageListView, ImageCreateView, ImageUpdateView, ImageDeleteView, ImageDetail,
     ContatoCreateView, ContatoListView, ContatoDetailView,
     BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
     ListaApoiadores,ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, 
@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_image/', ImageCreateView.as_view(), name='add_image'),
     path('edit_image/<int:pk>/', ImageUpdateView.as_view(), name='edit_image'),
     path('delete_image/<int:pk>/', ImageDeleteView.as_view(), name='delete_image'),
+    path('detail-image/<int:pk>/', ImageDetail.as_view(), name='detail_image'),
 
     #******************* Contato *******************#
     # path('contato/', ContatoCreateView.as_view(), name='contato'),
