@@ -76,7 +76,7 @@ h1#branco {
     color: white; /* cor do separador */
 }
 
-.after-element {
+::after {
     color: white;
 }
 
