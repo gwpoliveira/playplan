@@ -9,6 +9,7 @@ from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
 
+# classe para renderizar a pagina inicial do site.
 class HomeView(TemplateView):
     template_name = 'home.html'
     
@@ -19,10 +20,8 @@ class HomeView(TemplateView):
         categoria = Category.objects.get(name='TDAH')      
         context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]            
         return context
-    
+    # Classe para mostrar o perfil do usuário
 
-        
-    
 class UserProfileView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'registration/profile.html'
@@ -38,54 +37,11 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         return response
     
 
-class TDAHBlogView(ListView):
-    template_name = 'blog/noticias_tdah.html'
-    model = BlogPost
-    context_object_name='noticias'
-    ordering='-date'
-    paginate_by = 9
+class BlogView(TemplateView):
+    template_name = 'blog/noticias.html'
 
-
-
-    # def get_queryset(self):
-    #     return BlogPost.objects.filter(category='TDAH').order_by('-date')
-
-# class BlogTDHA(TemplateView):
-#     template_name = 'blog_tdha.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["noticias"] = BlogPost.objects.filter(category='TDHA').order_by('-date')[:9]
-#         return context
-
-class TEABlogView(ListView):
-    template_name = 'blog/noticias_tea.html'
-    model = BlogPost
-    context_object_name='noticias'
-    ordering='-date'
-    paginate_by = 9
-
-# class BlogTEA(TemplateView):
-#     template_name = 'blog_tea.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["noticias"] = BlogPost.objects.filter(category='TEA').order_by('-date')[:9]
-#         return context
-
-class NoticiaView(DetailView):    
-    model=BlogPost
-    template_name = 'blog/postagem.html'    
-    context_object_name = 'post'
-    pk_url_kwarg='id'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        post = self.get_object()
-        noticia = BlogPost.objects.filter(category=post.category).exclude(id=post.id)[:3]
-        context['noticia'] = noticia
-        return context
-
+class NoticiaView(TemplateView):
+    template_name = 'blog/postagem.html'
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
@@ -102,6 +58,7 @@ class OQueETDAH(TemplateView):
 # class Painel(LoginRequiredMixin, TemplateView):
 #     template_name = 'administration/painel.html'
 
+# Página do administrador
 class PainelAdm(LoginRequiredMixin, TemplateView):
     template_name = 'administration/painel_adm.html'
 
@@ -121,7 +78,7 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         context['num_contatos'] = num_contatos
         context['num_depoimentos'] = num_depoimentos
         return context
-
+# Página de quem somos
 class QuemSomos(TemplateView):
     template_name = 'quem-somos.html'
 
