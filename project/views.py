@@ -9,6 +9,7 @@ from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
 
+# classe para renderizar a pagina inicial do site.
 class HomeView(TemplateView):
     template_name = 'home.html'
     
@@ -16,7 +17,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["images"] = CarouselImage.objects.all()[:5]            
         return context
-    
+# Classe para mostrar o perfil do usuário
 class UserProfileView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'registration/profile.html'
@@ -31,13 +32,13 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         update_session_auth_hash(self.request, self.object)
         return response
     
-
+# Página de notícias
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
-
+# Página para mostrar uma postagem.
 class NoticiaView(TemplateView):
     template_name = 'blog/postagem.html'
-
+# Classe explicando o que é TDAH
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
     
@@ -53,6 +54,7 @@ class OQueETDAH(TemplateView):
 # class Painel(LoginRequiredMixin, TemplateView):
 #     template_name = 'administration/painel.html'
 
+# Página do administrador
 class PainelAdm(LoginRequiredMixin, TemplateView):
     template_name = 'administration/painel_adm.html'
 
@@ -70,7 +72,7 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         context['num_category'] = num_category
         context['num_contatos'] = num_contatos
         return context
-
+# Página de quem somos
 class QuemSomos(TemplateView):
     template_name = 'quem-somos.html'
 
