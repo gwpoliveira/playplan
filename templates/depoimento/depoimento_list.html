@@ -1,0 +1,82 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Lista de Depoimentos{% endblock title %}
+{% block conteudo %}
+
+
+
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+          <i class="fa-solid fa-house"></i><span class="dist"></span>
+          Painel
+        </a>
+      </li>
+      <li class="breadcrumb-item text-white active">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+          href="{% url 'depoimento-list' %}">Lista de Depoimentos</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+
+
+
+  <ul class="list-group list-group-flush">
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                
+                <th scope="col">Nome</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Status</th>
+                <th scope="col">Consultar</th>
+                <th scope="col">Atualizar</th>
+                <th scope="col">Deletar</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+          {% for depoimento in depoimentos %}
+            <tr>
+                
+                <td>{{ depoimento.nome }}</td>
+                <td>{{ depoimento.cargo }}</td>
+                {% if depoimento.ativo == True %}
+                <td><button class="btn btn-success"><i class="fa-regular fa-square-check"></i></button></td>
+                {% else %}
+                <td><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
+                {% endif %}
+                <td><a class="btn btn-primary" href="{% url 'depoimento-detail' depoimento.pk %}" role="button"><i class="fa-solid fa-eye"></i></a></td>
+                <td><a href="{% url 'depoimento-update' depoimento.pk %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a></td>
+                <td><a href="{% url 'depoimento-delete' depoimento.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</ul>
+
+
+
+
+  <!-- <h2>Lista de Depoimentos</h2>
+  <ul>
+    {% for depoimento in depoimentos %}
+    <li>
+      {{ depoimento.nome }} - {{ depoimento.cargo }}
+      <a href="{% url 'depoimento-detail' depoimento.pk %}">Detalhes</a>
+      <a href="{% url 'depoimento-update' depoimento.pk %}">Editar</a>
+      <a href="{% url 'depoimento-delete' depoimento.pk %}">Excluir</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'depoimento-create' %}">Adicionar novo depoimento</a> -->
+
+{% endblock %}

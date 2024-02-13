@@ -11,7 +11,11 @@
     <div class="carousel-inner">
       {% for image in images %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        {% if image.link %}
         <a href="{{image.link}}"><img src="{{ image.image.url }}" class="d-block w-100" alt="Carousel Image"></a>
+        {% else %}
+        <a href="#"><img src="{{ image.image.url }}" class="d-block w-100" alt="Carousel Image"></a>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -120,5 +124,41 @@
     </div>
 
   </div>
+
+  {% comment %} ----- Depoimento ----- {% endcomment %}
+
+  <section class="depoimentos container-fluid mb-3">
+    <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
+        class="dist"></span>Depoimentos</h2>
+    <div id="carouselDepoimentos" class="carousel slide">
+      <div class="carousel-inner">
+        {% for depoimento in depoimentos %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          {% if depoimento.imagem_fundo %}
+          <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+          {% else %}
+          <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+          {% endif %}
+          <div class="carousel-caption d-none d-md-block ">
+            <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="{{ depoimento.imagem.url }}"
+              alt="">
+            <h3>{{ depoimento.nome }}</h3>
+            <h6>{{ depoimento.cargo }}</h6>
+            <p>"{{ depoimento.descricao }}"</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
 
   {% endblock %}

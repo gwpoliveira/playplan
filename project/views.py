@@ -1,7 +1,7 @@
 from django.http import Http404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
-from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato
+from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato, Depoimento
 from administration.forms import ApoiadorForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,9 +15,11 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["images"] = CarouselImage.objects.all()[:5]            
+        context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
+        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]            
         return context
-# Classe para mostrar o perfil do usuário
+    # Classe para mostrar o perfil do usuário
+
 class UserProfileView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'registration/profile.html'
@@ -32,13 +34,13 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         update_session_auth_hash(self.request, self.object)
         return response
     
-# Página de notícias
+
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
-# Página para mostrar uma postagem.
+
 class NoticiaView(TemplateView):
     template_name = 'blog/postagem.html'
-# Classe explicando o que é TDAH
+
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
     
@@ -65,12 +67,14 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         num_carousel = CarouselImage.objects.count()
         num_category = Category.objects.count()
         num_contatos = Contato.objects.count()
+        num_depoimentos = Depoimento.objects.count()
 
         context['num_apoiadores'] = num_apoiadores
         context['num_carousel'] = num_carousel
         context['num_blogpost'] = num_blogpost
         context['num_category'] = num_category
         context['num_contatos'] = num_contatos
+        context['num_depoimentos'] = num_depoimentos
         return context
 # Página de quem somos
 class QuemSomos(TemplateView):

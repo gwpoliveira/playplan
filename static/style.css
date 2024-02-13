@@ -75,3 +75,9 @@ h1#branco {
         padding: 0 5px; */
     color: white; /* cor do separador */
 }
+
+::after {
+    color: white;
+}
+
+

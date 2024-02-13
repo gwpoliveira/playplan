@@ -1,18 +1,41 @@
-{% extends 'base.html' %}
+{% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
 {% block title %}Criar Post{% endblock %}
 
-{% block content %}
-<div class="container texto-branco">
-  <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Blog Post</h2>
-  <form method="post" enctype="multipart/form-data">
+{% block conteudo %}
+
+<div>
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+          <li class="breadcrumb-item text-white">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                  <i class="fa-solid fa-house"></i><span class="dist"></span>
+                  Painel
+              </a>
+          </li>
+          <li class="breadcrumb-item text-white">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'lista_de_noticias' %}">Lista de Notícias</a>
+          </li>
+          <li class="breadcrumb-item active text-white" aria-current="page">
+              Publicar Notícia
+          </li>
+      </ol>
+  </nav>
+</div>
+
+
+<div class="container bg-light-subtle rounded p-5">
+
+  <h2>{% if form.instance.pk %}Editar{% else %}Criar{% endif %} Blog Post</h2>
+  <form method="post" action="{% url 'blog_post_create' %}" enctype="multipart/form-data">
+
     {% csrf_token %}
     
     {# Adicione as tags CKEditor ao campo 'text' #}
     {{ form.media }}
     
     {% bootstrap_form form %}
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit">Publicar</button>
   </form>
 </div>
 {% endblock %}

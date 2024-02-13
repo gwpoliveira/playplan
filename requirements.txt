@@ -9,3 +9,4 @@ pillow==10.2.0
 soupsieve==2.5
 sqlparse==0.4.4
 tzdata==2023.4
+django_ckeditor_5==0.2.11

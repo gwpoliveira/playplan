@@ -21,12 +21,12 @@
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <i class="fa-regular fa-image"></i><span class="dist"></span>Banners
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'add_image' %}" class="text-decoration-none">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -87,7 +87,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -122,10 +122,10 @@
                     <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <a href="" class="text-decoration-none">
+                                <a href="{% url 'blog_post_create' %}" class="text-decoration-none">
                                     <li class="list-group-item list-group-item-action"><i class="fa-solid fa-pencil"></i> Escrever Notícia</li>
                                 </a>
-                                <a href="" class="text-decoration-none">
+                                <a href="{% url 'lista_de_noticias' %}" class="text-decoration-none">
                                     <li class="list-group-item list-group-item-action"><i class="fa-regular fa-newspaper"></i> Listar Notícias</li>
                                 </a>
                             </ul>
@@ -147,6 +147,26 @@
                                 </a>
                                 <a href="{% url 'listar_categorias' %}" class="text-decoration-none">
                                     <li class="list-group-item list-group-item-action"><i class="fa-solid fa-layer-group"></i> Listar Categoria</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            <i class="fa-regular fa-comment"></i><span class="dist"></span>Depoimentos
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                <a href="{% url 'depoimento-create' %}" class="text-decoration-none">
+                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-plus"></i> Criar Depoimento</li>
+                                </a>
+                                <a href="{% url 'depoimento-list' %}" class="text-decoration-none">
+                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-comments"></i> Listar Depoimentos</li>
                                 </a>
                             </ul>
                         </div>

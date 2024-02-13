@@ -14,8 +14,8 @@
             <div class="card-body">
                 <h5 class="card-title"><i class="fa-regular fa-newspaper"></i><span class="dist"></span>Publicação de Notícias</h5>
                 <p class="card-text">Acesso fácil às ferramentas de gerenciamento do Blog sobre TEA e TDAH. Nossos blogs até o momento já publicaram {{num_blogpost}} notícias sobre as {{num_category}} categorias cadastradas.</p>
-                <a href="#" class="btn btn-primary">Lista de Postagens</a>
-                <a href="#" class="btn btn-primary">Ver Categorias</a>
+                <a href="{% url 'lista_de_noticias' %}" class="btn btn-primary">Lista de Postagens</a>
+                <a href="{% url 'listar_categorias' %}" class="btn btn-primary">Ver Categorias</a>
             </div>
         </div>
     </div>
@@ -24,9 +24,10 @@
     <div class="col">
         <div class="card" style="width: 25rem;">
             <div class="card-body">
-                <h5 class="card-title"><i class="fa-regular fa-image"></i><span class="dist"></span> Gerenciamento de Banners</h5>
-                <p class="card-text">A forma mais fácil de atualizar o banner do site e deixar sempre em evidência o que merece ser destaque. Já foram inseridos {{num_carousel}} banners desde o início da plataforma.</p>
-                <a href="#" class="btn btn-primary">Listar Banners</a>
+                <h5 class="card-title"><i class="fa-regular fa-image"></i><span class="dist"></span> Gerenciamento da Home Page</h5>
+                <p class="card-text">Atualize o banner do site e a sessão de depoimentos deixando em evidência o que merece ser destaque. Já foram inseridos {{num_carousel}} banners e {{num_depoimentos}} depoimentos desde o início da plataforma.</p>
+                <a href="{% url 'image_list' %}" class="btn btn-primary">Listar Banners</a>
+                <a href="{% url 'depoimento-list' %}" class="btn btn-primary">Listar Depoimentos</a>
             </div>
         </div>
     </div>

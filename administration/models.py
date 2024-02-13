@@ -6,6 +6,9 @@ class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
     description = models.CharField('Descrição', max_length=255)
     link = models.URLField(blank=True, null=True)
+    ativo = models.BooleanField(default=True)
+    data = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.description
@@ -43,7 +46,7 @@ class Contato(models.Model):
 
 class Category(models.Model):
     name = models.CharField("Nome", max_length=100)
-    about = models.TextField("Descrição", max_length=150, blank=True, null=True)
+    about = models.TextField("Descrição", max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -54,12 +57,12 @@ class Category(models.Model):
 
 # ************** blog **************#
 class BlogPost(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name="Título")
     about = models.TextField("Resumo", max_length=200)
     date = models.DateField("Data da publicação",)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    featured_image = models.ImageField(upload_to='blog_featured_images/')
-    text=CKEditor5Field('Post: ', config_name='extends')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Categoria")
+    featured_image = models.ImageField(upload_to='blog_featured_images/', verbose_name="Imagem de Destaque")
+    description=CKEditor5Field('Post: ', config_name='extends', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -85,3 +88,17 @@ class Apoiador(models.Model):
     class Meta:
         verbose_name = "Apoiador"
         verbose_name_plural = "Apoiadores"
+        
+
+# ************** depoimento **************#
+class Depoimento(models.Model):
+    imagem = models.ImageField(upload_to='depoimentos/')
+    nome = models.CharField(max_length=100)
+    cargo = models.CharField(max_length=100)
+    descricao = CKEditor5Field('Depoimento: ', blank=True, null=True)
+    imagem_fundo = models.ImageField(upload_to='depoimentos/backgrounds/', null=True, blank=True)
+    ativo = models.BooleanField(default=True)
+    data = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.nome

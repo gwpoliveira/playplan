@@ -1,8 +1,8 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -14,6 +14,7 @@ class ImageListView(LoginRequiredMixin, ListView):
     model = CarouselImage
     template_name = 'administration/image_list.html'
     context_object_name = 'images'
+    ordering='-data'
 
 # Classe para criar/adicionar as imagens do carrocel
 class ImageCreateView(LoginRequiredMixin,CreateView):
@@ -22,10 +23,9 @@ class ImageCreateView(LoginRequiredMixin,CreateView):
     template_name = 'administration/add_image.html'
     success_url = reverse_lazy('image_list')
 
-# Classe para atualizar as imagens do carrocel
 class ImageUpdateView(LoginRequiredMixin,UpdateView):
     model = CarouselImage
-    form_class = CarouselImageForm
+    form_class = AtualizaCarouselImageForm
     template_name = 'administration/edit_image.html'
     success_url = reverse_lazy('image_list')
 
@@ -97,7 +97,7 @@ class BlogPostCreateView(LoginRequiredMixin, CreateView):
     model = BlogPost
     form_class = BlogPostForm
     template_name = 'blog/blog_post_form.html'
-    success_url = reverse_lazy('blog_post_list')
+    success_url = reverse_lazy('lista_de_noticias')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -120,7 +120,12 @@ class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'blog/blog_post_confirm_delete.html'
     success_url = reverse_lazy('blog_post_list')
 
-
+class ListaDeNotícias(LoginRequiredMixin, ListView):
+    model = BlogPost
+    template_name = 'administration/lista_de_noticias.html'
+    context_object_name='posts'
+    ordering='-date'
+    
 
 # ************ Apoio *************** #
     
@@ -229,13 +234,47 @@ class DetalharCategoria(LoginRequiredMixin, DetailView):
     model = Category
     template_name = 'categorys/detalhar_categoria.html'
     context_object_name = 'categoria'
+    pk_url_kwarg='id'
 
 # Classe utilizada para fornecer uma interface onde um usuário autenticado pode confirmar a deleção de uma categoria específica.
 class ApagarCategoria(LoginRequiredMixin, DeleteView):
     model = Category
     template_name = 'categorys/apagar_categoria.html'
+    pk_url_kwarg='id'
 
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Categoria apagada com sucesso!")
         return reverse('listar_categorias')
+    
+
+# ************ Depoimento *************** # 
+class DepoimentoListView(LoginRequiredMixin, ListView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_list.html'
+    context_object_name = 'depoimentos'
+    ordering='-data'
+
+class DepoimentoDetailView(LoginRequiredMixin, DetailView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_detail.html'
+    context_object_name = 'depoimento'
+
+class DepoimentoCreateView(LoginRequiredMixin, CreateView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_form.html'
+    form_class = DepoimentoForm
+    success_url = reverse_lazy('depoimento-list')
+    
+
+class DepoimentoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Depoimento
+    form_class = AtualizarDepoimentoForm
+    success_url = reverse_lazy('depoimento-list')
+    template_name = 'depoimento/depoimento_form.html'
+
+class DepoimentoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Depoimento
+    template_name = 'depoimento/depoimento_confirm_delete.html'
+    success_url = reverse_lazy('depoimento-list')
+    
 

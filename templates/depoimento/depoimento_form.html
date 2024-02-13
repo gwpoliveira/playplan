@@ -1,0 +1,42 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Criar Depoimento{% endblock title %}
+
+{% block conteudo %}
+
+
+<div>
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+          <li class="breadcrumb-item text-white">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                  <i class="fa-solid fa-house"></i><span class="dist"></span>
+                  Painel
+              </a>
+          </li>
+          <li class="breadcrumb-item text-white">
+              <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'depoimento-list' %}">Lista de Depoimentos</a>
+          </li>
+          <li class="breadcrumb-item active text-white" aria-current="page">
+              Criar Depoimento
+          </li>
+      </ol>
+  </nav>
+</div>
+
+
+<div class="container bg-secondary-subtle rounded border p-4">
+  <h2>{% if form.instance.pk %}Editar{% else %}Adicionar{% endif %} Depoimento</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-primary" type="submit">Salvar</button>
+    <a  class="btn btn-danger" href="{% url 'depoimento-list' %}">Cancelar</a>
+  </form>
+  
+</div>
+
+  {% endblock %}
+  
