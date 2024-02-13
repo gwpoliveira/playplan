@@ -58,3 +58,9 @@ class DepoimentoForm(forms.ModelForm):
     class Meta:
         model = Depoimento
         fields = ['imagem', 'nome', 'cargo', 'descricao', 'imagem_fundo']
+
+
+class AtualizarDepoimentoForm(forms.ModelForm):
+    class Meta:
+        model = Depoimento
+        fields = ['imagem', 'nome', 'cargo', 'descricao', 'imagem_fundo', 'ativo']

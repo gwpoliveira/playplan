@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento
-from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm
+from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -93,7 +93,7 @@ class BlogPostCreateView(LoginRequiredMixin, CreateView):
     model = BlogPost
     form_class = BlogPostForm
     template_name = 'blog/blog_post_form.html'
-    success_url = reverse_lazy('blog_post_list')
+    success_url = reverse_lazy('lista_de_noticias')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -233,30 +233,31 @@ class ApagarCategoria(LoginRequiredMixin, DeleteView):
     
 
 # ************ Depoimento *************** # 
-class DepoimentoListView(ListView):
+class DepoimentoListView(LoginRequiredMixin, ListView):
     model = Depoimento
     template_name = 'depoimento/depoimento_list.html'
     context_object_name = 'depoimentos'
+    ordering='-data'
 
-class DepoimentoDetailView(DetailView):
+class DepoimentoDetailView(LoginRequiredMixin, DetailView):
     model = Depoimento
     template_name = 'depoimento/depoimento_detail.html'
     context_object_name = 'depoimento'
 
-class DepoimentoCreateView(CreateView):
+class DepoimentoCreateView(LoginRequiredMixin, CreateView):
     model = Depoimento
     template_name = 'depoimento/depoimento_form.html'
     form_class = DepoimentoForm
     success_url = reverse_lazy('depoimento-list')
     
 
-class DepoimentoUpdateView(UpdateView):
+class DepoimentoUpdateView(LoginRequiredMixin, UpdateView):
     model = Depoimento
-    form_class = DepoimentoForm
+    form_class = AtualizarDepoimentoForm
     success_url = reverse_lazy('depoimento-list')
     template_name = 'depoimento/depoimento_form.html'
 
-class DepoimentoDeleteView(DeleteView):
+class DepoimentoDeleteView(LoginRequiredMixin, DeleteView):
     model = Depoimento
     template_name = 'depoimento/depoimento_confirm_delete.html'
     success_url = reverse_lazy('depoimento-list')

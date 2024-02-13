@@ -15,7 +15,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
-        context["depoimentos"] = Depoimento.objects.all()[:5]            
+        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]            
         return context
     
 
@@ -42,6 +42,11 @@ class TDAHBlogView(ListView):
     context_object_name='noticias'
     ordering='-date'
     paginate_by = 9
+
+
+
+    # def get_queryset(self):
+    #     return BlogPost.objects.filter(category='TDAH').order_by('-date')
 
 # class BlogTDHA(TemplateView):
 #     template_name = 'blog_tdha.html'

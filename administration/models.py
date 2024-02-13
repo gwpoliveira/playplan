@@ -97,6 +97,8 @@ class Depoimento(models.Model):
     cargo = models.CharField(max_length=100)
     descricao = CKEditor5Field('Depoimento: ', blank=True, null=True)
     imagem_fundo = models.ImageField(upload_to='depoimentos/backgrounds/', null=True, blank=True)
+    ativo = models.BooleanField(default=True)
+    data = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.nome
