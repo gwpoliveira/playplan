@@ -50,11 +50,11 @@
           <div class="card mb-3" style="max-width: 350px;">
             <div class="row g-0">
               <div class="col-md-12">
-                <img src="{{ post.image.url }}" class="img-fluid rounded-start" alt="...">
+                <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="img-fluid rounded-start" alt="..."></a>
               </div>
               <div class="col-md-12">
                 <div class="card-body">
-                  <h5 class="card-title">{{ post.title  }}</h5>
+                  <a class="text-decoration-none text-black" href="{% url 'postagem' post.id %}"><h5 class="card-title">{{ post.title  }}</h5></a>
                   <p class="card-text">{{ post.about }}</p>
                   
                 </div>
