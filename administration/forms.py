@@ -34,7 +34,7 @@ class BlogPostForm(forms.ModelForm):
     # description = RichTextField()
     class Meta:
         model = BlogPost
-        fields = ('title', 'about', 'date', 'category', 'featured_image', 'description')
+        fields = ('title', 'about', 'date', 'category', 'featured_image', 'description', 'destaque_home')
 
 class BlogPostImageForm(forms.ModelForm):
     class Meta:

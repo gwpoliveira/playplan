@@ -15,7 +15,9 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
-        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]            
+        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]   
+        categoria = Category.objects.get(name='TDAH')      
+        context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]            
         return context
     
 
