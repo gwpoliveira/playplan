@@ -77,6 +77,13 @@ class NoticiaView(DetailView):
     context_object_name = 'post'
     pk_url_kwarg='id'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        noticia = BlogPost.objects.filter(category=post.category).exclude(id=post.id)[:3]
+        context['noticia'] = noticia
+        return context
+
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
