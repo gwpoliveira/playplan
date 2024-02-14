@@ -36,6 +36,55 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         update_session_auth_hash(self.request, self.object)
         return response
     
+class TDAHBlogView(ListView):
+    template_name = 'blog/noticias_tdah.html'
+    model = BlogPost
+    context_object_name='noticias'
+    ordering='-date'
+    paginate_by = 9
+
+
+
+    # def get_queryset(self):
+    #     return BlogPost.objects.filter(category='TDAH').order_by('-date')
+
+# class BlogTDHA(TemplateView):
+#     template_name = 'blog_tdha.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["noticias"] = BlogPost.objects.filter(category='TDHA').order_by('-date')[:9]
+#         return context
+
+class TEABlogView(ListView):
+    template_name = 'blog/noticias_tea.html'
+    model = BlogPost
+    context_object_name='noticias'
+    ordering='-date'
+    paginate_by = 9
+
+# class BlogTEA(TemplateView):
+#     template_name = 'blog_tea.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["noticias"] = BlogPost.objects.filter(category='TEA').order_by('-date')[:9]
+#         return context
+
+class NoticiaView(DetailView):    
+    model=BlogPost
+    template_name = 'blog/postagem.html'    
+    context_object_name = 'post'
+    pk_url_kwarg='id'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        noticia = BlogPost.objects.filter(category=post.category).exclude(id=post.id)[:3]
+        context['noticia'] = noticia
+        return context
+
+
 
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
@@ -78,6 +127,8 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         context['num_contatos'] = num_contatos
         context['num_depoimentos'] = num_depoimentos
         return context
+
+
 # Página de quem somos
 class QuemSomos(TemplateView):
     template_name = 'quem-somos.html'

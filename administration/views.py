@@ -23,6 +23,11 @@ class ImageCreateView(LoginRequiredMixin,CreateView):
     template_name = 'administration/add_image.html'
     success_url = reverse_lazy('image_list')
 
+class ImageDetail(LoginRequiredMixin, DetailView):
+    model = CarouselImage
+    template_name = 'administration/image_detail.html'
+    context_object_name = 'image'
+
 class ImageUpdateView(LoginRequiredMixin,UpdateView):
     model = CarouselImage
     form_class = AtualizaCarouselImageForm
@@ -52,6 +57,7 @@ class ContatoCreateView(CreateView):
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Mensagem enviada com sucesso!")
         return reverse('home')
+    
 # Classe para listar contatos
 class ContatoListView(LoginRequiredMixin, ListView):
     model = Contato
