@@ -8,18 +8,30 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
-
+from django.core.exceptions import ObjectDoesNotExist
 # classe para renderizar a pagina inicial do site.
 class HomeView(TemplateView):
     template_name = 'home.html'
     
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
         context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
         context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]   
-        categoria = Category.objects.get(name='TDAH')      
-        context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]            
+            
+
+        try:
+            categoria = Category.objects.get(name='TDAH')      
+            context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
+
+        except ObjectDoesNotExist:
+            context["posttdah"] = None
+        
         return context
+    
+    
+
+
+
     # Classe para mostrar o perfil do usuário
 
 class UserProfileView(LoginRequiredMixin, UpdateView):
