@@ -101,8 +101,8 @@ class NoticiaView(DetailView):
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
 
-class NoticiaView(TemplateView):
-    template_name = 'blog/postagem.html'
+# class NoticiaView(TemplateView):
+#     template_name = 'blog/postagem.html'
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
