@@ -114,7 +114,7 @@ class BlogPostUpdateView(LoginRequiredMixin, UpdateView):
     model = BlogPost
     form_class = BlogPostForm
     template_name = 'blog/blog_post_form.html'
-    success_url = reverse_lazy('blog_post_list')
+    success_url = reverse_lazy('lista_de_noticias')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -124,7 +124,7 @@ class BlogPostUpdateView(LoginRequiredMixin, UpdateView):
 class BlogPostDeleteView(LoginRequiredMixin, DeleteView):
     model = BlogPost
     template_name = 'blog/blog_post_confirm_delete.html'
-    success_url = reverse_lazy('blog_post_list')
+    success_url = reverse_lazy('lista_de_noticias')
 
 class ListaDeNotícias(LoginRequiredMixin, ListView):
     model = BlogPost
