@@ -5,7 +5,7 @@ from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, A
 from .forms import CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 from django.contrib import messages
 
     # ************ Carrossel *************** 
@@ -131,7 +131,8 @@ class ListaDeNotícias(LoginRequiredMixin, ListView):
     template_name = 'administration/lista_de_noticias.html'
     context_object_name='posts'
     ordering='-date'
-    
+
+   
 
 # ************ Apoio *************** #
     
