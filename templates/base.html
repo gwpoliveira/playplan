@@ -24,9 +24,9 @@
 <body class="fundo-do-site">
 
     
-    <header class="header">
+    <header class="header ">
             
-            <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd0e;">
+            <nav class="navbar navbar-expand-md" style="background-color: #05133f;">
                 <div class="container">
                     <a class="navbar-brand" href="{% url 'home' %}">
                         <img src="/static/img/logo.png" alt="Logo" width="100">
@@ -96,11 +96,11 @@
             
             
         </nav>
-        <hr class="container ms-auto border-5 border-light">
-   
+        
     </header>
+    <hr class="container ms-auto border-5 border-light">
 
-    <div class="container">
+
         {% bootstrap_messages %}
         <main>        
             {% block content %}
@@ -108,7 +108,7 @@
             {% endblock %}
         </main>
     
-    </div>
+
     
 
     <section class='container'>
