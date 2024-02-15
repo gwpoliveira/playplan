@@ -84,10 +84,10 @@ class TEABlogView(ListView):
 #         return context
 
 # class NoticiaView(DetailView):    
-    model=BlogPost
-    template_name = 'blog/postagem.html'    
-    context_object_name = 'post'
-    pk_url_kwarg = 'id'
+    # model=BlogPost
+    # template_name = 'blog/postagem.html'    
+    # context_object_name = 'post'
+    # pk_url_kwarg = 'id'
 
 #     def get_context_data(self, **kwargs):
 #         context = super().get_context_data(**kwargs)
