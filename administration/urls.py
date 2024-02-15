@@ -6,7 +6,7 @@ from .views import (
     BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
     ListaApoiadores,ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, 
     CriarCategoria, ListarCategorias, AtualizarCategoria, DetalharCategoria, ApagarCategoria, ListaDeNotícias,
-    DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView,
+    DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView
 )
 
 urlpatterns = [
@@ -52,6 +52,7 @@ urlpatterns = [
     path('depoimento/novo/', DepoimentoCreateView.as_view(), name='depoimento-create'),
     path('depoimento/editar/<int:pk>/', DepoimentoUpdateView.as_view(), name='depoimento-update'),
     path('depoimento/deletar/<int:pk>/', DepoimentoDeleteView.as_view(), name='depoimento-delete'),
+
     
     
 ]
