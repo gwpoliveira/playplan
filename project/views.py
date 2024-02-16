@@ -1,15 +1,20 @@
 from django.db.models.query import QuerySet
 from django.http import Http404
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.models import User
 from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato, Depoimento
-from administration.forms import ApoiadorForm
+from administration.forms import ApoiadorForm, ContatoForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
+
+
+
+
 # classe para renderizar a pagina inicial do site.
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -37,11 +42,34 @@ class HomeView(TemplateView):
 
         return context
     
+# View responsável por carregar a página de Contato
+class ContatoCreateView(CreateView):
+    model = Contato
+    form_class = ContatoForm
+    template_name = 'contato/contato.html'
+    success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Mensagem enviada com sucesso!")
+        return reverse('home')
+
+
+# View responsável por carregar a página Apoiador    
+class ApoiadorCreateListView(CreateView, ListView):
+    model = Apoiador
+    form_class = ApoiadorForm
+    template_name = 'apoio/apoio.html'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["apoiadores"] = Apoiador.objects.all()[:5]            
+        return context
 
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Obrigado por apoiar nossa causa")
+        return reverse('apoio')
 
-
-    # Classe para mostrar o perfil do usuário
+# Classe para mostrar o perfil do usuário
 
 class UserProfileView(LoginRequiredMixin, UpdateView):
     model = User
@@ -57,6 +85,8 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         update_session_auth_hash(self.request, self.object)
         return response
     
+
+# View responsável por carregar o blog de notícias da categoria TDAH
 class TDAHBlogView(ListView):
     template_name = 'blog/noticias_tdah.html'
     model = BlogPost
@@ -76,7 +106,7 @@ class TDAHBlogView(ListView):
 
 
 
-
+# View responsável por carregar o blog de notícias da categoria TEA
 class TEABlogView(ListView):
     template_name = 'blog/noticias_tea.html'
     model = BlogPost
@@ -95,20 +125,7 @@ class TEABlogView(ListView):
         return context
 
 
-
-# class novatentativaTEABlogView(ListView):
-#     template_name = 'blog/noticias_tea.html'
-#     model = BlogPost
-#     context_object_name = 'noticias'
-#     ordering = '-date'
-#     paginate_by = 9
-
-#     def get_queryset(self):        
-#         categoria = Category.objects.get(name='TEA')
-#         queryset = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
-#         return queryset
-
-    
+# View Responsável por carregar cada notícia    
 class NoticiaView(DetailView):
     
     model=BlogPost
@@ -122,18 +139,6 @@ class NoticiaView(DetailView):
         noticia = BlogPost.objects.filter(category=post.category).exclude(id=post.id)[:3]
         context['noticia'] = noticia
         return context
-    
-
-
-
-
-class BlogView(TemplateView):
-    template_name = 'blog/noticias.html'
-
-
-
-class OQueETDAH(TemplateView):
-    template_name = 'blog/tdah_infantil.html'
     
 
 

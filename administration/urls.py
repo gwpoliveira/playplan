@@ -2,14 +2,15 @@
 from django.urls import path
 from .views import (
     ImageListView, ImageCreateView, ImageUpdateView, ImageDeleteView, ImageDetail,
-    ContatoCreateView, ContatoListView, ContatoDetailView,
-    BlogPostListView, BlogPostDetailView, BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
+ ContatoListView, ContatoDetailView,
+     BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
     ListaApoiadores,ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, 
     CriarCategoria, ListarCategorias, AtualizarCategoria, DetalharCategoria, ApagarCategoria, ListaDeNotícias,
     DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView
 )
 
 urlpatterns = [
+    #******************* Carrossel de Imagens *******************#
     path('image_list/', ImageListView.as_view(), name='image_list'),
     path('add_image/', ImageCreateView.as_view(), name='add_image'),
     path('edit_image/<int:pk>/', ImageUpdateView.as_view(), name='edit_image'),
@@ -23,9 +24,8 @@ urlpatterns = [
     path('contato/atualizar/<int:id>', AtualizarContato.as_view(), name='atualizar_contato'),
     
     #******************* Blog *******************#
-    path('blog_post_list/', BlogPostListView.as_view(), name='blog_post_list'),
-    path('lista_de_noticias/', ListaDeNotícias.as_view(), name='lista_de_noticias'),
-    path('blog/<int:pk>/', BlogPostDetailView.as_view(), name='blog_post_detail'),
+    
+    path('lista_de_noticias/', ListaDeNotícias.as_view(), name='lista_de_noticias'),    
     path('blog_post_create/', BlogPostCreateView.as_view(), name='blog_post_create'),
     path('blog/<int:pk>/edit/', BlogPostUpdateView.as_view(), name='blog_post_edit'),
     path('blog/<int:pk>/delete/', BlogPostDeleteView.as_view(), name='blog_post_delete'),
