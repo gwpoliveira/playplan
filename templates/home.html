@@ -6,6 +6,8 @@
 
 {% block content %}
 
+{% comment %} ----- Carrosel ----- {% endcomment %}
+
 <section class="Carrosel">
   <div id="carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -30,36 +32,7 @@
   </div>
 </section>
 
-<!-- <div class="container">
-  <div class="card-group row row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Lorem</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-          <a href="" class="btn btn-primary">Leia Mais</a>
-        </div>
-
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <a href="" class="btn btn-primary">Leia Mais</a>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-</div> -->
-
+{% comment %} ----- Destaques do Blog TEA ----- {% endcomment %}
 
 <div class="container my-3">
   <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TEA</h2>
@@ -128,7 +101,7 @@
 
   </div>
 
-<!-- DEPOIS VOU TERMINAR DE EDITAR O BLOG SOBRE TEA -->
+{% comment %} ----- Destaques do Blog TDAH ----- {% endcomment %}
 
 <div class="container my-3">
   <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
@@ -197,7 +170,7 @@
 
   </div>
 
-  {% comment %} ----- Depoimento ----- {% endcomment %}
+  {% comment %} ----- Depoimentos ----- {% endcomment %}
   <div class="container my-3">
     <section class="depoimentos container-fluid mb-3">
       <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
