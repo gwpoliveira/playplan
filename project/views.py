@@ -66,6 +66,18 @@ class TEABlogView(ListView):
     paginate_by = 9
 
 
+# class novatentativaTEABlogView(ListView):
+#     template_name = 'blog/noticias_tea.html'
+#     model = BlogPost
+#     context_object_name = 'noticias'
+#     ordering = '-date'
+#     paginate_by = 9
+
+#     def get_queryset(self):        
+#         categoria = Category.objects.get(name='TEA')
+#         queryset = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
+#         return queryset
+
     
 class NoticiaView(DetailView):
     
