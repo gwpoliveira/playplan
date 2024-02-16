@@ -57,16 +57,6 @@ class TDAHBlogView(ListView):
 
 
 
-    # def get_queryset(self):
-    #     return BlogPost.objects.filter(category='TDAH').order_by('-date')
-
-# class BlogTDHA(TemplateView):
-#     template_name = 'blog_tdha.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["noticias"] = BlogPost.objects.filter(category='TDHA').order_by('-date')[:9]
-#         return context
 
 class TEABlogView(ListView):
     template_name = 'blog/noticias_tea.html'
@@ -75,26 +65,7 @@ class TEABlogView(ListView):
     ordering='-date'
     paginate_by = 9
 
-# class BlogTEA(TemplateView):
-#     template_name = 'blog_tea.html'
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["noticias"] = BlogPost.objects.filter(category='TEA').order_by('-date')[:9]
-#         return context
-
-# class NoticiaView(DetailView):    
-    # model=BlogPost
-    # template_name = 'blog/postagem.html'    
-    # context_object_name = 'post'
-    # pk_url_kwarg = 'id'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         post = self.get_object()
-#         noticia = BlogPost.objects.filter(category=post.category).exclude(id=post.id)[:3]
-#         context['noticia'] = noticia
-#         return context
     
 class NoticiaView(DetailView):
     
@@ -117,23 +88,12 @@ class NoticiaView(DetailView):
 class BlogView(TemplateView):
     template_name = 'blog/noticias.html'
 
-# class NoticiaView(TemplateView):
-#     template_name = 'blog/postagem.html'
+
 
 class OQueETDAH(TemplateView):
     template_name = 'blog/tdah_infantil.html'
     
-# class ApoioView(TemplateView):
-#     template_name = 'apoio/apoio.html'
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["apoiadores"] = Apoiador.objects.all()[:5]            
-#         return context
-    
-
-# class Painel(LoginRequiredMixin, TemplateView):
-#     template_name = 'administration/painel.html'
 
 # Página do administrador
 class PainelAdm(LoginRequiredMixin, TemplateView):

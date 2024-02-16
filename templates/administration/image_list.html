@@ -27,20 +27,12 @@
 
   <h2 class="texto-branco">Banner Principal</h2>
 
-  <!-- <div class="d-flex justify-content-end">
-    <a href="{% url 'add_image' %}" class="btn btn-primary my-3">Adicionar Slide</a>
-</div> -->
+
 
 <div class="container d-flex justify-content-start ">
   <ul class="list-group">
     {% for image in images %}
-      <!-- <li class="list-group-item">
-        <img src="{{ image.image.url }}" alt="Carousel Image" width="600">
-        <div class="btn-group mt-2" role="group">
-          <a href="{% url 'edit_image' pk=image.pk %}" class="btn btn-primary">Edit</a>
-          <a href="{% url 'delete_image' pk=image.pk %}" class="btn btn-danger">Delete</a>
-        </div>
-      </li> -->
+
 
 
       <div class="card mb-3" style="max-width: 800px;">
