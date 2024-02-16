@@ -23,8 +23,7 @@ urlpatterns = [
     path('contato_list/<int:pk>', ContatoDetailView.as_view(), name='contato_list'),
     path('contato/atualizar/<int:id>', AtualizarContato.as_view(), name='atualizar_contato'),
     
-    #******************* Blog *******************#
-    
+    #******************* Blog *******************#    
     path('lista_de_noticias/', ListaDeNotícias.as_view(), name='lista_de_noticias'),    
     path('blog_post_create/', BlogPostCreateView.as_view(), name='blog_post_create'),
     path('blog/<int:pk>/edit/', BlogPostUpdateView.as_view(), name='blog_post_edit'),
