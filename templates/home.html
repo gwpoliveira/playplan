@@ -30,80 +30,55 @@
   </div>
 </section>
 
-<div class="container card-group my-3">
-  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TEA</h2>
-  <div class="row my-4">
+<!-- <div class="container">
+  <div class="card-group row row-cols-md-2 g-4">
     <div class="col">
-      <div class="card float-right">
-        <div class="row">
-          <div class="col-sm-5">
-            <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
-          </div>
-          <div class="col-sm-7">
-            <div class="card-block m-2">
-              <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
-              <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a autoestima
-              </p>
-
-              <!-- <br> -->
-              <a href="{% url 'o_que_e_tdah' %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-            </div>
-          </div>
+      <div class="card h-100">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Lorem</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+          <a href="" class="btn btn-primary">Leia Mais</a>
         </div>
+
       </div>
     </div>
     <div class="col">
-      <div class="card float-right">
-        <div class="row">
-          <div class="col-sm-5">
-            <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
-          </div>
-          <div class="col-sm-7">
-            <div class="card-block m-2">
-              <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
-              <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
-                habilidades</p>
-
-              <!-- <br> -->
-              <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-            </div>
-          </div>
+      <div class="card h-100">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <a href="" class="btn btn-primary">Leia Mais</a>
         </div>
+
       </div>
     </div>
 
   </div>
-  <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    
-    <button class="btn btn-primary" type="button">Mais Notícias</button>
-  </div> -->
-</div>
 
-<!-- DEPOIS VOU TERMINAR DE EDITAR O BLOG SOBRE TEA -->
+</div> -->
+
 
 <div class="container my-3">
-  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
-  {% if posttdah %}
-  <div class="row my-4">
-    
-    {% for post in posttdah %}
+  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TEA</h2>
+  {% if posttea %}
+  <div class="card-group row row-cols-md-2 g-4 my-1">
+
+    {% for post in posttea %}
     <div class="col">
-      <div class="card float-right">
-        <div class="row">
-          <div class="col-sm-5">
-            <img class="d-block w-100" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-          </div>
-          <div class="col-sm-7">
-            <div class="card-block m-2">
-              <h4 class="card-title">{{ post.title }}</h4>
-              <p>{{ post.about }}</p>
-              <!-- <br> -->
-              <a href="{% url 'postagem' post.id %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-            </div>
-          </div>
+      <div class="card h-100">
+        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.about }}</p>
+          <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
         </div>
+
       </div>
     </div>
+    
     {% endfor %}
     {% else %}
     <div class="row my-4">
@@ -116,9 +91,10 @@
             <div class="col-sm-7">
               <div class="card-block m-2">
                 <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
-                <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a autoestima
+                <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
+                  autoestima
                 </p>
-  
+
                 <!-- <br> -->
                 <a href="{% url 'o_que_e_tdah' %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
               </div>
@@ -137,7 +113,7 @@
                 <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
                 <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
                   habilidades</p>
-  
+
                 <!-- <br> -->
                 <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
               </div>
@@ -145,47 +121,117 @@
           </div>
         </div>
       </div>
-  
+
     </div>
     {% endif %}
+
+
+  </div>
+
+<!-- DEPOIS VOU TERMINAR DE EDITAR O BLOG SOBRE TEA -->
+
+<div class="container my-3">
+  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
+  {% if posttdah %}
+  <div class="card-group row row-cols-md-2 g-4 my-1">
+
+    {% for post in posttdah %}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.about }}</p>
+          <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
+        </div>
+
+      </div>
+    </div>
     
+    {% endfor %}
+    {% else %}
+    <div class="row my-4">
+      <div class="col">
+        <div class="card float-right">
+          <div class="row">
+            <div class="col-sm-5">
+              <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
+            </div>
+            <div class="col-sm-7">
+              <div class="card-block m-2">
+                <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
+                <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
+                  autoestima
+                </p>
+
+                <!-- <br> -->
+                <a href="{% url 'o_que_e_tdah' %}" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card float-right">
+          <div class="row">
+            <div class="col-sm-5">
+              <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
+            </div>
+            <div class="col-sm-7">
+              <div class="card-block m-2">
+                <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
+                <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
+                  habilidades</p>
+
+                <!-- <br> -->
+                <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
 
   </div>
 
   {% comment %} ----- Depoimento ----- {% endcomment %}
-<div class="container">
-  <section class="depoimentos container-fluid mb-3">
-    <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
-        class="dist"></span>Depoimentos</h2>
-    <div id="carouselDepoimentos" class="carousel slide">
-      <div class="carousel-inner">
-        {% for depoimento in depoimentos %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          {% if depoimento.imagem_fundo %}
-          <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
-          {% else %}
-          <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
-          {% endif %}
-          <div class="carousel-caption d-none d-md-block ">
-            <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="{{ depoimento.imagem.url }}"
-              alt="">
-            <h3>{{ depoimento.nome }}</h3>
-            <h6>{{ depoimento.cargo }}</h6>
-            <p>"{{ depoimento.descricao }}"</p>
+  <div class="container my-3">
+    <section class="depoimentos container-fluid mb-3">
+      <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
+          class="dist"></span>Depoimentos</h2>
+      <div id="carouselDepoimentos" class="carousel slide">
+        <div class="carousel-inner">
+          {% for depoimento in depoimentos %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            {% if depoimento.imagem_fundo %}
+            <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px"
+              alt="{{ depoimento.nome }}">
+            {% else %}
+            <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+            {% endif %}
+            <div class="carousel-caption d-none d-md-block ">
+              <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="{{ depoimento.imagem.url }}"
+                alt="">
+              <h3>{{ depoimento.nome }}</h3>
+              <h6>{{ depoimento.cargo }}</h6>
+              <p>"{{ depoimento.descricao }}"</p>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 
   {% endblock %}

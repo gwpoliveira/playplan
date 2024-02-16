@@ -101,14 +101,18 @@
     </header>
     <hr class="container ms-auto border-5 border-light">
 
+    <div class="container">
+        {% bootstrap_messages %}
+    </div>
 
-    {% bootstrap_messages %}
+
+
     <main>
         {% block content %}
 
         {% endblock %}
-    </main>
 
+    </main>
 
 
 
@@ -130,12 +134,15 @@
 
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 texto-branco">Home</a></li>
-                <li class="nav-item"><a href="{% url 'quem-somos' %}" class="nav-link px-2 texto-branco">Quem Somos</a></li>
-                <li class="nav-item"><a href="{% url 'noticias-tdah' %}" class="nav-link px-2 texto-branco">TDAH</a></li>
+                <li class="nav-item"><a href="{% url 'quem-somos' %}" class="nav-link px-2 texto-branco">Quem Somos</a>
+                </li>
+                <li class="nav-item"><a href="{% url 'noticias-tdah' %}" class="nav-link px-2 texto-branco">TDAH</a>
+                </li>
                 <li class="nav-item"><a href="{% url 'noticias-tea' %}" class="nav-link px-2 texto-branco">TEA</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">PlayPan</a></li>
                 <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link px-2 texto-branco">Contato</a></li>
-                <li class="nav-item"><a href="{% url 'apoio' %}" class="nav-link px-2 texto-branco">Apoie o Projeto</a></li>
+                <li class="nav-item"><a href="{% url 'apoio' %}" class="nav-link px-2 texto-branco">Apoie o Projeto</a>
+                </li>
 
             </ul>
         </footer>

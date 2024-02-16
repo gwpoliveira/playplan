@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.http import Http404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
@@ -26,6 +27,14 @@ class HomeView(TemplateView):
         except ObjectDoesNotExist:
             context["posttdah"] = None
         
+    
+        try:
+            categoria = Category.objects.get(name='TEA')
+            context["posttea"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
+
+        except ObjectDoesNotExist:
+            context["posttea"] = None
+
         return context
     
     
@@ -55,6 +64,16 @@ class TDAHBlogView(ListView):
     ordering='-date'
     paginate_by = 9
 
+    def get_queryset(self):
+        categoria = Category.objects.get(name='TDAH')
+        queryset = BlogPost.objects.filter(category=categoria)
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categoria'] = Category.objects.get(name='TDAH')             
+        return context
+
 
 
 
@@ -64,6 +83,17 @@ class TEABlogView(ListView):
     context_object_name='noticias'
     ordering='-date'
     paginate_by = 9
+
+    def get_queryset(self):
+        categoria = Category.objects.get(name='TEA')
+        queryset = BlogPost.objects.filter(category=categoria)
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categoria'] = Category.objects.get(name='TEA')             
+        return context
+
 
 
 # class novatentativaTEABlogView(ListView):
