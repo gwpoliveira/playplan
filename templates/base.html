@@ -12,7 +12,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script defer src="//cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
+    <script defer src="//cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,93 +23,94 @@
 
 <body class="fundo-do-site">
 
-    
+
     <header class="header">
-            
-            <nav class="navbar navbar-expand-md" style="background-color: #303e4b;">
-                <div class="container">
-                    <a class="navbar-brand" href="{% url 'home' %}">
-                        <img src="/static/img/logo.png" alt="Logo" width="100">
-                    </a>
-                    
-                    <button class="hamburger navbar-toggler border-light" type="button" data-bs-toggle="collapse"
+
+        <nav class="navbar navbar-expand-md" style="background-color: #303e4b;">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="/static/img/logo.png" alt="Logo" width="100">
+                </a>
+
+                <button class="hamburger navbar-toggler border-light" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'quem-somos' %}">Quem Somos</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'quem-somos' %}">Quem Somos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'noticias-tdah' %}">TDAH</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'noticias-tdah' %}">TDAH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'noticias-tea' %}">TEA</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'noticias-tea' %}">TEA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="#">PlayPan</a>
+                            <a class="nav-link texto-branco item-menu" href="#">PlayPan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'contato' %}">Contato</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'contato' %}">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-branco" href="{% url 'apoio' %}">Apoie o Projeto</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'apoio' %}">Apoie o Projeto</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <div class="dropdown text-end">
                                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/static/img/usuario.jpg" alt="mdo" width="32" height="32"
-                                class="rounded-circle">
-                            </a>
-                            <ul class="dropdown-menu text-small">
-                                <li><a class="dropdown-item" href="{% url 'painel_adm' %}"><strong>Painel</strong></a></li>
-                                <li><a class="dropdown-item" href="{% url 'image_list' %}">Inserir Banner</a></li>
-                                <li><a class="dropdown-item" href="{% url 'contato_list' %}">Mensagens</a></li>
-                                <li><a class="dropdown-item" href="{% url 'blog_post_create' %}">Publicar Post</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/static/img/usuario.jpg" alt="mdo" width="32" height="32"
+                                        class="rounded-circle">
+                                </a>
+                                <ul class="dropdown-menu text-small">
+                                    <li><a class="dropdown-item"
+                                            href="{% url 'painel_adm' %}"><strong>Painel</strong></a></li>
+                                    <li><a class="dropdown-item" href="{% url 'image_list' %}">Inserir Banner</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'contato_list' %}">Mensagens</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'blog_post_create' %}">Publicar Post</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
                                 </ul>
                             </div>
                         </li>
                         {% else %}
-                        <li class="nav-item">
-                            {% comment %} mudar para login {% endcomment %}
-                            <a class="nav-link texto-branco" href="{% url 'image_list' %}"><i class="fa-solid fa-lock"></i>   Área Restrita</a>
-                            
+                        <li class="nav-item item-menu">
+                            <a class="nav-link texto-branco" href="{% url 'image_list' %}"><i
+                                    class="fa-solid fa-lock"></i> Login</a>
                         </li>
                         {% endif %}
-                        
+
                     </ul>
-                    
+
                 </div>
             </div>
-            
-            
+
+
         </nav>
-        
+
     </header>
     <hr class="container ms-auto border-5 border-light">
 
 
-        {% bootstrap_messages %}
-        <main>        
-            {% block content %}
-    
-            {% endblock %}
-        </main>
-    
+    {% bootstrap_messages %}
+    <main>
+        {% block content %}
 
-    
+        {% endblock %}
+    </main>
+
+
+
 
     <section class='container'>
 
@@ -129,12 +130,12 @@
 
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 texto-branco">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">Quem Somos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">TDAH</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">TEA</a></li>
+                <li class="nav-item"><a href="{% url 'quem-somos' %}" class="nav-link px-2 texto-branco">Quem Somos</a></li>
+                <li class="nav-item"><a href="{% url 'noticias-tdah' %}" class="nav-link px-2 texto-branco">TDAH</a></li>
+                <li class="nav-item"><a href="{% url 'noticias-tea' %}" class="nav-link px-2 texto-branco">TEA</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">PlayPan</a></li>
                 <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link px-2 texto-branco">Contato</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">Apoie o Projeto</a></li>
+                <li class="nav-item"><a href="{% url 'apoio' %}" class="nav-link px-2 texto-branco">Apoie o Projeto</a></li>
 
             </ul>
         </footer>

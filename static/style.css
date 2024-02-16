@@ -17,9 +17,17 @@
 
 
 
+
+
 .texto-branco {
     color: #fff;
     /* Código da cor branca */
+}
+
+.item-menu:hover {
+    color: gray;
+
+
 }
 
 body.fundo-do-site {
