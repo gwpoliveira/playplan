@@ -6,19 +6,29 @@
   }
 
 
-body {
-    height: 30000px;
-    background-image: url('/static/img/bg5.jpg');
+.fundo-do-site {
+    background-color: #303e4b;
     /* Substitua pela URL da sua imagem */
     background-position: center;
     /* Centraliza a imagem no fundo */
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     /* Evita a repetição da imagem */
 }
+
+
+
+
+
 
 .texto-branco {
     color: #fff;
     /* Código da cor branca */
+}
+
+.item-menu:hover {
+    color: gray;
+
+
 }
 
 body.fundo-do-site {
@@ -79,11 +89,6 @@ h1#branco {
 
 ::after {
     color: white;
-}
-.header{
-    width: 100%;
-    top: 0;
-    position: fixed;
 }
 
 
