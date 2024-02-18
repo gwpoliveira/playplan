@@ -11,6 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 text-center">
+            <!-- ---------- Sessão Banners ------------ -->
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -19,6 +20,7 @@
                             <i class="fa-regular fa-image"></i><span class="dist"></span>Banners
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Banners ------------ -->
                     <div id="collapseOne" class="accordion-collapse collapse {% if request.path == '/administration/image_list/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
@@ -36,6 +38,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ---------- Sessão Mensagens ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/contato_list/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
@@ -43,6 +46,7 @@
                             <i class="fa-regular fa-envelope"></i><span class="dist"></span>Mensagens
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Mensagens ------------ -->
                     <div id="collapseTwo" class="accordion-collapse collapse {% if request.path == '/administration/contato_list/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
@@ -53,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- ---------- Sessão Apoiadores ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/lista_de_apoiadores/' %}  {% else %} collapsed {% endif %}
@@ -62,6 +66,7 @@
                             <i class="fa-regular fa-handshake"></i><span class="dist"></span>Apoiadores
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Apoiadores ------------ -->
                     <div id="collapseFour" class="accordion-collapse collapse {% if request.path == '/administration/lista_de_apoiadores/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
@@ -79,6 +84,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ---------- Sessão Notícias ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/lista_de_noticias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
@@ -86,6 +92,7 @@
                             <i class="fa-regular fa-newspaper"></i><span class="dist"></span>Notícias
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Notícias ------------ -->
                     <div id="collapseFive" class="accordion-collapse collapse {% if request.path == '/administration/lista_de_noticias/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
@@ -99,6 +106,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ---------- Sessão Categorias ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/categorias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
@@ -106,6 +114,7 @@
                             <i class="fa-solid fa-table"></i><span class="dist"></span>Categorias
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Categorias ------------ -->
                     <div id="collapseSix" class="accordion-collapse collapse {% if request.path == '/administration/categorias/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
@@ -119,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ---------- Sessão Depoimentos ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/depoimento/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
@@ -126,6 +136,7 @@
                             <i class="fa-regular fa-comment"></i><span class="dist"></span>Depoimentos
                         </button>
                     </h2>
+                    <!-- ---------- Opções da Sessão Depoimentos ------------ -->
                     <div id="collapseSeven" class="accordion-collapse collapse {% if request.path == '/administration/depoimento/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
