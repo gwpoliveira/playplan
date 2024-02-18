@@ -6,7 +6,8 @@ from .views import (
      BlogPostCreateView, BlogPostUpdateView, BlogPostDeleteView, 
     ListaApoiadores,ApoiadorUpdateView, ApoiadorDetailView, ApoiadorCreateView, AtualizarContato, ApoiadorDeleteView, 
     CriarCategoria, ListarCategorias, AtualizarCategoria, DetalharCategoria, ApagarCategoria, ListaDeNotícias,
-    DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView
+    DepoimentoListView, DepoimentoDetailView, DepoimentoCreateView, DepoimentoUpdateView, DepoimentoDeleteView,
+    inscricao_newsletter,
 )
 
 urlpatterns = [
@@ -51,7 +52,8 @@ urlpatterns = [
     path('depoimento/novo/', DepoimentoCreateView.as_view(), name='depoimento-create'),
     path('depoimento/editar/<int:pk>/', DepoimentoUpdateView.as_view(), name='depoimento-update'),
     path('depoimento/deletar/<int:pk>/', DepoimentoDeleteView.as_view(), name='depoimento-delete'),
-
     
+    #******************* New Letter *******************#
+    path('inscricao/', inscricao_newsletter, name='inscricao_newsletter'),    
     
 ]

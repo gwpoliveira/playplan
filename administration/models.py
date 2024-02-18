@@ -103,3 +103,11 @@ class Depoimento(models.Model):
 
     def __str__(self):
         return self.nome
+    
+# ************** New Letter **************#
+
+class Inscricao(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email
