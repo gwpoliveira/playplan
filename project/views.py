@@ -21,11 +21,11 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
-        num_carousel = CarouselImage.objects.count()
+        num_carousel = CarouselImage.objects.filter(ativo=True).count()
         context['num_carousel'] = num_carousel        
         context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
         context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5] 
-        num_depoimentos = Depoimento.objects.count()
+        num_depoimentos = Depoimento.objects.filter(ativo=True).count()
         context['num_depoimentos'] = num_depoimentos    
             
 
