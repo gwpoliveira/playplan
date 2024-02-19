@@ -70,3 +70,10 @@ class InscricaoForm(forms.ModelForm):
     class Meta:
         model = Inscricao
         fields = ['email']
+
+    def save(self, commit=True):
+        inscricao = super().save(commit=False)
+        inscricao.confirmado = False  # Defina como True se desejar confirmar automaticamente
+        if commit:
+            inscricao.save()
+        return inscricao

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Quem Somos{% endblock title %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h2 class="texto-branco">Confirmação de Inscrição</h2>
+    <p>Obrigado por se inscrever! Um e-mail de confirmação foi enviado para {{ email }}.</p>
+</div>
+
+{% endblock content %}

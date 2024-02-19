@@ -259,10 +259,9 @@ def inscricao_newsletter(request):
     if request.method == 'POST':
         form = InscricaoForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Inscrição Realizada com Sucesso')
-            # Adicione qualquer lógica adicional, como enviar um e-mail de confirmação.
-            return redirect('home')
+            inscricao = form.save()
+            # Pode adicionar mais lógica aqui se necessário
+            return render(request, 'confirmacao_inscricao.html', {'email': inscricao.email})
     else:
         form = InscricaoForm()
 

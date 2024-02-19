@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django_ckeditor_5.fields import CKEditor5Field
 
 class CarouselImage(models.Model):
@@ -105,9 +108,19 @@ class Depoimento(models.Model):
         return self.nome
     
 # ************** New Letter **************#
-
 class Inscricao(models.Model):
     email = models.EmailField(unique=True)
+    confirmado = models.BooleanField(default=False)
 
     def __str__(self):
         return self.email
+
+@receiver(post_save, sender=Inscricao)
+def enviar_email_confirmacao(sender, instance, created, **kwargs):
+    if created:
+        assunto = 'Confirmação de Inscrição'
+        mensagem = f'Obrigado por se inscrever! Seu e-mail ({instance.email}) foi cadastrado com sucesso.'
+        remetente = 'gwpoliveira@gmail.com'  # Substitua pelo seu e-mail
+        destinatario = [instance.email]
+
+        send_mail(assunto, mensagem, remetente, destinatario)
