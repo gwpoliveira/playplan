@@ -108,6 +108,14 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+#Configurnado gmail para a new letter
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'playplan@faespi.com.br'
+EMAIL_HOST_PASSWORD = '9XG9nH567XUY2rW<'
+
 # Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -119,6 +127,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#CKEDITOR
 CKEDITOR_UPLOAD_PATH = "path_to_storage/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_5_UPLOAD_PATH = 'path_to_storage'

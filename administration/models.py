@@ -120,7 +120,7 @@ def enviar_email_confirmacao(sender, instance, created, **kwargs):
     if created:
         assunto = 'Confirmação de Inscrição'
         mensagem = f'Obrigado por se inscrever! Seu e-mail ({instance.email}) foi cadastrado com sucesso.'
-        remetente = 'gwpoliveira@gmail.com'  # Substitua pelo seu e-mail
+        remetente = 'playplan@faespi.com.br'
         destinatario = [instance.email]
 
         send_mail(assunto, mensagem, remetente, destinatario)
