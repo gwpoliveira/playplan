@@ -1,0 +1,52 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Lista de Inscritos{% endblock title %}
+
+
+{% block conteudo %}
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white active">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'inscritos' %}">Lista de Assinantes</a>
+            </li>
+        </ol>
+    </nav>
+</div>
+<ul class="list-group list-group-flush">
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>                
+                <th scope="col">E-mail</th>
+                <th scope="col">Consultar</th>
+                <th scope="col">Atualizar</th>
+                <th scope="col">Deletar</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for inscricao in assinantes %}
+            <tr>
+                <th scope="row">{{ inscricao.id }}</th>                
+                <td>{{inscricao.email}}</td>
+                <td><a class="btn btn-primary" href="{% url 'detalhar_inscrito' pk=inscricao.pk %}" role="button"><i class="fa-solid fa-eye"></i></a></td>
+                <td><a href="{% url 'atualizar_inscrito' pk=inscricao.pk %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a></td>
+                <td><a href="{% url 'apagar_inscrito' pk=inscricao.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</ul>
+
+
+{% endblock conteudo %}

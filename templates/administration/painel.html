@@ -150,6 +150,28 @@
                         </div>
                     </div>
                 </div>
+                <!-- ---------- Sessão Boletim de Notícias ------------ -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button {% if request.path == '/administration/inscritos/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="{% if request.path == '/administration/inscritos/' %} true {% else %} false {% endif %}" aria-controls="collapseEight">
+                            <i class="fa-solid fa-rss"></i><span class="dist"></span>Boletim
+                        </button>
+                    </h2>
+                    <!-- ---------- Opções da Sessão Boletins ------------ -->
+                    <div id="collapseEight" class="accordion-collapse collapse {% if request.path == '/administration/inscritos/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                <!-- <a href="{% url 'depoimento-create' %}" class="text-decoration-none">
+                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-plus"></i> Novo Assinante</li>
+                                </a> -->
+                                <a href="{% url 'inscritos' %}" class="text-decoration-none">
+                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Listar Assinantes</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-9">

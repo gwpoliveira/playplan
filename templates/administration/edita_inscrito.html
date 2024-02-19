@@ -1,0 +1,37 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block conteudo %}
+
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+                    href="{% url 'inscritos' %}">Lista de Assinantes</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Atualizar Inscrito
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<div class="bg-secondary-subtle p-3 rounded">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media.js }}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" type="submit">Atualizar</button>
+    </form>
+</div>
+
+{% endblock conteudo %}

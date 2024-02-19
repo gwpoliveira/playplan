@@ -1,7 +1,7 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento
+from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento, Inscricao
 from .forms import InscricaoForm, CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -254,17 +254,44 @@ class DepoimentoDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'depoimento/depoimento_confirm_delete.html'
     success_url = reverse_lazy('depoimento-list')
 
-# ************ New Letter *************** # 
+# ************ News Letter *************** # 
 def inscricao_newsletter(request):
     if request.method == 'POST':
         form = InscricaoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Inscrição Realizada com Sucesso')
             # Adicione qualquer lógica adicional, como enviar um e-mail de confirmação.
-            return redirect('página_de_confirmação')
+            return redirect('home')
     else:
         form = InscricaoForm()
 
     return render(request, 'inscricao_newsletter.html', {'form': form})
     
+# view para listar inscritos
+class Inscritos(LoginRequiredMixin, ListView):
+    model = Inscricao
+    template_name = 'administration/assinantes.html'
+    context_object_name = 'assinantes'
 
+# view para detalhar inscrito
+class DetalharInscrito(LoginRequiredMixin, DetailView):
+    model = Inscricao
+    template_name = 'administration/detalhar_inscrito.html'
+    context_object_name = 'inscrito'
+
+# view para atualizar inscrito
+class AtualizarInscrito(LoginRequiredMixin,UpdateView):
+    model = Inscricao
+    form_class = InscricaoForm
+    template_name = 'administration/edita_inscrito.html'
+    success_url = reverse_lazy('inscritos')
+
+# view para deletar inscrito
+class ApagarInscrito(LoginRequiredMixin,DeleteView):
+    model = Inscricao
+    template_name = 'administration/apagar_inscrito.html'    
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Inscrito Apagado com sucesso!")
+        return reverse('inscritos')

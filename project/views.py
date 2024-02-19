@@ -2,7 +2,7 @@ from django.db.models.query import QuerySet
 from django.http import Http404
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.models import User
-from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato, Depoimento
+from administration.models import CarouselImage, Apoiador, BlogPost, Category, Contato, Depoimento, Inscricao
 from administration.forms import ApoiadorForm, ContatoForm
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -21,8 +21,12 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
+        num_carousel = CarouselImage.objects.count()
+        context['num_carousel'] = num_carousel        
         context["images"] = CarouselImage.objects.filter(ativo=True)[:5]
-        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5]   
+        context["depoimentos"] = Depoimento.objects.filter(ativo=True)[:5] 
+        num_depoimentos = Depoimento.objects.count()
+        context['num_depoimentos'] = num_depoimentos    
             
 
         try:
@@ -154,6 +158,7 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         num_category = Category.objects.count()
         num_contatos = Contato.objects.count()
         num_depoimentos = Depoimento.objects.count()
+        num_inscritos = Inscricao.objects.count()
 
         context['num_apoiadores'] = num_apoiadores
         context['num_carousel'] = num_carousel
@@ -161,6 +166,7 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
         context['num_category'] = num_category
         context['num_contatos'] = num_contatos
         context['num_depoimentos'] = num_depoimentos
+        context['num_inscritos'] = num_inscritos
         return context
 
 

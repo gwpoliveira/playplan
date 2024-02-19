@@ -21,6 +21,7 @@
       </div>
       {% endfor %}
     </div>
+    {% if num_carousel > 1 %}
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -29,6 +30,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+    {% endif %}
   </div>
 </section>
 
@@ -42,7 +44,9 @@
     {% for post in posttea %}
     <div class="col">
       <div class="card h-100">
-        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+        <div class="zoom-effect">
+          <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.about }}</p>
@@ -51,14 +55,14 @@
 
       </div>
     </div>
-    
+
     {% endfor %}
     {% else %}
     <div class="row my-4">
       <div class="col">
         <div class="card float-right">
           <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-5 zoom-effect">
               <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
             </div>
             <div class="col-sm-7">
@@ -78,7 +82,7 @@
       <div class="col">
         <div class="card float-right">
           <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-5 zoom-effect">
               <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
             </div>
             <div class="col-sm-7">
@@ -101,121 +105,130 @@
 
   </div>
 
-{% comment %} ----- Destaques do Blog TDAH ----- {% endcomment %}
+  {% comment %} ----- Destaques do Blog TDAH ----- {% endcomment %}
 
-<div class="container my-3">
-  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
-  {% if posttdah %}
-  <div class="card-group row row-cols-md-2 g-4 my-1">
-
-    {% for post in posttdah %}
-    <div class="col">
-      <div class="card h-100">
-        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">{{ post.about }}</p>
-          <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
-        </div>
-
-      </div>
-    </div>
-    
-    {% endfor %}
-    {% else %}
-    <div class="row my-4">
-      <div class="col">
-        <div class="card float-right">
-          <div class="row">
-            <div class="col-sm-5">
-              <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
-            </div>
-            <div class="col-sm-7">
-              <div class="card-block m-2">
-                <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
-                <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
-                  autoestima
-                </p>
-
-                <!-- <br> -->
-                <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card float-right">
-          <div class="row">
-            <div class="col-sm-5">
-              <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
-            </div>
-            <div class="col-sm-7">
-              <div class="card-block m-2">
-                <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
-                <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a fortalecer
-                  habilidades</p>
-
-                <!-- <br> -->
-                <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>  
-
-    </div>
-    {% endif %}
-
-  </div>
-  {% comment %} ----- News Letter ----- {% endcomment %}
-  <div class="container my-5  ">
-    <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Fique por dentro</h2>
-    <form action="{% url 'inscricao_newsletter' %}" method="post" class="mt-3">
-      {% csrf_token %}
-      <div class="mb-3">
-        <label for="email" class="form-label texto-branco">Receba nossas notícias por e-mail:</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Inscrever-se</button>
-    </form>
-  </div>
-    
-  {% comment %} ----- Depoimentos ----- {% endcomment %}
   <div class="container my-3">
-    <section class="depoimentos container-fluid mb-3">
-      <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
-          class="dist"></span>Depoimentos</h2>
-      <div id="carouselDepoimentos" class="carousel slide">
-        <div class="carousel-inner">
-          {% for depoimento in depoimentos %}
-          <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            {% if depoimento.imagem_fundo %}
-            <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px"
-              alt="{{ depoimento.nome }}">
-            {% else %}
-            <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
-            {% endif %}
-            <div class="carousel-caption d-none d-md-block ">
-              <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="{{ depoimento.imagem.url }}"
-                alt="">
-              <h3>{{ depoimento.nome }}</h3>
-              <h6>{{ depoimento.cargo }}</h6>
-              <p>"{{ depoimento.descricao }}"</p>
+    <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Notícias sobre TDAH</h2>
+    {% if posttdah %}
+    <div class="card-group row row-cols-md-2 g-4 my-1">
+
+      {% for post in posttdah %}
+      <div class="col">
+        <div class="card h-100">
+          <div class="zoom-effect">
+            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.about }}</p>
+            <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
+          </div>
+
+        </div>
+      </div>
+
+      {% endfor %}
+      {% else %}
+      <div class="row my-4">
+        <div class="col">
+          <div class="card float-right">
+            <div class="row">
+              <div class="col-sm-5 zoom-effect">
+                <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
+              </div>
+              <div class="col-sm-7">
+                <div class="card-block m-2">
+                  <h4 class="card-title">Identificando o TDAH em Crianças: veja os sinais</h4>
+                  <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
+                    autoestima
+                  </p>
+
+                  <!-- <br> -->
+                  <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+                </div>
+              </div>
             </div>
           </div>
-          {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </section>
-  </div>
+        <div class="col">
+          <div class="card float-right">
+            <div class="row">
+              <div class="col-sm-5 zoom-effect">
+                <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
+              </div>
+              <div class="col-sm-7">
+                <div class="card-block m-2">
+                  <h4 class="card-title">Brincadeiras que Nutrem Crianças com TDAH</h4>
+                  <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a
+                    fortalecer
+                    habilidades</p>
 
-  {% endblock %}
+                  <!-- <br> -->
+                  <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endif %}
+
+    </div>
+    {% comment %} ----- News Letter ----- {% endcomment %}
+    <div class="container my-5  ">
+      <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Fique por dentro</h2>
+      <form action="{% url 'inscricao_newsletter' %}" method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="email" class="form-label texto-branco">Receba nossas notícias por e-mail:</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu endereço de e-mail"
+            required>
+        </div>
+        <button type="submit" class="btn btn-primary">Inscrever-se</button>
+      </form>
+    </div>
+
+    {% comment %} ----- Depoimentos ----- {% endcomment %}
+    <div class="container my-3">
+      <section class="depoimentos container-fluid mb-3">
+        <h2 class="texto-branco fw-bold ms-5 mb-4"><i class="fa-regular fa-comments"></i><span
+            class="dist"></span>Depoimentos</h2>
+        <div id="carouselDepoimentos" class="carousel slide">
+          <div class="carousel-inner">
+            {% for depoimento in depoimentos %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              {% if depoimento.imagem_fundo %}
+              <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px"
+                alt="{{ depoimento.nome }}">
+              {% else %}
+              <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+              {% endif %}
+              <div class="carousel-caption d-none d-md-block ">
+                <img class="bd-placeholder-img rounded-circle" width="100" height="100"
+                  src="{{ depoimento.imagem.url }}" alt="">
+                <h3>{{ depoimento.nome }}</h3>
+                <h6>{{ depoimento.cargo }}</h6>
+                <p>"{{ depoimento.descricao }}"</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% if num_depoimentos > 1 %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          {% endif %}
+
+        </div>
+      </section>
+    </div>
+
+    {% endblock %}

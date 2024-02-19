@@ -1,0 +1,42 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block conteudo %}
+
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+                    href="{% url 'inscritos' %}">Lista de Assinantes</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Apagando Inscrito
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container bg-secondary-subtle rounded border p-3">
+
+
+
+    <h2>Excluir Inscrito</h2>
+    <p>Você tem certeza de que deseja excluir este inscrito?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Excluir</button>
+      <a href="{% url 'inscritos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  
+  </div>
+
+{% endblock conteudo %}
