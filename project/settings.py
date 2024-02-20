@@ -114,7 +114,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.somostodosnerds.com.br'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mail.somostodosnerds.com.br'
+EMAIL_HOST_USER = 'playplan@somostodosnerds.com.br'
 EMAIL_HOST_PASSWORD = 'Samuca10x'
 CSRF_COOKIE_SECURE = True 
 
