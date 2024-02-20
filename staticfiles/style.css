@@ -3,7 +3,7 @@
     --blue: #00285f;
     --gray: #ededed;
     --red: #8b0000;
-  }
+}
 
 
 .fundo-do-site {
@@ -41,7 +41,7 @@ h1#branco {
     color: #fff
 }
 
-.dist{
+.dist {
     margin-right: 7px;
 }
 
@@ -81,10 +81,11 @@ h1#branco {
 }
 
 
-.breadcrumb-item + .breadcrumb-item::before {
-        /* content: "/";
+.breadcrumb-item+.breadcrumb-item::before {
+    /* content: "/";
         padding: 0 5px; */
-    color: white; /* cor do separador */
+    color: white;
+    /* cor do separador */
 }
 
 ::after {
@@ -92,3 +93,14 @@ h1#branco {
 }
 
 
+.zoom-effect {
+    overflow: hidden;
+}
+
+.zoom-effect img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-effect:hover img {
+    transform: scale(1.1);
+}
