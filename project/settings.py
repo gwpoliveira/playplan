@@ -114,7 +114,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'playplan@faespi.com.br'
-EMAIL_HOST_PASSWORD = '9XG9nH567XUY2rW<'
+EMAIL_HOST_PASSWORD = '9XG9H567XUY2W<'
 
 # Media files (uploads)
 MEDIA_URL = '/media/'
