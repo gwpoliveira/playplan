@@ -111,11 +111,11 @@ STATICFILES_DIRS = [
 
 #Configurnado gmail para a new letter
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'mail.somostodosnerds.com.br'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'playplan@faespi.com.br'
-EMAIL_HOST_PASSWORD = '9XG9H567XUY2W<'
+EMAIL_HOST_USER = 'playplan@somostodosnerds.com.br'
+EMAIL_HOST_PASSWORD = 'Samuca10x'
 CSRF_COOKIE_SECURE = True 
 
 # Media files (uploads)
