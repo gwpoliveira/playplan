@@ -45,6 +45,7 @@ class HomeView(TemplateView):
             context["posttea"] = None
 
         return context
+
     
 # View responsável por carregar a página de Contato
 class ContatoCreateView(CreateView):
@@ -102,6 +103,8 @@ class TDAHBlogView(ListView):
         categoria = Category.objects.get(name='TDAH')
         queryset = BlogPost.objects.filter(category=categoria)
         return queryset
+
+# Aqui tem que criar uma lógica para o caso de ainda não existe as categorias citadas        
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
