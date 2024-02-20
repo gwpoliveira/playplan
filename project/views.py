@@ -100,15 +100,23 @@ class TDAHBlogView(ListView):
     paginate_by = 9
 
     def get_queryset(self):
-        categoria = Category.objects.get(name='TDAH')
-        queryset = BlogPost.objects.filter(category=categoria)
+        try:
+            categoria = Category.objects.get(name='TDAH')
+            queryset = BlogPost.objects.filter(category=categoria)
+        except ObjectDoesNotExist:
+            queryset = BlogPost.objects.none()
+
         return queryset
 
-# Aqui tem que criar uma lógica para o caso de ainda não existe as categorias citadas        
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categoria'] = Category.objects.get(name='TDAH')             
+        try:
+            categoria = Category.objects.get(name='TDAH')
+        except ObjectDoesNotExist:
+            categoria = 'TDAH'
+
+        context['categoria'] = categoria           
         return context
 
 
@@ -122,13 +130,23 @@ class TEABlogView(ListView):
     paginate_by = 9
 
     def get_queryset(self):
-        categoria = Category.objects.get(name='TEA')
-        queryset = BlogPost.objects.filter(category=categoria)
+        try:
+            categoria = Category.objects.get(name='TEA')
+            queryset = BlogPost.objects.filter(category=categoria)
+        except ObjectDoesNotExist:
+            queryset = BlogPost.objects.none()
+
         return queryset
     
+ 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categoria'] = Category.objects.get(name='TEA')             
+        try:
+            categoria = Category.objects.get(name='TEA')
+        except ObjectDoesNotExist:
+            categoria = 'TEA'
+
+        context['categoria'] = categoria          
         return context
 
 
