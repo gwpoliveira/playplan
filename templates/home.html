@@ -45,10 +45,10 @@
     <div class="col">
       <div class="card h-100">
         <div class="zoom-effect">
-          <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+          <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
+        <a class="text-decoration-none text-black" href="{% url 'postagem' post.id %}"><h5 class="card-title">{{ post.title }}</h5></a>
           <p class="card-text">{{ post.about }}</p>
           <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
         </div>
@@ -116,10 +116,10 @@
       <div class="col">
         <div class="card h-100">
           <div class="zoom-effect">
-            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+            <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
+            <a class="text-decoration-none text-black" href="{% url 'postagem' post.id %}"><h5 class="card-title">{{ post.title }}</h5></a>
             <p class="card-text">{{ post.about }}</p>
             <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Saiba Mais</a>
           </div>
