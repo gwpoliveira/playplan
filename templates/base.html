@@ -20,6 +20,7 @@
     <script defer src="/static/app.js"></script>
     <script defer src="/static/telefone.js"></script>
     <script defer src="/static/alerta.js"></script>
+    <script defer src="/static/hover-effect.js"></script>
 </head>
 
 <body class="fundo-do-site">
@@ -86,7 +87,8 @@
                         </li>
                         {% else %}
                         <li>
-                            <a class="nav-link texto-branco item-menu" href="{% url 'image_list' %}">{% bs_icon 'lock-fill' extra_classes='fw-bold' %} Login</a>
+                            <a class="nav-link texto-branco item-menu buzz-out" href="{% url 'image_list' %}">
+                                {% bs_icon 'lock-fill' extra_classes='fw-bold' %} Login</a>
                         </li>
                         {% endif %}
 

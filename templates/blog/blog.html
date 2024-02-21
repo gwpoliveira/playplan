@@ -2,15 +2,14 @@
 {% load static bootstrap5 bootstrap_icons %}
 
 
-{% block title %}Notícias{% endblock title %}
+{% block title %}Blog{% endblock title %}
 
 {% block content %}
-
 
 <div class="container mb-3">
     <header class="d-flex flex-wrap justify-content-between">
         <div class="col-md-4 d-flex align-items-center">
-            <h2 class="texto-branco "><i class="fa-solid fa-rss"></i> Notícias sobre {{ categoria }}</h2>
+            <h2 class="texto-branco ">Últimas Notícias</h2>
         </div>
 
 
@@ -33,8 +32,9 @@
             <div class="card h-100">
                 <div class="zoom-effect">
                     <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
-                </div>
+                </div>                
                 <div class="card-body">
+                    <span>{{ post.category }}</span>
                     <h5 class="card-title"><a class="text-decoration-none text-black" href="{% url 'postagem' post.id %}">{{ post.title }}</a></h5>
                     <p class="card-text">{{ post.about }}</p>
                     <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Leia Mais</a>

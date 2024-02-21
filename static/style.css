@@ -16,7 +16,7 @@
 }
 
 
-.logo:hover{
+.logo:hover {
     opacity: 0.5;
     cursor: pointer;
 }
@@ -30,6 +30,8 @@
 
 .item-menu:hover {
     color: gray;
+    transform: scale(1.1); 
+    transition: transform 0.3s ease; 
 
 
 }
@@ -108,3 +110,34 @@ h1#branco {
     transform: scale(1.1);
 }
 
+.icon-link-hover a:hover {
+    color: blue; /* Define a cor azul quando o mouse passar por cima do link */
+}
+
+
+
+@keyframes buzz {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(3px);
+    }
+}
+
+.buzz-out:hover {
+    animation: buzz 0.5s linear;
+}

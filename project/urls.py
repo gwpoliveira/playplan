@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import HomeView, UserProfileView, ApoiadorCreateListView, ContatoCreateView
-from .views import HomeView, TDAHBlogView, TEABlogView, NoticiaView, QuemSomos, PainelAdm
+from .views import HomeView, TDAHBlogView, TEABlogView, NoticiaView, QuemSomos, PainelAdm, Blog
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
@@ -17,6 +17,7 @@ urlpatterns = [
     path('quemsomos/', QuemSomos.as_view(), name='quem-somos'),
     path('noticias_tdah/', TDAHBlogView.as_view(), name='noticias-tdah'),
     path('noticias_tea/', TEABlogView.as_view(), name='noticias-tea'),
+    path('blog/', Blog.as_view(), name='blog'),
     path('postagem/<int:id>', NoticiaView.as_view(), name='postagem'),    
     path('apoio/', ApoiadorCreateListView.as_view(), name='apoio'),
     path('administration/', include('administration.urls')), 

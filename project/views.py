@@ -165,6 +165,13 @@ class NoticiaView(DetailView):
         context['noticia'] = noticia
         return context
     
+class Blog(ListView):
+    model = BlogPost
+    template_name = 'blog/blog.html'
+    context_object_name = 'post'
+    ordering = '-date'
+    paginate_by = 9 
+    
 
 
 # Página do administrador
