@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento, Inscricao
-from .forms import InscricaoForm, CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
+from .forms import InscricaoForm, AtualizaInscricao, CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
@@ -282,7 +282,7 @@ class DetalharInscrito(LoginRequiredMixin, DetailView):
 # view para atualizar inscrito
 class AtualizarInscrito(LoginRequiredMixin,UpdateView):
     model = Inscricao
-    form_class = InscricaoForm
+    form_class = AtualizaInscricao
     template_name = 'administration/edita_inscrito.html'
     success_url = reverse_lazy('inscritos')
 

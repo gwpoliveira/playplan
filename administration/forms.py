@@ -77,3 +77,10 @@ class InscricaoForm(forms.ModelForm):
         if commit:
             inscricao.save()
         return inscricao
+    
+# ************ Atualização de Assinante **************** #
+    
+class AtualizaInscricao(forms.ModelForm):
+    class Meta:
+        model = Inscricao
+        fields = ['email', 'confirmado']
