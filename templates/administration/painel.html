@@ -89,7 +89,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/lista_de_noticias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFive" aria-expanded="{% if request.path == '/administration/lista_de_noticias/' %} true {% else %} false {% endif %}" aria-controls="collapseFive">
-                            <i class="fa-regular fa-newspaper"></i><span class="dist"></span>Notícias
+                            {% bs_icon 'journal-text' %}<span class="dist"></span>Notícias
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Notícias ------------ -->
@@ -97,10 +97,10 @@
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'blog_post_create' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-pencil"></i> Escrever Notícia</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'pencil-square' %} Escrever Notícia</li>
                                 </a>
                                 <a href="{% url 'lista_de_noticias' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-newspaper"></i> Listar Notícias</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'newspaper' %} Listar Notícias</li>
                                 </a>
                             </ul>
                         </div>
@@ -111,7 +111,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/categorias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseSix" aria-expanded="{% if request.path == '/administration/categorias/' %} true {% else %} false {% endif %}" aria-controls="collapseSix">
-                            <i class="fa-solid fa-table"></i><span class="dist"></span>Categorias
+                            {% bs_icon 'tag-fill' %}<span class="dist"></span>Categorias
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Categorias ------------ -->
@@ -119,10 +119,10 @@
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'criar_categoria' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-diagram-next"></i> Criar Categoria</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'plus-circle' %} Criar Categoria</li>
                                 </a>
                                 <a href="{% url 'listar_categorias' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-layer-group"></i> Listar Categoria</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'tags-fill' %} Listar Categorias</li>
                                 </a>
                             </ul>
                         </div>
