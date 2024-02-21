@@ -27,6 +27,7 @@
             <tr>
                 <th scope="col">ID</th>                
                 <th scope="col">E-mail</th>
+                <th scope="col">Status</th>
                 <th scope="col">Consultar</th>
                 <th scope="col">Atualizar</th>
                 <th scope="col">Deletar</th>
@@ -38,6 +39,11 @@
             <tr>
                 <th scope="row">{{ inscricao.id }}</th>                
                 <td>{{inscricao.email}}</td>
+                {% if inscricao.confirmado == True %}                
+                <td scope="row"><button class="btn btn-success"><i class="fa-solid fa-square-check"></i></button></td>
+                {% else %}                
+                <td scope="row"><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
+                {% endif %}
                 <td><a class="btn btn-primary" href="{% url 'detalhar_inscrito' pk=inscricao.pk %}" role="button"><i class="fa-solid fa-eye"></i></a></td>
                 <td><a href="{% url 'atualizar_inscrito' pk=inscricao.pk %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a></td>
                 <td><a href="{% url 'apagar_inscrito' pk=inscricao.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
