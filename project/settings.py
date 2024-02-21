@@ -110,7 +110,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-#Configurnado gmail para a new letter
+#Configurnado email para a new letter
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.somostodosnerds.com.br'
 EMAIL_PORT = 587
