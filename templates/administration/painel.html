@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static bootstrap5 %}
+{% load static bootstrap5 bootstrap_icons %}
 
 
 {% block title %}Painel Administrativo{% endblock title %}
@@ -17,7 +17,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/image_list/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="{% if request.path == '/administration/image_list/' %} true {% else %} false {% endif %}" aria-controls="collapseOne">
-                            <i class="fa-regular fa-image"></i><span class="dist"></span>Banners
+                            {% bs_icon 'images' %}<span class="dist"></span>Banners
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Banners ------------ -->
@@ -25,13 +25,13 @@
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'add_image' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-plus"></i> Inserir Banner</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'plus-circle' %} Inserir Banner</li>
                                 </a>
                                 <a href="{% url 'image_list' %}" class="text-decoration-none">
                                     <li class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Listar Banners</li>
                                 </a>
                                 <a href="{% url 'image_list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-rotate-right"></i> Atualizar
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'arrow-clockwise' %} Atualizar
                                         Banner</li>
                                 </a>
                             </ul>
@@ -43,7 +43,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/contato_list/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="{% if request.path == '/administration/contato_list/' %} true {% else %} false {% endif %}" aria-controls="collapseTwo">
-                            <i class="fa-regular fa-envelope"></i><span class="dist"></span>Mensagens
+                            {% bs_icon 'envelope-at' %}<span class="dist"></span>Mensagens
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Mensagens ------------ -->
@@ -51,7 +51,7 @@
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'contato_list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-inbox"></i> Listar Mensagens</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'inboxes-fill' %} Listar Mensagens</li>
                                 </a>
                             </ul>
                         </div>
@@ -63,7 +63,7 @@
                         <button class="accordion-button {% if request.path == '/administration/lista_de_apoiadores/' %}  {% else %} collapsed {% endif %}
                         " type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFour" aria-expanded="{% if request.path == '/administration/lista_de_apoiadores/' %} true {% else %} false {% endif %}" aria-controls="collapseFour">
-                            <i class="fa-regular fa-handshake"></i><span class="dist"></span>Apoiadores
+                            {% bs_icon 'people-fill' %}<span class="dist"></span>Apoiadores
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Apoiadores ------------ -->
@@ -71,13 +71,13 @@
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'criar_apoiador' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-plus"></i> Criar Apoiador</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'plus-circle' %} Criar Apoiador</li>
                                 </a>
                                 <a href="{% url 'lista_de_apoiadores' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Listar Apoiadores</li>
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'list-ul' %} Listar Apoiadores</li>
                                 </a>
                                 <a href="{% url 'lista_de_apoiadores' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-rotate-right"></i> Atualizar
+                                    <li class="list-group-item list-group-item-action">{% bs_icon 'arrow-clockwise' %} Atualizar
                                         Apoiador</li>
                                 </a>
                             </ul>
@@ -133,7 +133,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/depoimento/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseSeven" aria-expanded="{% if request.path == '/administration/depoimento/' %} true {% else %} false {% endif %}" aria-controls="collapseSeven">
-                            <i class="fa-regular fa-comment"></i><span class="dist"></span>Depoimentos
+                            {% bs_icon 'chat-quote' %}<span class="dist"></span>Depoimentos
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Depoimentos ------------ -->
@@ -155,7 +155,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/inscritos/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseEight" aria-expanded="{% if request.path == '/administration/inscritos/' %} true {% else %} false {% endif %}" aria-controls="collapseEight">
-                            <i class="fa-solid fa-rss"></i><span class="dist"></span>Boletim
+                            {% bs_icon 'rss' %}<span class="dist"></span>Boletim
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Boletins ------------ -->

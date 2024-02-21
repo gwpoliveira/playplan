@@ -1,4 +1,4 @@
-{% load static bootstrap5 %}
+{% load static bootstrap5 bootstrap_icons %}
 <html lang="pt-br">
 
 <head>
@@ -86,8 +86,7 @@
                         </li>
                         {% else %}
                         <li>
-                            <a class="nav-link texto-branco item-menu" href="{% url 'image_list' %}"><i
-                                    class="fa-solid fa-lock"></i> Login</a>
+                            <a class="nav-link texto-branco item-menu" href="{% url 'image_list' %}">{% bs_icon 'lock-fill' extra_classes='fw-bold' %} Login</a>
                         </li>
                         {% endif %}
 
