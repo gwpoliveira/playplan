@@ -35,7 +35,7 @@
         </thead>
         
         <tbody>
-            {% for apoiador in apoiadores %}
+            {% for apoiador in page_obj %}
             <tr>
                 <th scope="row">{{ apoiador.id }}</th>
                 <td>{{apoiador.nome}}</td>
@@ -50,5 +50,8 @@
 
 </ul>
 
+<div class="container">
+    {% bootstrap_pagination page_obj %}
+</div>
 
 {% endblock conteudo %}

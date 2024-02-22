@@ -37,7 +37,7 @@
     </tr>
   </thead>
 
-  {% for contato in contatos %}
+  {% for contato in page_obj %}
 
   <tbody>
 
@@ -74,6 +74,13 @@
     {% endfor %}
   </tbody>
 </table>
+
+
+{% if num_contato > 10 %}
+<div class="container">
+  {% bootstrap_pagination page_obj %}
+</div>
+{% endif %}
 
 
 

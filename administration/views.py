@@ -15,6 +15,13 @@ class ImageListView(LoginRequiredMixin, ListView):
     template_name = 'administration/image_list.html'
     context_object_name = 'images'
     ordering='-data'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_carousel = CarouselImage.objects.filter(ativo=True).count()
+        context['num_carousel'] = num_carousel  
+        return context
 
 # View para criar/adicionar as imagens do carrocel
 class ImageCreateView(LoginRequiredMixin,CreateView):
@@ -55,6 +62,13 @@ class ContatoListView(LoginRequiredMixin, ListView):
     template_name = 'contato/contato_list.html'
     context_object_name = 'contatos'
     ordering='-data'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_contato = Contato.objects.count()
+        context['num_contato'] = num_contato  
+        return context
 
 # View que mostra os detalhes do contato.
 class ContatoDetailView(LoginRequiredMixin, DetailView):
@@ -110,6 +124,13 @@ class ListaDeNotícias(LoginRequiredMixin, ListView):
     template_name = 'administration/lista_de_noticias.html'
     context_object_name='posts'
     ordering='-date'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_posts = BlogPost.objects.count()
+        context['num_posts'] = num_posts  
+        return context
 
 
 # ************ Apoio *************** #  
@@ -118,6 +139,9 @@ class ListaApoiadores(LoginRequiredMixin, ListView):
     model = Apoiador
     template_name = 'apoio/lista.html'
     context_object_name='apoiadores'
+    paginate_by = 10
+
+    
 
     def get_queryset(self):
         search = self.request.GET.get("apoiador")
@@ -185,6 +209,13 @@ class ListarCategorias(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'categorys/listar_categorias.html'
     context_object_name ='categorias'
+    paginate_by = 2
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_categorias = Category.objects.count()
+        context['num_categorias'] = num_categorias  
+        return context
 
 
 # View que um usuário autenticado atualiza as categorias existentes.
@@ -223,6 +254,13 @@ class DepoimentoListView(LoginRequiredMixin, ListView):
     template_name = 'depoimento/depoimento_list.html'
     context_object_name = 'depoimentos'
     ordering='-data'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_depoimentos = Depoimento.objects.count()
+        context['num_depoimentos'] = num_depoimentos  
+        return context
 
 
 # View responsável para detalhar os depoimentos no painel administrativo
@@ -272,6 +310,14 @@ class Inscritos(LoginRequiredMixin, ListView):
     model = Inscricao
     template_name = 'administration/assinantes.html'
     context_object_name = 'assinantes'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):        
+        context = super().get_context_data(**kwargs)
+        num_inscritos = Inscricao.objects.count()
+        context['num_inscritos'] = num_inscritos  
+        return context
+
 
 # view para detalhar inscrito
 class DetalharInscrito(LoginRequiredMixin, DetailView):
