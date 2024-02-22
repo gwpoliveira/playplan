@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento, Inscricao
-from .forms import InscricaoForm, AtualizaInscricao, CarouselImageForm, ContatoForm, BlogPostForm, BlogPostImageForm, ApoiadorForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
+from .forms import InscricaoForm, AtualizaInscricao, CarouselImageForm, AtualizarApoiador, BlogPostForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
@@ -150,7 +150,7 @@ class ApoiadorDeleteView(LoginRequiredMixin, DeleteView):
 class ApoiadorUpdateView(LoginRequiredMixin, UpdateView):
     model=Apoiador
     template_name='apoio/atualizar_apoiador.html'
-    form_class=ApoiadorForm
+    form_class=AtualizarApoiador
     pk_url_kwarg='id'
 
     def get_success_url(self):
@@ -161,7 +161,7 @@ class ApoiadorUpdateView(LoginRequiredMixin, UpdateView):
 class ApoiadorCreateView(LoginRequiredMixin, CreateView):
     model=Apoiador
     template_name='apoio/novo_apoiador.html'
-    form_class=ApoiadorForm
+    form_class=AtualizarApoiador
     
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Apoiador cadastrado com sucesso!")

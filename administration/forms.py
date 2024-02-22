@@ -45,6 +45,11 @@ class BlogPostImageForm(forms.ModelForm):
 class ApoiadorForm(forms.ModelForm):
     class Meta:
         model = Apoiador
+        fields=['nome', 'email']
+
+class AtualizarApoiador(forms.ModelForm):
+    class Meta:
+        model = Apoiador
         fields='__all__'
 
 # ************ Formulário do Categoria **************** #

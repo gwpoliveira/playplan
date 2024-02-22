@@ -33,9 +33,9 @@
                 <div class="zoom-effect">
                     <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
                 </div>                
-                <div class="card-body">
-                    <span>{{ post.category }}</span>
-                    <h5 class="card-title"><a class="text-decoration-none text-black" href="{% url 'postagem' post.id %}">{{ post.title }}</a></h5>
+                <div class="card-body">               
+                    
+                    <a class="text-decoration-none text-black mt-1" href="{% url 'postagem' post.id %}"><h5 class="card-title noticia">{{ post.title }}</h5></a>
                     <p class="card-text">{{ post.about }}</p>
                     <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Leia Mais</a>
                 </div>

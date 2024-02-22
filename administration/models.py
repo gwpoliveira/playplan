@@ -85,6 +85,7 @@ class BlogPostImage(models.Model):
 class Apoiador(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField()
+    visivel = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome

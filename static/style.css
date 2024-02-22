@@ -142,7 +142,13 @@ h1#branco {
     animation: buzz 0.5s linear;
 }
 
-.teste:hover {
-    color: yellow;
+.destaque_home:hover {
+    color: #303e4b;    
+    cursor: pointer;
+}
+
+
+.noticia:hover {
+    color: #303e4b;
     cursor: pointer;
 }

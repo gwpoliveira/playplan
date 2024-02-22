@@ -2,17 +2,24 @@
 {% load static bootstrap5 %}
 
 
-{% block title %}Quem Somos{% endblock title %}
+{% block title %}Inscrição{% endblock title %}
 
 {% block content %}
 
-<div class="container my-5 bg-body-tertiary p-3 rounded">
+
+<div class="container my-5 text-center bg-secondary-subtle p-4 rounded">
+  <h2>E-mail já foi inscrito!</h2>
+  <p>Este e-mail já foi inscrito anteriormente. Em caso de dúvida, entre em contato conosco <a href="{% url 'contato' %}">clicando aqui</a></p>
+</div>
+
+
+<!-- <div class="container my-5 bg-body-tertiary p-3 rounded">
     <h2><i class="fa-solid fa-rss"></i> Fique por dentro</h2>
     <form action="{% url 'inscricao_newsletter' %}" method="post" class="mt-3">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit" class="btn btn-primary">Inscrever-se</button>
     </form>
-  </div>
+  </div> -->
 
 {% endblock content %}
