@@ -147,10 +147,8 @@ class ListaApoiadores(LoginRequiredMixin, ListView):
         context['num_apoiador'] = num_apoiador  
         return context
 
-    
-
     def get_queryset(self):
-        search = self.request.GET.get("apoiador")
+        search = self.request.GET.get("pesquisa")
         
         if search:
             self.apoiadores = Apoiador.objects.filter(nome__icontains=search)
