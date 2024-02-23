@@ -7,6 +7,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 from django.contrib import messages
+from django.db.models import Q
 
 # ************ Carrossel *************** 
 # View para listar as imagens do carrocel
@@ -63,6 +64,19 @@ class ContatoListView(LoginRequiredMixin, ListView):
     context_object_name = 'contatos'
     ordering='-data'
     paginate_by = 10
+
+
+    def get_queryset(self):
+        search = self.request.GET.get("pesquisa")
+    
+        if search:
+            contatos = Contato.objects.filter(Q(nome__icontains=search) | Q(email__icontains=search))
+        else:
+            contatos = Contato.objects.all()
+
+        return contatos
+
+
 
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
