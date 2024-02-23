@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_ckeditor_5.fields import CKEditor5Field
+from django.utils.text import slugify
 
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
@@ -67,6 +68,12 @@ class BlogPost(models.Model):
     featured_image = models.ImageField(upload_to='blog_featured_images/', verbose_name="Imagem de Destaque")
     description=CKEditor5Field('Post: ', config_name='extends', blank=True, null=True)
     destaque_home = models.BooleanField(default=True)
+    slug = models.SlugField(default="", max_length=255, unique=True, editable=True)
+
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.slug = slugify(self.title) 
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

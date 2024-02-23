@@ -31,13 +31,13 @@
         <div class="col">
             <div class="card h-100">
                 <div class="zoom-effect">
-                    <a href="{% url 'postagem' post.id %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
+                    <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
                 </div>                
                 <div class="card-body">               
                     
-                    <a class="text-decoration-none text-black mt-1" href="{% url 'postagem' post.id %}"><h5 class="card-title noticia">{{ post.title }}</h5></a>
+                    <a class="text-decoration-none text-black mt-1" href="{% url 'postagem' post.slug %}"><h5 class="card-title noticia">{{ post.title }}</h5></a>
                     <p class="card-text">{{ post.about }}</p>
-                    <a href="{% url 'postagem' post.id %}" class="btn btn-primary">Leia Mais</a>
+                    <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Leia Mais</a>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Publicado em: {{ post.date }}</small>
