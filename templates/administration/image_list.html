@@ -1,5 +1,5 @@
 {% extends 'administration/painel.html' %}
-{% load static bootstrap5 bootstrap_icons %}
+{% load static bootstrap5 %}
 
 {% block title %}Lista de Banners{% endblock title %}
 
@@ -40,19 +40,19 @@
       <tr>        
         <td><img src="{{ image.image.url }}" width="300" alt="..."></td>  
         {% if image.link %}
-        <td><a href="{{ image.link }}" target="_blank"><button class="btn btn-success">{% bs_icon 'link-45deg' %}</button></a></td>
+        <td><a href="{{ image.link }}" target="_blank"><button class="btn btn-success"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></a></td>
         {% else %}
-        <td><button class="btn btn-danger">{% bs_icon 'ban' %}</button></td>
+        <td><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
         {% endif %}
         {% if image.ativo == True %}
-       <td><button class="btn btn-success">{% bs_icon 'check2-square' %}</button></td>
+       <td><button class="btn btn-success"><i class="fa-regular fa-square-check"></i></button></td>
         {% else %}
-        <td><button class="btn btn-secondary">{% bs_icon 'file-x' %}</button></td>
+        <td><button class="btn btn-secondary"><i class="fa-solid fa-file-circle-xmark"></i></button></td>
         {% endif %}
         <td>
-          <a class="btn btn-primary" href="{% url 'detail_image' pk=image.pk %}">{% bs_icon 'eye-fill' %}</a>
-          <a class="btn btn-primary" href="{% url 'edit_image' pk=image.pk %}">{% bs_icon 'arrow-clockwise' %}</a>
-          <a class="btn btn-danger" href="{% url 'delete_image' pk=image.pk %}">{% bs_icon 'trash3-fill' %}</a>
+          <a class="btn btn-primary" href="{% url 'detail_image' pk=image.pk %}"><i class="fa-solid fa-eye"></i></a>
+          <a class="btn btn-primary" href="{% url 'edit_image' pk=image.pk %}"><i class="fa-solid fa-rotate-right"></i></a>
+          <a class="btn btn-danger" href="{% url 'delete_image' pk=image.pk %}"><i class="fa-regular fa-trash-can"></i></a>
         </td>
       </tr>
     </tbody>

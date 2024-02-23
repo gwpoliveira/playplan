@@ -1,5 +1,5 @@
 {%extends 'administration/painel.html'%}
-{% load static bootstrap5 bootstrap_icons %}
+{% load static bootstrap5 %}
 {%block title%}Contato de {{contato.nome}}{%endblock title%}
 {% block conteudo %}
 
@@ -25,12 +25,12 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <p class="card-title">{% bs_icon 'person-fill' %}<strong>Nome:
+        <p class="card-title"><i class="fa-regular fa-user"></i><strong>Nome:
             </strong>{{contato.nome}}</p>
-        <p class="card-title">{% bs_icon 'envelope-fill' %}<strong>E-mail: </strong>{{contato.email }}</p>
-        <p class="card-title">{% bs_icon 'calendar-event' %}<strong>Data: </strong>{{contato.data }}</p>
-        <p class="card-title">{% bs_icon 'telephone-fill' %}<strong>Telefone: </strong>{{contato.telefone }}</p>
-        <p class="card-text">{% bs_icon 'chat-right-text-fill' %}<strong>Mensagem:</strong>
+        <p class="card-title"><i class="fa-regular fa-envelope"></i><strong>E-mail: </strong>{{contato.email }}</p>
+        <p class="card-title"><i class="fa-solid fa-calendar-days"></i><strong>Data: </strong>{{contato.data }}</p>
+        <p class="card-title"><i class="fa-solid fa-square-phone"></i><strong>Telefone: </strong>{{contato.telefone }}</p>
+        <p class="card-text"><i class="fa-solid fa-envelope-open-text"></i><strong>Mensagem:</strong>
             {{contato.mensagem}}</p>
         <hr>
 
