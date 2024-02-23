@@ -148,6 +148,18 @@ class ListaDeNotícias(LoginRequiredMixin, ListView):
         return context
 
 
+    def get_queryset(self):            
+        
+        search = self.request.GET.get("pesquisa")
+    
+        if search:
+            noticias = BlogPost.objects.filter(Q(title__icontains=search) | Q(about__icontains=search))
+        else:
+            noticias = BlogPost.objects.all().order_by('-date')
+
+        return noticias 
+
+
 # ************ Apoio *************** #  
 # View que exibe uma lista de apoiadores.
 class ListaApoiadores(LoginRequiredMixin, ListView):
@@ -281,12 +293,23 @@ class DepoimentoListView(LoginRequiredMixin, ListView):
         context['num_depoimentos'] = num_depoimentos  
         return context
 
+    def get_queryset(self):            
+        
+        search = self.request.GET.get("pesquisa")
+    
+        if search:
+            depoimento = Depoimento.objects.filter(Q(nome__icontains=search) | Q(cargo__icontains=search))
+        else:
+            depoimento = Depoimento.objects.all()
+
+        return depoimento 
 
 # View responsável para detalhar os depoimentos no painel administrativo
 class DepoimentoDetailView(LoginRequiredMixin, DetailView):
     model = Depoimento
     template_name = 'depoimento/depoimento_detail.html'
     context_object_name = 'depoimento'
+
 
 
 # View responsável para criar os depoimentos no painel administrativo
@@ -336,6 +359,18 @@ class Inscritos(LoginRequiredMixin, ListView):
         num_inscritos = Inscricao.objects.count()
         context['num_inscritos'] = num_inscritos  
         return context
+    
+    def get_queryset(self):            
+        
+        search = self.request.GET.get("pesquisa")
+    
+        if search:
+            inscritos = Inscricao.objects.filter(email__icontains=search)
+        else:
+            inscritos = Inscricao.objects.all()
+
+        return inscritos 
+    
 
 
 # view para detalhar inscrito
