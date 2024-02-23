@@ -62,19 +62,20 @@ class ContatoListView(LoginRequiredMixin, ListView):
     model = Contato
     template_name = 'contato/contato_list.html'
     context_object_name = 'contatos'
-    ordering='-data'
+    ordering = '-data'
     paginate_by = 10
 
 
-    def get_queryset(self):
+    def get_queryset(self):            
+        
         search = self.request.GET.get("pesquisa")
     
         if search:
             contatos = Contato.objects.filter(Q(nome__icontains=search) | Q(email__icontains=search))
         else:
-            contatos = Contato.objects.all()
+            contatos = Contato.objects.all().order_by('-data')
 
-        return contatos
+        return contatos 
 
 
 
