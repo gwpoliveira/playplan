@@ -30,8 +30,8 @@
 
 .item-menu:hover {
     color: gray;
-    transform: scale(1.1); 
-    transition: transform 0.3s ease; 
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 
 
 }
@@ -111,7 +111,8 @@ h1#branco {
 }
 
 .icon-link-hover a:hover {
-    color: blue; /* Define a cor azul quando o mouse passar por cima do link */
+    color: blue;
+    /* Define a cor azul quando o mouse passar por cima do link */
 }
 
 
@@ -143,7 +144,7 @@ h1#branco {
 }
 
 .destaque_home:hover {
-    color: #303e4b;    
+    color: #303e4b;
     cursor: pointer;
 }
 
@@ -152,3 +153,6 @@ h1#branco {
     color: #303e4b;
     cursor: pointer;
 }
+
+
+
