@@ -1,0 +1,84 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Lista de Depoimentos{% endblock title %}
+{% block conteudo %}
+
+
+<div class="row">
+  <div class="col mt-2">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+        <li class="breadcrumb-item text-white">
+          <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+            <i class="fa-solid fa-house"></i><span class="dist"></span>
+            Painel
+          </a>
+        </li>
+        <li class="breadcrumb-item text-white active">
+          <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+            href="{% url 'depoimento-list' %}">Lista de Depoimentos</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="col d-flex justify-content-end">
+    <form class="d-flex" role="search" method="get">
+        <input class="form-control me-2" type="search" placeholder="Pesquise por nome ou cargo" aria-label="Search" name="pesquisa" id="pesquisa">
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+</div>
+</div>
+
+
+
+<ul class="list-group list-group-flush">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+
+        <th scope="col">Nome</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Status</th>
+        <th scope="col">Consultar</th>
+        <th scope="col">Atualizar</th>
+        <th scope="col">Deletar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for depoimento in page_obj %}
+      <tr>
+
+        <td>{{ depoimento.nome }}</td>
+        <td>{{ depoimento.cargo }}</td>
+        {% if depoimento.ativo == True %}
+        <td><button class="btn btn-success"><i class="fa-regular fa-square-check"></i></button></td>
+        {% else %}
+        <td><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
+        {% endif %}
+        <td><a class="btn btn-primary" href="{% url 'depoimento-detail' depoimento.pk %}" role="button"><i
+              class="fa-solid fa-eye"></i></a></td>
+        <td><a href="{% url 'depoimento-update' depoimento.pk %}" class="btn btn-primary"><i
+              class="fa-solid fa-rotate-right"></i></a></td>
+        <td><a href="{% url 'depoimento-delete' depoimento.pk %}" class="btn btn-danger"><i
+              class="fa-solid fa-trash-can"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</ul>
+
+
+{% if num_depoimentos > 10 %}
+<div class="container">
+  {% bootstrap_pagination page_obj %}
+</div>
+{% endif %}
+
+
+{% endblock %}

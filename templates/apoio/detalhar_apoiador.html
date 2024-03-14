@@ -1,0 +1,34 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Detalhar Apoiador{% endblock title %}
+
+
+{% block conteudo %}
+<div class="mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'lista_de_apoiadores' %}">Lista de Apoiadores</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Detalhar Apoiador
+            </li>
+        </ol>
+    </nav>
+</div>
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{apoiador.nome}}</h5>
+      <p class="card-text">E-mail: {{apoiador.email}}</p>
+    </div>
+  </div>
+
+
+{% endblock conteudo %}

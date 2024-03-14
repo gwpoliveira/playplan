@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Apoie{% endblock title %}
+
+{% block content %}
+
+<header class="bg-light p-5 text-center">
+    <h1 class="display-4">Apoie Esse Projeto</h1>
+    <p class="lead">Sua contribuição faz a diferença!</p>
+</header>
+
+<section id="apoio" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Seja um Apoiador</h2>
+    <p class="text-center">Mostre seu apoio à nosso projeto. Preencha o formulário abaixo para se identificar como apoiador caso deseje:</p>
+
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+      </form>
+
+</section>
+
+<section id="pix" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Contribua através do PIX</h2>
+    <p class="text-center">Escaneie o QR Code abaixo com seu aplicativo PIX para fazer sua contribuição:</p>
+
+    <!-- Substitua o valor do atributo 'src' com o seu QR Code PIX -->
+    <img src="/static/img/pix.png" alt="QR Code PIX" class="img-fluid mx-auto d-block my-3">
+
+    <p class="text-center">Ou utilize a chave PIX: <strong>1429c3d2-f69f-48de-b1d7-8b0eb502e6a5</strong></p>
+</section>
+
+<section id="apoiadores" class="container my-5 texto-branco ">
+    <h2 class="text-center mb-4">Apoiadores</h2>
+    <p class="text-center">Agradecemos aos seguintes apoiadores que tornaram esta causa possível:</p>
+    
+    <!-- Aqui você pode exibir dinamicamente a lista de apoiadores -->
+    {% if apoiadores %}
+    <div class="border rounded bg-secondary.bg-gradient pt-3">
+    {% for apoiador in apoiadores %}  
+    <p class="text-center">{{apoiador.nome}}</p>
+    {% endfor %}
+    </div>
+    {% endif %}
+    
+</section>
+
+{% endblock content %}

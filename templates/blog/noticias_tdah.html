@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static bootstrap5  %}
+
+
+{% block title %}Notícias TDAH{% endblock title %}
+
+{% block content %}
+
+<div class="container mb-3">
+    <header class="d-flex flex-wrap justify-content-between">
+        <div class="col-md-4 d-flex align-items-center">
+            <h2 class="texto-branco "><i class="fa-solid fa-rss"></i> Notícias sobre {{ categoria }}</h2>
+        </div>
+
+
+        <ul class="nav justify-content-end d-flex">
+            <li class="ms-1"><a href="" class="btn btn-secondary btn-lg"><i class="fa-brands fa-facebook"></i></a></li>
+            <li class="ms-1"><a href="" class="btn btn-secondary btn-lg"><i class="fa-brands fa-instagram"></i></a></li>
+            <li class="ms-1"><a href="" class="btn btn-secondary btn-lg"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li class="ms-1"><a href="" class="btn btn-secondary btn-lg"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li class="ms-1"><a href="" class="btn btn-secondary btn-lg"><i class="fa-brands fa-telegram"></i></a></li>
+        </ul>
+    </header>
+</div>
+
+<div class="container">
+
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in page_obj %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="zoom-effect">
+                    <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
+                </div>                
+                <div class="card-body">
+                    <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}"><h5 class="card-title noticia">{{ post.title }}</h5></a>
+                    <p class="card-text">{{ post.about }}</p>
+                    <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Leia Mais</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Publicado em: {{ post.date }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+
+    <div class="container d-flex justify-content-center mt-5">
+        {% bootstrap_pagination page_obj %}
+
+    </div>
+
+
+</div>
+{% endblock content %}

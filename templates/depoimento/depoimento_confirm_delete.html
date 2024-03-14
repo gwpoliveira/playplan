@@ -1,0 +1,41 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Apagar Depoimento{% endblock title %}
+
+{% block conteudo %}
+
+<div class="mt-2">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <li class="breadcrumb-item text-white">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+          <i class="fa-solid fa-house"></i><span class="dist"></span>
+          Painel
+        </a>
+      </li>
+      <li class="breadcrumb-item text-white active">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+          href="{% url 'depoimento-list' %}">Lista de Depoimentos</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+
+
+
+
+<div class="bg-white p-3 rounded border">
+  <p>Deseja mesmo excluir o depoimento {{ depoimento.nome }} - {{ depoimento.cargo }}?</p>
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Excluir</button>
+      <a href="{% url 'depoimento-list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+
+</div>
+
+
+{% endblock %}

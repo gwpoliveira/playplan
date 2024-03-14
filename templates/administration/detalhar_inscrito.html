@@ -1,0 +1,51 @@
+{% extends 'administration/painel.html' %}
+{% load static bootstrap5 %}
+
+{% block title %}Área Administrativa{% endblock title %}
+
+{% block conteudo %}
+
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+                    href="{% url 'inscritos' %}">Lista de Assinantes</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Detalhando Inscrito
+            </li>
+        </ol>
+    </nav>
+</div>
+
+
+
+<div class="card mb-3">
+    <div class="card-body">
+
+        <p class="card-title"><i class="fa-solid fa-envelope"></i><span class="dist"></span><strong>E-mail: </strong>{{inscrito.email }}</p>
+        {% if inscrito.confirmado == False %}
+        <p class="card-title"><i class="fa-solid fa-envelope-circle-check"></i><span class="dist"></span><strong>E-mail: </strong>Não Confirmado</p>
+        {% else %}
+        <p class="card-title"><i class="fa-solid fa-envelope-circle-check"></i><span class="dist"></span><strong>E-mail: </strong>Confirmado</p>
+        {% endif %}
+
+
+
+
+        <a href="{% url 'atualizar_inscrito' pk=inscrito.pk %}" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i></a>
+        <a href="{% url 'apagar_inscrito' pk=inscrito.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+
+
+
+    </div>
+</div>
+
+{% endblock conteudo %}

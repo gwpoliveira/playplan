@@ -1,0 +1,62 @@
+{%extends 'administration/painel.html'%}
+{% load static bootstrap5 %}
+{%block title%}Contato de {{contato.nome}}{%endblock title%}
+{% block conteudo %}
+
+<div class="mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
+                    <i class="fa-solid fa-house"></i><span class="dist"></span>
+                    Painel
+                </a>
+            </li>
+            <li class="breadcrumb-item text-white">
+                <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
+                    href="{% url 'contato_list' %}">Lista de Mensagens</a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+                Ler Mensagem
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <p class="card-title"><i class="fa-regular fa-user"></i><strong>Nome:
+            </strong>{{contato.nome}}</p>
+        <p class="card-title"><i class="fa-regular fa-envelope"></i><strong>E-mail: </strong>{{contato.email }}</p>
+        <p class="card-title"><i class="fa-solid fa-calendar-days"></i><strong>Data: </strong>{{contato.data }}</p>
+        <p class="card-title"><i class="fa-solid fa-square-phone"></i><strong>Telefone: </strong>{{contato.telefone }}</p>
+        <p class="card-text"><i class="fa-solid fa-envelope-open-text"></i><strong>Mensagem:</strong>
+            {{contato.mensagem}}</p>
+        <hr>
+
+        <p class="card-text"><STRong>STATUS</STRong></p>
+
+        {% if contato.lida == False %}
+        <p class="card-text"><strong>Lida: </strong>Não</p>
+        {% else %}
+        <p class="card-text"><strong>Lida: </strong>Sim</p>
+        {% endif %}
+
+        {% if contato.status == True %}
+        <p class="card-text"><strong>Resposta: </strong>Respondida</p>
+        {% else %}
+        <p class="card-text"><strong>Resposta: </strong>Não Respondida</p>
+        {% endif %}
+
+
+
+
+        <a href="{% url 'atualizar_contato' contato.id %}" class="btn btn-primary">Atualizar Status</a>
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

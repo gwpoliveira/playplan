@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static bootstrap5 %}
+
+
+{% block title %}Confirmação de Inscrição{% endblock title %}
+
+{% block content %}
+
+<div class="container my-5 text-center bg-secondary-subtle p-4 rounded">
+    <h2>Confirmação de Inscrição</h2>
+    <p>Obrigado por se inscrever! Um e-mail de confirmação foi enviado para <strong>{{email }}</strong>.</p>
+</div>
+
+{% endblock content %}

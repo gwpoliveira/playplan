@@ -1,11 +1,39 @@
-body {
-    background-image: url('/static/img/bg1.jpg'); /* Substitua pela URL da sua imagem */    
-    background-position: center; /* Centraliza a imagem no fundo */
-    background-repeat: no-repeat; /* Evita a repetição da imagem */
+:root {
+    --orange: #f78b00;
+    --blue: #00285f;
+    --gray: #ededed;
+    --red: #8b0000;
 }
 
+
+.fundo-do-site {
+    background-color: #303e4b;
+    /* Substitua pela URL da sua imagem */
+    background-position: center;
+    /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat;
+    /* Evita a repetição da imagem */
+}
+
+
+.logo:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
 .texto-branco {
-    color: #fff; /* Código da cor branca */
+    color: #fff;
+    /* Código da cor branca */
+}
+
+.item-menu:hover {
+    color: gray;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+
+
 }
 
 body.fundo-do-site {
@@ -13,3 +41,118 @@ body.fundo-do-site {
     display: flex;
     flex-direction: column;
 }
+
+h1#branco {
+    color: #fff
+}
+
+.dist {
+    margin-right: 7px;
+}
+
+#login {
+    border: 1px solid var(--blue);
+    background: gray;
+    padding: 4px 20px;
+    cursor: pointer;
+    /* margin-left: 10px; */
+    color: var(--blue);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#login:hover {
+    transition: background, color 0.6s;
+    background: var(--orange);
+    color: white;
+}
+
+
+#sair {
+    border: 1px solid var(--blue);
+    background: white;
+    padding: 4px 20px;
+    cursor: pointer;
+    /* margin-left: 10px; */
+    color: var(--blue);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#sair:hover {
+    transition: background, color 0.6s;
+    background: var(--red);
+    color: white;
+}
+
+
+.breadcrumb-item+.breadcrumb-item::before {
+    /* content: "/";
+        padding: 0 5px; */
+    color: white;
+    /* cor do separador */
+}
+
+::after {
+    color: white;
+}
+
+
+.zoom-effect {
+    overflow: hidden;
+}
+
+.zoom-effect img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-effect:hover img {
+    transform: scale(1.1);
+}
+
+.icon-link-hover a:hover {
+    color: blue;
+    /* Define a cor azul quando o mouse passar por cima do link */
+}
+
+
+
+@keyframes buzz {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(3px);
+    }
+}
+
+.buzz-out:hover {
+    animation: buzz 0.5s linear;
+}
+
+.destaque_home:hover {
+    color: #303e4b;
+    cursor: pointer;
+}
+
+
+.noticia:hover {
+    color: #303e4b;
+    cursor: pointer;
+}
+
+
+
