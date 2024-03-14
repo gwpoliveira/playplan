@@ -116,12 +116,12 @@ STATICFILES_DIRS = [
 ]
 
 #Configurnado email para a new letter
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.somostodosnerds.com.br'
-EMAIL_PORT = 587
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'playplan@somostodosnerds.com.br'
-EMAIL_HOST_PASSWORD = 'Samuca10x'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 CSRF_COOKIE_SECURE = True 
 
 # Media files (uploads)
