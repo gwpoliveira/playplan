@@ -108,6 +108,7 @@ h1#branco {
 
 .zoom-effect:hover img {
     transform: scale(1.1);
+    border-radius: 500px;
 }
 
 .icon-link-hover a:hover {

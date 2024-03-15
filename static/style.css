@@ -108,6 +108,7 @@ h1#branco {
 
 .zoom-effect:hover img {
     transform: scale(1.1);
+    border-radius: 100px;
 }
 
 .icon-link-hover a:hover {
@@ -153,6 +154,8 @@ h1#branco {
     color: #303e4b;
     cursor: pointer;
 }
+
+
 
 
 
