@@ -8,42 +8,37 @@
 
 {% comment %} ----- Carrosel ----- {% endcomment %}
 
-<section class="Carrosel">
-  <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+<section class="carousel">
+  <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      {% for image in images%}
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" class="active" aria-current="true" aria-label="Slide {{forloop.counter0}}"></button>
+      {% for image in images %}
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.first %} class="active" {% endif %} aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.counter0}}"></button>
       {% endfor %}
     </div>
     <div class="carousel-inner">
-
-      
       {% for image in images %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
         {% if image.link %}
-        <a href="{{image.link}}"><img src="{{ image.image.url }}" style=" object-fit: cover; max-height: 600px;"
-            class="d-block w-100" alt="Carousel Image"></a>
+        <a href="{{image.link}}"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="Carousel Image"></a>
         {% else %}
-        <a href="#"><img src="{{ image.image.url }}" style=" object-fit: cover; max-height: 600px;"
-            class="d-block w-100" alt="Carousel Image"></a>
+        <a href="#"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="Carousel Image"></a>
         {% endif %}
       </div>
       {% endfor %}
     </div>
     {% if num_carousel > 1 %}
-    {% for image in images %}
-    {% endfor %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
     {% endif %}
   </div>
 </section>
+
 
 {% comment %} ----- Destaques do Blog TEA ----- {% endcomment %}
 
@@ -194,7 +189,7 @@
 
       </div>
       {% endif %}
-      <
+      
 
     </div>
     {% comment %} ----- News Letter ----- {% endcomment %}
