@@ -85,6 +85,12 @@ h1#branco {
     color: white;
 }
 
+.carousel-indicators button  {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50%;
+}
+
 
 .breadcrumb-item+.breadcrumb-item::before {
     /* content: "/";
@@ -154,8 +160,3 @@ h1#branco {
     color: #303e4b;
     cursor: pointer;
 }
-
-
-
-
-
