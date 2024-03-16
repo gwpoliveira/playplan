@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
 
-
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
 <div class="container">
   <div class="row">
 
-
-    <div class="col-8 bg-secondary-subtle rounded p-3">
+    <div class="col-lg-8 col-sm-12 mb-3 bg-secondary-subtle rounded p-3">
       <h1 class="">{{ post.title }}</h1>
       <p class="blog-post-meta"><i class="fa-solid fa-calendar-days"></i> Publicado em: {{ post.date }}
         <br>
         <i class="fa-regular fa-user"></i> Publicado por Equipe PlayPlan
       </p>
-      <img class="m-3" src="{{ post.featured_image.url }}" width="700" alt="">
+      <img class="m-3 img-fluid" src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="max-width: 95%;" width="700">
       <p class="text-white">{{ post.description|safe }}</p>
 
       {% if images %}
@@ -42,11 +40,9 @@
       </div>
     </div>
 
+    <div class="col-lg-4 col-sm-12">
 
-
-    <div class="col-4">
-
-      <div class="card mb-3 bg-secondary-subtle mb-3" style="width: 23rem;">
+      <div class="card mb-3 bg-secondary-subtle mb-3">
         <div class="card-body">
           <h5 class="card-title">Sobre o Blog {{ post.category }}</h5>
           <p class="card-text">{{ post.category.about }}</p>
@@ -54,11 +50,11 @@
         </div>
       </div>
 
-      <div class="card mb-3 bg-secondary-subtle" style="width: 23rem;">
+      <div class="card mb-3 bg-secondary-subtle">
         <div class="card-body">
           <h5 class="card-title">Outras notícias sobre {{ post.category }}</h5>
           {% for post in noticia %}
-          <div class="card mb-3" style="max-width: 350px;">
+          <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-12">
                 <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
@@ -79,15 +75,8 @@
         </div>
       </div>
 
-
-
     </div>
   </div>
 </div>
-
-
-
-
-
 
 {% endblock content %}
