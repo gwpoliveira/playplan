@@ -67,6 +67,9 @@ h1#branco {
     color: white;
 }
 
+#homeMobile{
+    background-color: #ededed;
+}
 
 #sair {
     border: 1px solid var(--blue);
