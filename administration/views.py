@@ -144,20 +144,33 @@ class ListaDeNotícias(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
         num_posts = BlogPost.objects.count()
+        context['categories'] = Category.objects.all()
         context['num_posts'] = num_posts  
         return context
 
-
-    def get_queryset(self):            
-        
-        search = self.request.GET.get("pesquisa")
+    # def get_queryset(self):            
+    #     category = self.request.GET.get("category")
+    #     search = self.request.GET.get("pesquisa")
     
-        if search:
+    #     if search:
+    #         noticias = BlogPost.objects.filter(Q(title__icontains=search) | Q(about__icontains=search))
+    #     else:
+    #         noticias = BlogPost.objects.all().order_by('-date')
+
+    #     return noticias 
+    
+    def get_queryset(self):            
+        category = self.request.GET.get("category")
+        search = self.request.GET.get("pesquisa")
+
+        if category:
+            noticias = BlogPost.objects.filter(category__id=category).order_by('-date')
+        elif search:
             noticias = BlogPost.objects.filter(Q(title__icontains=search) | Q(about__icontains=search))
         else:
             noticias = BlogPost.objects.all().order_by('-date')
 
-        return noticias 
+        return noticias
 
 
 # ************ Apoio *************** #  

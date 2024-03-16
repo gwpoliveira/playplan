@@ -24,10 +24,23 @@
         </nav>
     </div>
     <div class="col d-flex justify-content-end">
+        <div class="input-group">
+            <form method="get" class="d-flex">
+                <select name="category" class="form-select" id="inputGroupSelect04"
+                    aria-label="Example select with button addon">
+                    <option selected disabled>Categoria</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <input class="btn btn-primary ms-2" type="submit" value="Filtrar">
+            </form>
+        </div>
         <form class="d-flex" role="search" method="get">
-            <input class="form-control me-2" type="search" placeholder="Pesquise por título" aria-label="Search" name="pesquisa" id="pesquisa">
+            <input class="form-control me-2" type="search" placeholder="Pesquise por título" aria-label="Search"
+                name="pesquisa" id="pesquisa">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
+        </form>
     </div>
 </div>
 
