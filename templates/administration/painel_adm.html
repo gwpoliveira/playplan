@@ -16,15 +16,12 @@
                 Notícias</h2>
             <p class="card-text">Acesso fácil ao gerenciamento dos Blogs. Crie
                 categorias e publique sobre elas.
-                {% if num_category == 0 %} Até o momento não publicaram nenhuma notícia sobre nenhuma
-                categoria cadastrada. {% elif num_category == 1 %} {% if num_blogpost == 0 %} Nossos blogs até o
-                momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categoria cadastrada. {%
-                elif num_blogpost == 1 %} Nossos blogs até o momento já publicaram {{ num_blogpost }} notícia sobre
+                {%if num_category == 0%} Até o momento não publicaram nenhuma notícia sobre nenhuma
+                categoria cadastrada. {%elif num_category == 1%} {%if num_blogpost == 0 %} Nossos blogs até o
+                momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categoria cadastrada. {%elif num_blogpost == 1%} Nossos blogs até o momento já publicaram {{ num_blogpost }} notícia sobre
                 a única categoria cadastrada. {% else %} Nossos blogs já publicaram {{num_blogpost}} notícias sobre
                 a única categoria cadastrada. {% endif %} {% else %} {% if num_blogpost == 0 %} Nossos blogs até o
-                momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categorias cadastradas. {%
-                elif num_blogpost == 1 %} Nossos blogs publicaram apenas uma notícia mesmo já tendo {{ num_category
-                }} categorias cadastradas. {% else %} Nossos blogs já publicaram {{ num_blogpost }} notícias sobre
+                momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categorias cadastradas. {% elif num_blogpost == 1%} Nossos blogs publicaram apenas uma notícia mesmo já tendo {{ num_category}} categorias cadastradas. {% else %} Nossos blogs já publicaram {{ num_blogpost }} notícias sobre
                 as {{ num_category }} categorias cadastradas. {% endif %} {% endif %}</p>
             <a href="{% url 'lista_de_noticias' %}" class="btn btn-primary">Lista de Postagens</a>
             <a href="{% url 'listar_categorias' %}" class="btn btn-primary">Ver Categorias</a>
