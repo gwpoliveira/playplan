@@ -69,6 +69,7 @@ class BlogPost(models.Model):
     description=CKEditor5Field('Post: ', config_name='extends', blank=True, null=True)
     destaque_home = models.BooleanField(default=True)
     slug = models.SlugField(default="", max_length=255, unique=True, editable=True, blank = True)
+    img_description = models.CharField('Descrição da Imagem', blank=True, null=True)
 
     # def save(self, *args, **kwargs):
     #     if not self.id:

@@ -19,9 +19,9 @@
       {% for image in images %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
         {% if image.link %}
-        <a href="{{image.link}}"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="Carousel Image"></a>
+        <a href="{{image.link}}"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="{{image.description}}"></a>
         {% else %}
-        <a href="#"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="Carousel Image"></a>
+        <a href="#"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="{{image.description}}"></a>
         {% endif %}
       </div>
       {% endfor %}
@@ -55,7 +55,7 @@
       <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
         <div class="zoom-effect">
           <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
-              class=" rounded card-img-top" alt="{{ post.title }}"></a>
+              class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
         </div>
         <div class="card-body">
           <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
@@ -130,7 +130,7 @@
         <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
           <div class="zoom-effect">
             <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
-                class=" rounded card-img-top" alt="{{ post.title }}"></a>
+                class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
           </div>
           <div class="card-body">
             <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
