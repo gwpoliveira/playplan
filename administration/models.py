@@ -70,16 +70,19 @@ class BlogPost(models.Model):
     destaque_home = models.BooleanField(default=True)
     slug = models.SlugField(default="", max_length=255, unique=True, editable=True, blank = True)
 
+    def save(self, *args, **kwargs):
+        if not self.id or self.title != BlogPost.objects.get(id=self.id).title:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
+
     # def save(self, *args, **kwargs):
     #     if not self.id:
     #         self.slug = slugify(self.title) 
     #     super().save(*args, **kwargs)
 
 
-    def save(self, *args, **kwargs):
-        if not self.id or self.title != BlogPost.objects.get(id=self.id).title:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
 
 
     def __str__(self):

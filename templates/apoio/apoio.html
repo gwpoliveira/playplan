@@ -13,14 +13,37 @@
 
 <section id="apoio" class="container my-5 texto-branco ">
     <h2 class="text-center mb-4">Seja um Apoiador</h2>
-    <p class="text-center">Mostre seu apoio à nosso projeto. Preencha o formulário abaixo para se identificar como apoiador caso deseje:</p>
+    <p class="text-center">Mostre seu apoio à nosso projeto. Preencha o formulário abaixo para se identificar como
+        apoiador caso deseje:</p>
 
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button class="btn btn-primary" type="submit">Cadastrar</button>
-      </form>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Cadastrar
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Confirmar apoio</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-black">Antes de se cadastrar como apoiador certifique-se de garantir o envio de sua contribuição.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  <button class="btn btn-primary" type="submit">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+    </form>
 
 </section>
 
@@ -37,16 +60,16 @@
 <section id="apoiadores" class="container my-5 texto-branco ">
     <h2 class="text-center mb-4">Apoiadores</h2>
     <p class="text-center">Agradecemos aos seguintes apoiadores que tornaram esta causa possível:</p>
-    
+
     <!-- Aqui você pode exibir dinamicamente a lista de apoiadores -->
     {% if apoiadores %}
     <div class="border rounded bg-secondary.bg-gradient pt-3">
-    {% for apoiador in apoiadores %}  
-    <p class="text-center">{{apoiador.nome}}</p>
-    {% endfor %}
+        {% for apoiador in apoiadores %}
+        <p class="text-center">{{apoiador.nome}}</p>
+        {% endfor %}
     </div>
     {% endif %}
-    
+
 </section>
 
 {% endblock content %}
