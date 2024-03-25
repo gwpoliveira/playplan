@@ -65,7 +65,7 @@
             <td>{{ post.date }}</td>
             <td><a class="btn btn-primary" href="{% url 'postagem' post.slug %}" target="_blank" role="button"><i
                         class="fa-solid fa-eye"></i></a></td>
-            <td><a href="{% url 'blog_post_edit' pk=post.pk %}" class="btn btn-primary"><i
+            <td><a href="{% url 'blog_post_edit' pk=post.pk %}" class="btn btn-success"><i
                         class="fa-solid fa-rotate-right"></i></td>
             <td><a href="{% url 'blog_post_delete' pk=post.pk %}" class="btn btn-danger"><i
                         class="fa-solid fa-trash-can"></i></a></td>

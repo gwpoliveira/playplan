@@ -53,9 +53,9 @@
                         <li class="nav-item">
                             <a class="nav-link texto-branco item-menu" href="{% url 'noticias-tea' %}">TEA</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link texto-branco item-menu" href="#">PlayPan</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link texto-branco item-menu" href="{% url 'contato' %}">Contato</a>
                         </li>
@@ -140,7 +140,7 @@
                 <li class="nav-item"><a href="{% url 'noticias-tdah' %}" class="nav-link px-2 texto-branco">TDAH</a>
                 </li>
                 <li class="nav-item"><a href="{% url 'noticias-tea' %}" class="nav-link px-2 texto-branco">TEA</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">PlayPan</a></li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link px-2 texto-branco">PlayPan</a></li> -->
                 <li class="nav-item"><a href="{% url 'contato' %}" class="nav-link px-2 texto-branco">Contato</a></li>
                 <li class="nav-item"><a href="{% url 'apoio' %}" class="nav-link px-2 texto-branco">Apoie o Projeto</a>
                 </li>
@@ -148,6 +148,17 @@
             </ul>
         </footer>
     </section>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
 
 
 </body>

@@ -68,17 +68,23 @@ class BlogPost(models.Model):
     featured_image = models.ImageField(upload_to='blog_featured_images/', verbose_name="Imagem de Destaque")
     description=CKEditor5Field('Post: ', config_name='extends', blank=True, null=True)
     destaque_home = models.BooleanField(default=True)
-    slug = models.SlugField(default="", max_length=255, unique=True, editable=True, blank = True)
+    slug = models.SlugField(default="", max_length=255, editable=False ,unique=True, blank = True)
+    img_description = models.CharField('Descrição da Imagem', blank=True, null=True)
 
     # def save(self, *args, **kwargs):
     #     if not self.id:
     #         self.slug = slugify(self.title) 
+    #     else:
+    #         self.slug = slugify(self.title)
     #     super().save(*args, **kwargs)
 
 
     def save(self, *args, **kwargs):
-        if not self.id or self.title != BlogPost.objects.get(id=self.id).title:
+        if not self.slug:
             self.slug = slugify(self.title)
+        elif self.title != BlogPost.objects.get(id=self.id):
+            pass
+
         super().save(*args, **kwargs)
 
 
