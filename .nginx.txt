@@ -2,9 +2,9 @@
 #
 # REPLACES
 # 198.50.158.15 = Replace with your domain
-# /root/projetos/playplan = Replace with the path to the folder for the project
-# /root/projetos/playplan/static = Replace with the path to the folder for static files
-# /root/projetos/playplan/media = Replace with the path to the folder for media files
+# /root/playplan = Replace with the path to the folder for the project
+# /root/playplan/static = Replace with the path to the folder for static files
+# /root/playplan/media = Replace with the path to the folder for media files
 # playplan = Replace with your unix socket name (don't add .socket)
 # 
 # Set timezone
@@ -20,16 +20,16 @@ server {
   # Add index.php to the list if you are using PHP
   index index.html index.htm index.nginx-debian.html index.php;
   
-  # ATTENTION: /root/projetos/playplan/static
+  # ATTENTION: /root/playplan/static
   location /static {
     autoindex on;
-    alias /root/projetos/playplan/static;
+    alias /root/playplan/static;
   }
 
-  # ATTENTION: /root/projetos/playplan/media 
+  # ATTENTION: /root/playplan/media 
   location /media {
     autoindex on;
-    alias /root/projetos/playplan/media;
+    alias /root/playplan/media;
   }
 
   # ATTENTION: playplan
