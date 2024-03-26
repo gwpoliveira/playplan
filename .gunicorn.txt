@@ -1,0 +1,75 @@
+###############################################################################
+# Replace
+# playplan the name of the gunicorn file you want
+# root your user name
+# playplan the folder name of your project
+# project the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo playplan.socket
+sudo nano /etc/systemd/system/playplan.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn playplan socket
+
+[Socket]
+ListenStream=/run/playplan.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo playplan.service
+sudo nano /etc/systemd/system/playplan.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=playplan.socket
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+Restart=on-failure
+EnvironmentFile=/home/root/playplan/.env
+WorkingDirectory=/home/root/playplan
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/root/playplan/venv/bin/gunicorn \
+          --error-logfile /home/root/playplan/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/playplan.socket \
+          project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start playplan.socket
+sudo systemctl enable playplan.socket
+
+# Checando
+sudo systemctl status playplan.socket
+curl --unix-socket /run/playplan.socket localhost
+sudo systemctl status playplan
+
+# Restarting
+sudo systemctl restart playplan.service
+sudo systemctl restart playplan.socket
+sudo systemctl restart playplan
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u playplan.service
+sudo journalctl -u playplan.socket
