@@ -35,12 +35,12 @@ After=network.target
 User=root
 Group=www-data
 Restart=on-failure
-EnvironmentFile=/home/root/playplan/.env
-WorkingDirectory=/home/root/playplan
+EnvironmentFile=/root/playplan/.env
+WorkingDirectory=/root/playplan
 # --error-logfile --enable-stdio-inheritance --log-level and --capture-output
 # are all for debugging purposes.
-ExecStart=/home/root/playplan/venv/bin/gunicorn \
-          --error-logfile /home/root/playplan/gunicorn-error-log \
+ExecStart=/root/playplan/venv/bin/gunicorn \
+          --error-logfile /root/playplan/gunicorn-error-log \
           --enable-stdio-inheritance \
           --log-level "debug" \
           --capture-output \
