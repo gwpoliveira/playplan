@@ -80,6 +80,10 @@ server {
     alias /root/playplan/media/;
   }
 
+  location /ckeditor5/ {
+    alias /root/playplan/static/ckeditor5/;
+  }
+
   # ATTENTION: playplan
   location / {
     proxy_pass http://unix:/run/playplan.socket;
