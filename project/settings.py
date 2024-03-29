@@ -175,7 +175,7 @@ CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
                     'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
-        'baseFloatZIndex': 90000,
+        'baseFloatZIndex': 190000,
 
     },
     'extends': {
