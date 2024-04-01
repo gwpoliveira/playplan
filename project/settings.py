@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # 'django_bootstrap_icons',
     'administration',
     'django_ckeditor_5',
+    
 ]
 
 MIDDLEWARE = [
