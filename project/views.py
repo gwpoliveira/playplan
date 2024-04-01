@@ -202,3 +202,6 @@ class PainelAdm(LoginRequiredMixin, TemplateView):
 class QuemSomos(TemplateView):
     template_name = 'quem-somos.html'
 
+# Página Privacidade e Segurança
+class Privacidade(TemplateView):
+    template_name = 'privacidade.html'
