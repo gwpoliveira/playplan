@@ -51,7 +51,7 @@
   <div class="card-group row row-cols-md-2 g-4 my-1">
 
     {% for post in posttea %}
-    <div class="col">
+    <div class="col-lg-8 col-sm-12">
       <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
         <div class="zoom-effect">
           <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
@@ -71,7 +71,7 @@
     {% endfor %}
     {% else %}
     <div class="row my-4">
-      <div class="col">
+      <div class="col-lg-8 col-sm-12">
         <div class="card float-right">
           <div class="row">
             <div class="col-sm-5 zoom-effect">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-lg-8 col-sm-12">
         <div class="card float-right">
           <div class="row">
             <div class="col-sm-5 zoom-effect">
@@ -126,7 +126,7 @@
     <div class="card-group row row-cols-md-2 g-4 my-1">
 
       {% for post in posttdah %}
-      <div class="col">
+      <div class="col-lg-8 col-sm-12">
         <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
           <div class="zoom-effect">
             <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
@@ -146,7 +146,7 @@
       {% endfor %}
       {% else %}
       <div class="row my-4">
-        <div class="col">
+        <div class="col-lg-8 col-sm-12">
           <div class="card float-right">
             <div class="row">
               <div class="col-sm-5 zoom-effect">
@@ -166,7 +166,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-8 col-sm-12">
           <div class="card float-right">
             <div class="row">
               <div class="col-sm-5 zoom-effect">
