@@ -9,8 +9,8 @@
 
 
 
-<div class="row align-items-md-stretch mb-3">
-    <div class="col-md-6">
+<div class="row align-items-md-stretch mt-3">
+    <div class="col-md-6 mb-3">
         <div class="h-100 p-4 bg-body-tertiary border rounded-3">
             <h2><i class="fa-regular fa-newspaper"></i><span class="dist"></span>Publicação de
                 Notícias</h2>
@@ -27,7 +27,8 @@
             <a href="{% url 'listar_categorias' %}" class="btn btn-primary">Ver Categorias</a>
         </div>
     </div>
-    <div class="col-md-6">
+    
+    <div class="col-md-6 mb-3">
         <div class="h-100 p-4 bg-body-tertiary border rounded-3">
             <h2><i class="fa-regular fa-image"></i><span class="dist"></span>
                 Home Page</h2>
@@ -74,8 +75,8 @@
     </div>
 </div>
 
-<div class="row align-items-md-stretch mt-3">
-    <div class="col-md-6">
+<div class="row align-items-md-stretch">
+    <div class="col-md-6 mb-3 mt-3">
         <div class="h-100 p-4 bg-body-tertiary border rounded-3">
             <h2><i class="fa-regular fa-handshake"></i><span class="dist"></span>Administrar
                 Apoiadores</h2>
@@ -116,7 +117,8 @@
             <a href="{% url 'depoimento-list' %}" class="btn btn-primary">Listar Depoimentos</a>
         </div>
     </div>
-    <div class="col-md-6">
+    <br>
+    <div class="col-md-6 mt-3 mb-3">
         <div class="h-100 p-4 bg-body-tertiary border rounded-3">
             <h2><i class="fa-regular fa-envelope"></i><span class="dist"></span>Gestão de
                 Mensagens</h2>
@@ -159,170 +161,6 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- 
-
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-        <div class="card">
-
-            <div class="card-body">
-                <h5 class="card-title"><i class="fa-regular fa-newspaper"></i><span class="dist"></span>Publicação de
-                    Notícias</h5>
-                <p class="card-text">Acesso fácil às ferramentas de gerenciamento do Blog sobre TEA e TDAH. Crie
-                    categorias e publique sobre elas.
-                    {% if num_category == 0 %} Nossos blogs até o momento não publicaram nenhuma notícia sobre nenhuma
-                    categoria cadastrada. {% elif num_category == 1 %} {% if num_blogpost == 0 %} Nossos blogs até o
-                    momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categoria cadastrada. {%
-                    elif num_blogpost == 1 %} Nossos blogs até o momento já publicaram {{ num_blogpost }} notícia sobre
-                    a única categoria cadastrada. {% else %} Nossos blogs já publicaram {{num_blogpost}} notícias sobre
-                    a única categoria cadastrada. {% endif %} {% else %} {% if num_blogpost == 0 %} Nossos blogs até o
-                    momento não publicaram nenhuma notícia mesmo já tendo {{ num_category }} categorias cadastradas. {%
-                    elif num_blogpost == 1 %} Nossos blogs publicaram apenas uma notícia mesmo já tendo {{ num_category
-                    }} categorias cadastradas. {% else %} Nossos blogs já publicaram {{ num_blogpost }} notícias sobre
-                    as {{ num_category }} categorias cadastradas. {% endif %} {% endif %}</p>
-                <a href="{% url 'lista_de_noticias' %}" class="btn btn-primary">Lista de Postagens</a>
-                <a href="{% url 'listar_categorias' %}" class="btn btn-primary">Ver Categorias</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-
-            <div class="card-body">
-                <h5 class="card-title"><i class="fa-regular fa-image"></i><span class="dist"></span> Gerenciamento da
-                    Home Page</h5>
-                <p class="card-text">Atualize o banner do site e a sessão de depoimentos de forma fácil e acessível.
-                    {% if num_carousel == 0 %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento não foram inseridos nenhum banner e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento não foi inserido nenhum banner e apenas {{ num_depoimentos }} depoimento na
-                    plataforma.
-                    {% else %}
-                    Até o momento não foi inserido nenhum banner e {{ num_depoimentos }} depoimentos na plataforma.
-                    {% endif %}
-                    {% elif num_carousel == 1 %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e apenas {{ num_depoimentos }}
-                    depoimento na plataforma.
-                    {% else %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e {{ num_depoimentos }} depoimentos na
-                    plataforma.
-                    {% endif %}
-                    {% else %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e apenas {{ num_depoimentos }} depoimento
-                    na plataforma.
-                    {% else %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e {{ num_depoimentos }} depoimentos na
-                    plataforma.
-                    {% endif %}
-                    {% endif %}
-
-                </p>
-                <a href="{% url 'image_list' %}" class="btn btn-primary">Listar Banners</a>
-                <a href="{% url 'depoimento-list' %}" class="btn btn-primary">Listar Depoimentos</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-
-            <div class="card-body">
-                <h5 class="card-title"><i class="fa-regular fa-handshake"></i><span class="dist"></span>Administrar
-                    Apoiadores</h5>
-                <p class="card-text">Atualize o banner do site e a sessão de depoimentos de forma fácil e acessível.
-                    {% if num_carousel == 0 %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento não foram inseridos nenhum banner e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento não foi inserido nenhum banner e apenas {{ num_depoimentos }} depoimento na
-                    plataforma.
-                    {% else %}
-                    Até o momento não foi inserido nenhum banner e {{ num_depoimentos }} depoimentos na plataforma.
-                    {% endif %}
-                    {% elif num_carousel == 1 %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e apenas {{ num_depoimentos }}
-                    depoimento na plataforma.
-                    {% else %}
-                    Até o momento foi inserido apenas {{ num_carousel }} banner e {{ num_depoimentos }} depoimentos na
-                    plataforma.
-                    {% endif %}
-                    {% else %}
-                    {% if num_depoimentos == 0 %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e nenhum depoimento na plataforma.
-                    {% elif num_depoimentos == 1 %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e apenas {{ num_depoimentos }} depoimento
-                    na plataforma.
-                    {% else %}
-                    Até o momento foram inseridos {{ num_carousel }} banners e {{ num_depoimentos }} depoimentos na
-                    plataforma.
-                    {% endif %}
-                    {% endif %}
-
-                </p>
-                <a href="{% url 'image_list' %}" class="btn btn-primary">Listar Banners</a>
-                <a href="{% url 'depoimento-list' %}" class="btn btn-primary">Listar Depoimentos</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-
-            <div class="card-body">
-                <h5 class="card-title"><i class="fa-regular fa-envelope"></i><span class="dist"></span>Gestão de
-                    Mensagens</h5>
-                <p class="card-text">Nossa intenção é de sempre manter um bom relacionamento com os nossos usuários.
-                    {% if num_contatos == 0 %}
-                    {% if num_inscritos == 0 %}
-                    Até o momento não há registro de nenhum inscrito e de nenhuma mensagem na caixa de entrada.
-                    {% elif num_inscritos == 1 %}
-                    Até o momento existe apenas {{ num_inscritos }} inscrito e nenhuma mensagem na caixa de entrada.
-                    {% else %}
-                    Até o momento já são {{ num_inscritos }} inscritos e nenhuma mensagem na caixa de entrada.
-                    {% endif %}
-                    {% elif num_contatos == 1 %}
-                    {% if num_inscritos == 0 %}
-                    Até o momento não há registro de nenhum inscrito e apenas {{ num_contatos }} mensagem na caixa de
-                    entrada.
-                    {% elif num_inscritos == 1 %}
-                    Até o momento existe apenas {{ num_inscritos }} inscrito e apenas {{ num_contatos }} mensagem na
-                    caixa de entrada.
-                    {% else %}
-                    Até o momento já são {{ num_inscritos }} inscritos e apenas {{ num_contatos }} mensagem na caixa de
-                    entrada.
-                    {% endif %}
-                    {% else %}
-                    {% if num_inscritos == 0 %}
-                    Até o momento não há registro de nenhum inscrito e são {{ num_contatos }} mensagens na caixa de
-                    entrada.
-                    {% elif num_inscritos == 1 %}
-                    Até o momento existe apenas {{ num_inscritos }} inscrito e são {{ num_contatos }} mensagens na caixa
-                    de entrada.
-                    {% else %}
-                    Até o momento já são {{ num_inscritos }} inscritos e são {{ num_contatos }} mensagens na caixa de
-                    entrada.
-                    {% endif %}
-                    {% endif %}
-
-                </p>
-                <a href="{% url 'contato_list' %}" class="btn btn-primary">Caixa de Entrada</a>
-                <a href="{% url 'inscritos' %}" class="btn btn-primary">Assinantes</a>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 
