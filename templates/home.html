@@ -12,16 +12,20 @@
   <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       {% for image in images %}
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.first %} class="active" {% endif %} aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.counter0}}"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if
+        forloop.first %} class="active" {% endif %} aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+        aria-label="Slide {{forloop.counter0}}"></button>
       {% endfor %}
     </div>
     <div class="carousel-inner">
       {% for image in images %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
         {% if image.link %}
-        <a href="{{image.link}}"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="{{image.description}}"></a>
+        <a href="{{image.link}}"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;"
+            class="d-block w-100" alt="{{image.description}}"></a>
         {% else %}
-        <a href="#"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100" alt="{{image.description}}"></a>
+        <a href="#"><img src="{{ image.image.url }}" style="object-fit: cover; max-height: 600px;" class="d-block w-100"
+            alt="{{image.description}}"></a>
         {% endif %}
       </div>
       {% endfor %}
@@ -43,9 +47,9 @@
 {% comment %} ----- Destaques do Blog TEA ----- {% endcomment %}
 
 <div class="container my-3">
-  
 
-    <h2 class="texto-branco"><a class="text-decoration-none text-white" href="{% url 'noticias-tea' %}"><i
+
+  <h2 class="texto-branco"><a class="text-decoration-none text-white" href="{% url 'noticias-tea' %}"><i
         class="fa-solid fa-rss"></i> Notícias sobre TEA</a></h2>
   {% if posttea %}
   <div class="card-group row row-cols-md-2 g-4 my-1">
@@ -117,159 +121,160 @@
 
   </div>
 </div>
-  {% comment %} ----- Destaques do Blog TDAH ----- {% endcomment %}
+{% comment %} ----- Destaques do Blog TDAH ----- {% endcomment %}
 
-  <div class="container my-3">
-    <h2 class="texto-branco"><a class="text-decoration-none text-white" href="{% url 'noticias-tdah' %}"><i
-          class="fa-solid fa-rss"></i> Notícias sobre TDAH</a></h2>
-    {% if posttdah %}
-    <div class="card-group row row-cols-md-2 g-4 my-1">
+<div class="container my-3">
+  <h2 class="texto-branco"><a class="text-decoration-none text-white" href="{% url 'noticias-tdah' %}"><i
+        class="fa-solid fa-rss"></i> Notícias sobre TDAH</a></h2>
+  {% if posttdah %}
+  <div class="card-group row row-cols-md-2 g-4 my-1">
 
-      {% for post in posttdah %}
+    {% for post in posttdah %}
+    <div class="col-lg-8 col-sm-12">
+      <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
+        <div class="zoom-effect">
+          <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
+              class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
+        </div>
+        <div class="card-body">
+          <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
+            <h5 class="card-title destaque_home">{{ post.title }}</h5>
+          </a>
+          <p class="card-text">{{ post.about }}</p>
+          <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Saiba Mais</a>
+        </div>
+
+      </div>
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="row my-4">
       <div class="col-lg-8 col-sm-12">
-        <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
-          <div class="zoom-effect">
-            <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
-                class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
-          </div>
-          <div class="card-body">
-            <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
-              <h5 class="card-title destaque_home">{{ post.title }}</h5>
-            </a>
-            <p class="card-text">{{ post.about }}</p>
-            <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Saiba Mais</a>
-          </div>
+        <div class="card float-right">
+          <div class="row">
+            <div class="col-sm-5 zoom-effect">
+              <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
+            </div>
+            <div class="col-sm-7">
+              <div class="card-block m-2">
+                <h4 class="card-title destaque_home">Identificando o TDAH em Crianças: veja os sinais</h4>
+                <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
+                  autoestima
+                </p>
 
-        </div>
-      </div>
-
-      {% endfor %}
-      {% else %}
-      <div class="row my-4">
-        <div class="col-lg-8 col-sm-12">
-          <div class="card float-right">
-            <div class="row">
-              <div class="col-sm-5 zoom-effect">
-                <img class="d-block w-100" src="/static/img/sinais_em_criancas.jpg" alt="">
-              </div>
-              <div class="col-sm-7">
-                <div class="card-block m-2">
-                  <h4 class="card-title destaque_home">Identificando o TDAH em Crianças: veja os sinais</h4>
-                  <p>Embora os sintomas variem, o TDAH prejudica o desempenho acadêmico, as relações sociais e a
-                    autoestima
-                  </p>
-
-                  <!-- <br> -->
-                  <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-                </div>
+                <!-- <br> -->
+                <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-sm-12">
-          <div class="card float-right">
-            <div class="row">
-              <div class="col-sm-5 zoom-effect">
-                <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
-              </div>
-              <div class="col-sm-7">
-                <div class="card-block m-2">
-                  <h4 class="card-title destaque_home">Brincadeiras que Nutrem Crianças com TDAH</h4>
-                  <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a
-                    fortalecer
-                    habilidades</p>
+      </div>
+      <div class="col-lg-8 col-sm-12">
+        <div class="card float-right">
+          <div class="row">
+            <div class="col-sm-5 zoom-effect">
+              <img class="d-block w-100" src="/static/img/brincadeira.jpg" alt="">
+            </div>
+            <div class="col-sm-7">
+              <div class="card-block m-2">
+                <h4 class="card-title destaque_home">Brincadeiras que Nutrem Crianças com TDAH</h4>
+                <p>Ao canalizar sua energia e curiosidade de maneira positiva, as brincadeiras podem ajudar a
+                  fortalecer
+                  habilidades</p>
 
-                  <!-- <br> -->
-                  <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
-                </div>
+                <!-- <br> -->
+                <a href="#" class="btn btn-primary btn-sm float-right">Saiba Mais</a>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-      {% endif %}
-      
 
     </div>
+    {% endif %}
+
+
   </div>
-    {% comment %} ----- News Letter ----- {% endcomment %}
+</div>
+{% comment %} ----- News Letter ----- {% endcomment %}
 
-    <div class="container my-5  ">
-      <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Fique por dentro</h2>
-      <form action="{% url 'inscricao_newsletter' %}" method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="email" class="form-label texto-branco">Receba nossas notícias por e-mail:</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu endereço de e-mail"
-            required>
-        </div>
-        <button type="submit" class="btn btn-primary">Inscrever-se</button>
-      </form>
+<div class="container my-5  ">
+  <h2 class="texto-branco"><i class="fa-solid fa-rss"></i> Fique por dentro</h2>
+  <form action="{% url 'inscricao_newsletter' %}" method="post" class="mt-3">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="email" class="form-label texto-branco">Receba nossas notícias por e-mail:</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu endereço de e-mail"
+        required>
     </div>
+    <button type="submit" class="btn btn-primary">Inscrever-se</button>
+  </form>
+</div>
 
-    {% comment %} ----- Depoimentos ----- {% endcomment %}
-    <div class="container">
-      <h2 class="texto-branco fw-bold"><i class="fa-regular fa-comments"></i> Depoimentos</h2>
+{% comment %} ----- Depoimentos ----- {% endcomment %}
+<div class="container">
+  <h2 class="texto-branco fw-bold"><i class="fa-regular fa-comments"></i> Depoimentos</h2>
   <section class="depoimentos container-fluid mb-3">
-        
-        <div id="carouselDepoimentos" class="carousel slide">
-          <div class="carousel-inner">
+
+    <div id="carouselDepoimentos" class="carousel slide">
+      <div class="carousel-inner">
+        {% for depoimento in depoimentos %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          {% if depoimento.imagem_fundo %}
+          <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+          {% else %}
+          <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
+          {% endif %}
+          <div class="carousel-caption d-none d-md-block ">
+            <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="{{ depoimento.imagem.url }}"
+              alt="">
+            <h3>{{ depoimento.nome }}</h3>
+            <h6>{{ depoimento.cargo }}</h6>
+            <p>"{{ depoimento.descricao }}"</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <section class="carousel">
+        <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
             {% for depoimento in depoimentos %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-              {% if depoimento.imagem_fundo %}
-              <img src="{{ depoimento.imagem_fundo.url }}" class="d-block w-100" height="350px"
-              alt="{{ depoimento.nome }}">
-              {% else %}
-              <img src="/static/img/bg6.jpg" class="d-block w-100" height="350px" alt="{{ depoimento.nome }}">
-              {% endif %}
-              <div class="carousel-caption d-none d-md-block ">
-                <img class="bd-placeholder-img rounded-circle" width="100" height="100"
-                src="{{ depoimento.imagem.url }}" alt="">
-                <h3>{{ depoimento.nome }}</h3>
-                <h6>{{ depoimento.cargo }}</h6>
-                <p>"{{ depoimento.descricao }}"</p>
-              </div>
-            </div>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if
+              forloop.first %} class="active" {% endif %}
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="Slide {{forloop.counter0}}"></button>
             {% endfor %}
           </div>
-<section class="carousel">
-            <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                    {% for depoimento in depoimentos %}
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.first %} class="active" {% endif %} aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.counter0}}"></button>
-                    {% endfor %}
-                  </div>
-                  <div class="carousel-inner">
-                  </div>
-                  {% if num_depoimento > 1 %}
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                  {% endif %}
-            </div>
-          </section>
-                    {% if num_depoimentos > 1 %}
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos"
-        data-bs-slide="next">
+          <div class="carousel-inner">
+          </div>
+          {% if num_depoimento > 1 %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          {% endif %}
+        </div>
+      </section>
+      {% if num_depoimentos > 1 %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-            {% endif %}
-      
+      {% endif %}
     </div>
   </section>
-  </div>
+</div>
 
 
-    {% endblock %}
+{% endblock %}
