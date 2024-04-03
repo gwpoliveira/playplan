@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
 
+{% block description %} {{ post.about }} {% endblock description %}
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
