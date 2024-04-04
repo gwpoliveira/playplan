@@ -212,7 +212,46 @@
 </div>
 
     {% comment %} ----- Depoimentos ----- {% endcomment %}
-<div class="container col-xs-12">
+
+    <div class="container col-xs-12 mb-4">
+      <h2 class="texto-branco fw-bold"><i class="fa-regular fa-comments"></i> Depoimentos</h2>
+    </div>
+
+    <section class="testimonial text-center">
+      <div class="container">
+
+
+          <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+           
+              <div class="carousel-inner" role="listbox">
+                {% for depoimento in depoimentos %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                      <div class="testimonial4_slide">
+                          <img src="{{ depoimento.imagem.url }}" class="img-circle img-responsive" alt="{{ depoimento.nome }}" />
+                          <p>{{ depoimento.descricao |truncatechars:430 }}</p>
+                          <h4>{{ depoimento.nome }} | {{ depoimento.cargo }}</h4>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+              <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#testimonial4" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+              </a>
+
+              <div class="carousel-indicators">
+                {% for depoimento in depoimentos %}
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.first %} class="active" {% endif %} aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.counter0}}"></button>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+<!-- <div class="container col-xs-12">
   <h2 class="texto-branco fw-bold"><i class="fa-regular fa-comments"></i> Depoimentos</h2>
 </div>
 
@@ -275,7 +314,7 @@
       </button>
       {% endif %}      
     </div>
-</section>
+</section> -->
   
 
 
