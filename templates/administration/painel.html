@@ -1,37 +1,84 @@
 {% extends 'base.html' %}
 {% load static bootstrap5 %}
 
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
+{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de
+crianças com TDAH e Autismo.{% endblock description %}
 {% block title %}Painel Administrativo{% endblock title %}
 
 {%block content%}
 
 <!-- ---------- Painel Administrativo Lateral ------------ -->
 
+
+<div class="fixed-bottom d-md-none">
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-bottom-nav__item {% if request.path == '/administration/lista_de_apoiadores/' %} destaque {% endif %}">
+            <a class="text-dark" href="{% url 'lista_de_apoiadores' %}">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-solid fa-hand-holding-dollar fa-2x"></i>
+                </div>
+            </a>
+        </div>
+        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+            <div class="mobile-bottom-nav__item-content"><a href="" class="text-dark">
+                    <i class="fa-solid fa-pager fa-2x"></i>
+            </div>
+            </a>
+        </div>
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="fa-solid fa-newspaper fa-2x"></i>
+            </div>
+        </div>
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="fa-solid fa-rss fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="mobile-bottom-nav__item {% if request.path == '/administration/contato_list/' %} destaque {% endif %}">
+            <a href="{% url 'contato_list' %}" class="text-dark">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-regular fa-envelope fa-2x"></i>
+                </div>
+            </a>
+        </div>
+    </nav>
+</div>
+
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-sm-12 text-center">
+        <div class="col-lg-3 col-sm-12 text-center d-none d-md-block">
             <!-- ---------- Sessão Banners ------------ -->
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/image_list/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="{% if request.path == '/administration/image_list/' %} true {% else %} false {% endif %}" aria-controls="collapseOne">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/image_list/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="{% if request.path == '/administration/image_list/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseOne">
                             <i class="fa-solid fa-images"></i><span class="dist"></span>Banners
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Banners ------------ -->
-                    <div id="collapseOne" class="accordion-collapse collapse {% if request.path == '/administration/image_list/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseOne"
+                        class="accordion-collapse collapse {% if request.path == '/administration/image_list/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'add_image' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-circle-plus"></i> Inserir Banner</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-circle-plus"></i> Inserir Banner</li>
                                 </a>
                                 <a href="{% url 'image_list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-images"></i> Listar Banners</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-images"></i> Listar Banners</li>
                                 </a>
                                 <a href="{% url 'image_list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-rotate-right"></i> Atualizar
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-rotate-right"></i> Atualizar
                                         Banner</li>
                                 </a>
                             </ul>
@@ -41,17 +88,23 @@
                 <!-- ---------- Sessão Mensagens ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/contato_list/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="{% if request.path == '/administration/contato_list/' %} true {% else %} false {% endif %}" aria-controls="collapseTwo">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/contato_list/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                            aria-expanded="{% if request.path == '/administration/contato_list/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseTwo">
                             <i class="fa-regular fa-envelope"></i><span class="dist"></span>Mensagens
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Mensagens ------------ -->
-                    <div id="collapseTwo" class="accordion-collapse collapse {% if request.path == '/administration/contato_list/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseTwo"
+                        class="accordion-collapse collapse {% if request.path == '/administration/contato_list/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'contato_list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-inbox"></i> Listar Mensagens</li>
+                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-inbox"></i>
+                                        Listar Mensagens</li>
                                 </a>
                             </ul>
                         </div>
@@ -61,23 +114,29 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if request.path == '/administration/lista_de_apoiadores/' %}  {% else %} collapsed {% endif %}
-                        " type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour" aria-expanded="{% if request.path == '/administration/lista_de_apoiadores/' %} true {% else %} false {% endif %}" aria-controls="collapseFour">
+                        " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                            aria-expanded="{% if request.path == '/administration/lista_de_apoiadores/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseFour">
                             <i class="fa-solid fa-hand-holding-dollar"></i><span class="dist"></span>Apoiadores
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Apoiadores ------------ -->
-                    <div id="collapseFour" class="accordion-collapse collapse {% if request.path == '/administration/lista_de_apoiadores/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseFour"
+                        class="accordion-collapse collapse {% if request.path == '/administration/lista_de_apoiadores/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'criar_apoiador' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-user-plus"></i> Criar Apoiador</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-user-plus"></i> Criar Apoiador</li>
                                 </a>
                                 <a href="{% url 'lista_de_apoiadores' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-users"></i> Listar Apoiadores</li>
+                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-users"></i>
+                                        Listar Apoiadores</li>
                                 </a>
                                 <a href="{% url 'lista_de_apoiadores' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-rotate-right"></i> Atualizar
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-rotate-right"></i> Atualizar
                                         Apoiador</li>
                                 </a>
                             </ul>
@@ -87,20 +146,27 @@
                 <!-- ---------- Sessão Notícias ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/lista_de_noticias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFive" aria-expanded="{% if request.path == '/administration/lista_de_noticias/' %} true {% else %} false {% endif %}" aria-controls="collapseFive">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/lista_de_noticias/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                            aria-expanded="{% if request.path == '/administration/lista_de_noticias/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseFive">
                             <i class="fa-solid fa-newspaper"></i><span class="dist"></span>Notícias
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Notícias ------------ -->
-                    <div id="collapseFive" class="accordion-collapse collapse {% if request.path == '/administration/lista_de_noticias/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseFive"
+                        class="accordion-collapse collapse {% if request.path == '/administration/lista_de_noticias/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'blog_post_create' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-pen-to-square"></i> Escrever Notícia</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-pen-to-square"></i> Escrever Notícia</li>
                                 </a>
                                 <a href="{% url 'lista_de_noticias' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-file-lines"></i> Listar Notícias</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-file-lines"></i> Listar Notícias</li>
                                 </a>
                             </ul>
                         </div>
@@ -109,20 +175,27 @@
                 <!-- ---------- Sessão Categorias ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/categorias/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSix" aria-expanded="{% if request.path == '/administration/categorias/' %} true {% else %} false {% endif %}" aria-controls="collapseSix">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/categorias/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                            aria-expanded="{% if request.path == '/administration/categorias/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseSix">
                             <i class="fa-solid fa-tags"></i><span class="dist"></span>Categorias
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Categorias ------------ -->
-                    <div id="collapseSix" class="accordion-collapse collapse {% if request.path == '/administration/categorias/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseSix"
+                        class="accordion-collapse collapse {% if request.path == '/administration/categorias/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'criar_categoria' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-circle-plus"></i> Criar Categoria</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-circle-plus"></i> Criar Categoria</li>
                                 </a>
                                 <a href="{% url 'listar_categorias' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-tag"></i> Listar Categorias</li>
+                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-tag"></i>
+                                        Listar Categorias</li>
                                 </a>
                             </ul>
                         </div>
@@ -131,20 +204,27 @@
                 <!-- ---------- Sessão Depoimentos ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/depoimento/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSeven" aria-expanded="{% if request.path == '/administration/depoimento/' %} true {% else %} false {% endif %}" aria-controls="collapseSeven">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/depoimento/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+                            aria-expanded="{% if request.path == '/administration/depoimento/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseSeven">
                             <i class="fa-solid fa-comment-dots"></i><span class="dist"></span>Depoimentos
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Depoimentos ------------ -->
-                    <div id="collapseSeven" class="accordion-collapse collapse {% if request.path == '/administration/depoimento/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseSeven"
+                        class="accordion-collapse collapse {% if request.path == '/administration/depoimento/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <a href="{% url 'depoimento-create' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-comment-medical"></i> Criar Depoimento</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-solid fa-comment-medical"></i> Criar Depoimento</li>
                                 </a>
                                 <a href="{% url 'depoimento-list' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-regular fa-comments"></i> Listar Depoimentos</li>
+                                    <li class="list-group-item list-group-item-action"><i
+                                            class="fa-regular fa-comments"></i> Listar Depoimentos</li>
                                 </a>
                             </ul>
                         </div>
@@ -153,20 +233,26 @@
                 <!-- ---------- Sessão Boletim de Notícias ------------ -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if request.path == '/administration/inscritos/' %}  {% else %} collapsed {% endif %}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEight" aria-expanded="{% if request.path == '/administration/inscritos/' %} true {% else %} false {% endif %}" aria-controls="collapseEight">
+                        <button
+                            class="accordion-button {% if request.path == '/administration/inscritos/' %}  {% else %} collapsed {% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight"
+                            aria-expanded="{% if request.path == '/administration/inscritos/' %} true {% else %} false {% endif %}"
+                            aria-controls="collapseEight">
                             <i class="fa-solid fa-rss"></i><span class="dist"></span>Boletim
                         </button>
                     </h2>
                     <!-- ---------- Opções da Sessão Boletins ------------ -->
-                    <div id="collapseEight" class="accordion-collapse collapse {% if request.path == '/administration/inscritos/' %} show {% else %} {% endif %}" data-bs-parent="#accordionExample">
+                    <div id="collapseEight"
+                        class="accordion-collapse collapse {% if request.path == '/administration/inscritos/' %} show {% else %} {% endif %}"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul class="list-group">
                                 <!-- <a href="{% url 'depoimento-create' %}" class="text-decoration-none">
                                     <li class="list-group-item list-group-item-action"><i class="fa-regular fa-plus"></i> Novo Assinante</li>
                                 </a> -->
                                 <a href="{% url 'inscritos' %}" class="text-decoration-none">
-                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Listar Assinantes</li>
+                                    <li class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i>
+                                        Listar Assinantes</li>
                                 </a>
                             </ul>
                         </div>
@@ -180,7 +266,7 @@
 
 
             {% endblock conteudo%}
-            
+
         </div>
     </div>
 </div>
