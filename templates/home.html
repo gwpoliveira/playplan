@@ -234,12 +234,15 @@
                   </div>
                   {% endfor %}
               </div>
+
+              {% if num_depoimento > 1 %}
               <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
                   <span class="carousel-control-prev-icon"></span>
               </a>
               <a class="carousel-control-next" href="#testimonial4" data-slide="next">
                   <span class="carousel-control-next-icon"></span>
               </a>
+              {% endif %} 
 
               <div class="carousel-indicators">
                 {% for depoimento in depoimentos %}
