@@ -12,36 +12,42 @@ crianças com TDAH e Autismo.{% endblock description %}
 
 <div class="fixed-bottom d-md-none">
     <nav class="mobile-bottom-nav">
-        <div class="mobile-bottom-nav__item {% if request.path == '/administration/lista_de_apoiadores/' %} destaque {% endif %}">
-            <a class="text-dark" href="{% url 'lista_de_apoiadores' %}">
-                <div class="mobile-bottom-nav__item-content">
-                    <i class="fa-solid fa-hand-holding-dollar fa-2x"></i>
-                </div>
-            </a>
+        <div
+            class="mobile-bottom-nav__item {% if request.path == '/administration/lista_de_apoiadores/' %} destaque {% endif %}">
+
+            <div class="mobile-bottom-nav__item-content"><a class="text-dark" href="{% url 'lista_de_apoiadores' %}">
+                    <i class="fa-solid fa-hand-holding-dollar fa-3x"></i></a>
+            </div>
+
         </div>
         <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-            <div class="mobile-bottom-nav__item-content"><a href="" class="text-dark">
-                    <i class="fa-solid fa-pager fa-2x"></i>
+            <div class="mobile-bottom-nav__item-content"><a href="#" class="text-dark">
+                    <i class="fa-solid fa-pager fa-3x"></i></a>
             </div>
-            </a>
+
         </div>
         <div class="mobile-bottom-nav__item">
             <div class="mobile-bottom-nav__item-content">
-                <i class="fa-solid fa-newspaper fa-2x"></i>
+                <i class="fa-solid fa-newspaper fa-3x"></i>
+
             </div>
         </div>
-        <div class="mobile-bottom-nav__item">
-            <div class="mobile-bottom-nav__item-content">
-                <i class="fa-solid fa-rss fa-2x"></i>
-            </div>
+        <div class="mobile-bottom-nav__item {% if request.path == '/administration/inscritos/' %} destaque {% endif %}">
+            
+                <div class="mobile-bottom-nav__item-content"><a href="{% url 'inscritos' %}" class="text-dark">
+                    <i class="fa-solid fa-rss fa-3x"></i></a>
+                </div>
+           
         </div>
 
-        <div class="mobile-bottom-nav__item {% if request.path == '/administration/contato_list/' %} destaque {% endif %}">
-            <a href="{% url 'contato_list' %}" class="text-dark">
-                <div class="mobile-bottom-nav__item-content">
-                    <i class="fa-regular fa-envelope fa-2x"></i>
+        <div
+            class="mobile-bottom-nav__item {% if request.path == '/administration/contato_list/' %} destaque {% endif %}">
+            
+                <div class="mobile-bottom-nav__item-content"><a href="{% url 'contato_list' %}" class="text-dark">
+                    <i class="fa-regular fa-envelope fa-3x"></i>
+                    </a>
                 </div>
-            </a>
+           
         </div>
     </nav>
 </div>
