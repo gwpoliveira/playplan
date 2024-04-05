@@ -33,6 +33,7 @@ local_settings.py
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea
 
 # Gradle
 .idea/**/gradle.xml
@@ -104,11 +105,11 @@ project/settings.py
 settings.py
 .env 
 .venv 
-env/ 
-venv/ 
-ENV/ 
-env.bak/ 
-venv.bak/ 
+env 
+venv
+ENV
+env.ba 
+venv.bak
 
 # mkdocs documentation 
 /site 
