@@ -21,6 +21,7 @@
     justify-content: center;
 }
 
+/* Caso o esteja ativado */
 .mobile-bottom-nav__item--active {
     color: red;
 }
