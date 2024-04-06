@@ -216,12 +216,12 @@
     <div class="container col-xs-12 mb-4">
       <h2 class="texto-branco fw-bold"><i class="fa-regular fa-comments"></i> Depoimentos</h2>
     </div>
-
+{% if num_depoimentos != 0 %}
     <section class="testimonial text-center">
       <div class="container">
 
         
-        {% if num_depoimentos != 0 %}
+        
           <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
            
               <div class="carousel-inner" role="listbox">
@@ -252,14 +252,14 @@
               </div>
           </div>
 
-          {% endif %}
+         
           
           
 
       </div>
   </section>
 
-
+ {% endif %}
 
   
 
