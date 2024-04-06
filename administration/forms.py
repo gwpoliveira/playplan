@@ -31,7 +31,7 @@ class UpdateContatoForm(forms.ModelForm):
 # ************ Formulário do Blog ****************
 
 class BlogPostForm(forms.ModelForm):
-    # description = RichTextField()
+    
     class Meta:
         model = BlogPost
         fields = ('title', 'about', 'date', 'category', 'featured_image', 'img_description' , 'description', 'destaque_home')
@@ -40,6 +40,25 @@ class BlogPostImageForm(forms.ModelForm):
     class Meta:
         model = BlogPostImage
         fields = ['image']
+
+
+class BlogPostFormAdmin(forms.ModelForm):
+    class Meta:
+        model = BlogPost
+        fields = '__all__' 
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'slug' not in self.fields:  
+            self.fields['slug'] = forms.SlugField(max_length=255, required=False)  
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        if not instance.slug: 
+            instance.slug = slugify(instance.title)
+        if commit:
+            instance.save()
+        return instance
 
 # ************ Formulário do Apoaidor **************** #
 class ApoiadorForm(forms.ModelForm):

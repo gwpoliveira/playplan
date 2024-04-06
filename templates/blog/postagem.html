@@ -58,12 +58,12 @@
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-12">
-                <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
+                <a href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}"
                     class="img-fluid rounded-start" alt="..."></a>
               </div>
               <div class="col-md-12">
                 <div class="card-body">
-                  <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
+                  <a class="text-decoration-none text-black" href="{{ post.get_absolute_url }}">
                     <h5 class="card-title">{{ post.title }}</h5>
                   </a>
                   <p class="card-text">{{ post.about }}</p>

@@ -31,7 +31,7 @@ class HomeView(TemplateView):
 
         try:
             categoria = Category.objects.get(name='TDAH')      
-            context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
+            context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2]
 
         except ObjectDoesNotExist:
             context["posttdah"] = None
@@ -39,7 +39,7 @@ class HomeView(TemplateView):
     
         try:
             categoria = Category.objects.get(name='TEA')
-            context["posttea"] = BlogPost.objects.filter(category=categoria, destaque_home=True)[:2]
+            context["posttea"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2]
 
         except ObjectDoesNotExist:
             context["posttea"] = None
@@ -95,14 +95,13 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 class TDAHBlogView(ListView):
     template_name = 'blog/noticias_tdah.html'
     model = BlogPost
-    context_object_name='noticias'
-    ordering='-date'
+    context_object_name='noticias'    
     paginate_by = 9
 
     def get_queryset(self):
         try:
             categoria = Category.objects.get(name='TDAH')
-            queryset = BlogPost.objects.filter(category=categoria)
+            queryset = BlogPost.objects.filter(category=categoria).order_by('-date')
         except ObjectDoesNotExist:
             queryset = BlogPost.objects.none()
 
@@ -125,14 +124,13 @@ class TDAHBlogView(ListView):
 class TEABlogView(ListView):
     template_name = 'blog/noticias_tea.html'
     model = BlogPost
-    context_object_name='noticias'
-    ordering='-date'
+    context_object_name='noticias'    
     paginate_by = 9
 
     def get_queryset(self):
         try:
             categoria = Category.objects.get(name='TEA')
-            queryset = BlogPost.objects.filter(category=categoria)
+            queryset = BlogPost.objects.filter(category=categoria).order_by('-date')
         except ObjectDoesNotExist:
             queryset = BlogPost.objects.none()
 

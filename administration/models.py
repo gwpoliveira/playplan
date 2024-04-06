@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_ckeditor_5.fields import CKEditor5Field
 from django.utils.text import slugify
+from django.urls import reverse
 
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
@@ -88,8 +89,14 @@ class BlogPost(models.Model):
         super().save(*args, **kwargs)
 
 
+
+
     def __str__(self):
         return self.title
+    
+
+    def get_absolute_url(self):
+        return reverse('postagem', args=(self.slug,))
     
     class Meta:
         verbose_name = "Post"
