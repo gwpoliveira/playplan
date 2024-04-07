@@ -31,7 +31,7 @@ class HomeView(TemplateView):
 
         try:
             categoria = Category.objects.get(name='TDAH')      
-            context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2]
+            context["posttdah"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2].select_related('category')
 
         except ObjectDoesNotExist:
             context["posttdah"] = None
@@ -39,7 +39,7 @@ class HomeView(TemplateView):
     
         try:
             categoria = Category.objects.get(name='TEA')
-            context["posttea"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2]
+            context["posttea"] = BlogPost.objects.filter(category=categoria, destaque_home=True).order_by('-date')[:2].select_related('category')
 
         except ObjectDoesNotExist:
             context["posttea"] = None
@@ -101,7 +101,7 @@ class TDAHBlogView(ListView):
     def get_queryset(self):
         try:
             categoria = Category.objects.get(name='TDAH')
-            queryset = BlogPost.objects.filter(category=categoria).order_by('-date')
+            queryset = BlogPost.objects.filter(category=categoria).order_by('-date').select_related('category')
         except ObjectDoesNotExist:
             queryset = BlogPost.objects.none()
 
@@ -111,7 +111,7 @@ class TDAHBlogView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         try:
-            categoria = Category.objects.get(name='TDAH')
+            categoria = Category.objects.get(name='TDAH')            
         except ObjectDoesNotExist:
             categoria = 'TDAH'
 
@@ -130,7 +130,7 @@ class TEABlogView(ListView):
     def get_queryset(self):
         try:
             categoria = Category.objects.get(name='TEA')
-            queryset = BlogPost.objects.filter(category=categoria).order_by('-date')
+            queryset = BlogPost.objects.filter(category=categoria).order_by('-date').select_related('category')
         except ObjectDoesNotExist:
             queryset = BlogPost.objects.none()
 
