@@ -19,7 +19,7 @@ urlpatterns = [
     path('noticias_tdah/', TDAHBlogView.as_view(), name='noticias-tdah'),
     path('noticias_tea/', TEABlogView.as_view(), name='noticias-tea'),
     path('blog/', Blog.as_view(), name='blog'),
-    path('postagem/<slug:slug>', NoticiaView.as_view(), name='postagem'),    
+    path('postagem/<path:slug>', NoticiaView.as_view(), name='postagem'),    
     path('apoio/', ApoiadorCreateListView.as_view(), name='apoio'),
     path('administration/', include('administration.urls')), 
     path('admin/', admin.site.urls),

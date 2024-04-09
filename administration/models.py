@@ -72,30 +72,25 @@ class BlogPost(models.Model):
     slug = models.SlugField(default="", max_length=255, editable=False ,unique=True, blank = True)
     img_description = models.CharField('Descrição da Imagem', blank=True, null=True)
 
-    # def save(self, *args, **kwargs):
-    #     if not self.id:
-    #         self.slug = slugify(self.title) 
-    #     else:
-    #         self.slug = slugify(self.title)
-    #     super().save(*args, **kwargs)
-
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
-        elif self.title != BlogPost.objects.get(id=self.id):
-            pass
-
+            category_slug = slugify(self.category.name)
+            title_slug = slugify(self.title)
+            self.slug = "{}/{}/{}/{}/{}".format(
+                category_slug,
+                self.date.strftime('%d'),
+                self.date.strftime('%m'),
+                self.date.strftime('%Y'),
+                title_slug)
         super().save(*args, **kwargs)
-
-
 
 
     def __str__(self):
         return self.title
     
 
-    def get_absolute_url(self):
+    def get_absolute_url(self):        
         return reverse('postagem', args=(self.slug,))
     
     class Meta:
