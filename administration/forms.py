@@ -1,6 +1,7 @@
 from ckeditor.fields import RichTextField
 from django import forms
 from .models import Inscricao, CarouselImage, Contato, BlogPost, BlogPostImage, Apoiador, Category, Depoimento
+from django.utils.text import slugify
 
 # ************ Banner do Carrossel ****************
 
@@ -55,8 +56,13 @@ class BlogPostFormAdmin(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         if not instance.slug: 
-            instance.slug = slugify(instance.title)
-        if commit:
+            instance.slug = "{}/{}/{}/{}/{}".format(
+                instance.category.name,
+                instance.date.strftime('%d'),
+                instance.date.strftime('%m'),
+                instance.date.strftime('%Y'),
+                slugify(instance.title))
+        if commit and instance is not None:
             instance.save()
         return instance
 

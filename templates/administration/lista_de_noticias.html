@@ -63,7 +63,7 @@
         <tr>
             <th scope="row">{{ post.title }}</th>
             <td>{{ post.category }}</td>
-            <td>{{ post.date }}</td>
+            <td>{{ post.date|date:"d/m/Y" }}</td>
             <td><a class="btn btn-primary" href="{% url 'postagem' post.slug %}" target="_blank" role="button"><i
                         class="fa-solid fa-eye"></i></a></td>
             <td><a href="{% url 'blog_post_edit' pk=post.pk %}" class="btn btn-success"><i
