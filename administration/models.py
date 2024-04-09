@@ -10,6 +10,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
+from datetime import datetime
 
 
 class CarouselImage(models.Model):
@@ -88,7 +89,7 @@ class Category(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, verbose_name="Título")
     about = models.TextField("Resumo", max_length=200)
-    date = models.DateField("Data da publicação", auto_now_add=True)
+    date = models.DateField( "Data da publicação", default=datetime.now)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Categoria")
     featured_image = models.ImageField(upload_to='blog_featured_images/', verbose_name="Imagem de Destaque")
     description=CKEditor5Field('Post: ', config_name='extends', blank=True, null=True)
