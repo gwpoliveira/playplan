@@ -24,13 +24,13 @@ class CarouselImage(models.Model):
         img = Image.open(self.image)
 
         img_io = BytesIO()
-        img.save(img_io, format='WEBP', quality=70)
+        img.save(img_io, format='svg', quality=70)
         
-        # Sobrescrever a imagem com a versão webp
+        # Sobrescrever a imagem com a versão svg
         self.image.save(
-            os.path.splitext(self.image.name)[0] + '.webp',
+            os.path.splitext(self.image.name)[0] + '.svg',
             InMemoryUploadedFile(
-                img_io, None, '{}.webp'.format(self.image.name.split('.')[0]), 'image/webp', img_io.tell(), None
+                img_io, None, '{}.svg'.format(self.image.name.split('.')[0]), 'image/svg', img_io.tell(), None
             ),
             save=False
         )
@@ -97,7 +97,22 @@ class BlogPost(models.Model):
     img_description = models.CharField('Descrição da Imagem', blank=True, null=True)
 
 
+
     def save(self, *args, **kwargs):
+
+        img = Image.open(self.featured_image)
+        img_io = BytesIO()
+        img.save(img_io, format='WEBP', quality=70)      
+        self.featured_image.save(
+            os.path.splitext(self.featured_image.name)[0] + '.webp',
+            InMemoryUploadedFile(
+                img_io, None, '{}.webp'.format(self.featured_image.name.split('.')[0]), 'featured_image/webp', img_io.tell(), None
+            ),
+            save=False       )
+        
+
+
+
         if not self.slug:
             category_slug = slugify(self.category.name)
             title_slug = slugify(self.title)
@@ -107,6 +122,7 @@ class BlogPost(models.Model):
                 self.date.strftime('%m'),
                 self.date.strftime('%Y'),
                 title_slug)
+            
         super().save(*args, **kwargs)
 
 
@@ -150,6 +166,28 @@ class Depoimento(models.Model):
     imagem_fundo = models.ImageField(upload_to='depoimentos/backgrounds/', null=True, blank=True)
     ativo = models.BooleanField(default=True)
     data = models.DateTimeField(default=timezone.now)
+
+    
+
+    def save(self, *args, **kwargs):
+        # Abrir a imagem
+        img = Image.open(self.imagem)
+
+        img_io = BytesIO()
+        img.save(img_io, format='WEBP', quality=45)
+        
+        # Sobrescrever a imagem com a versão webp
+        self.imagem.save(
+            os.path.splitext(self.imagem.name)[0] + '.webp',
+            InMemoryUploadedFile(
+                img_io, None, '{}.webp'.format(self.imagem.name.split('.')[0]), 'imagem/webp', img_io.tell(), None
+            ),
+            save=False
+        )
+
+        super(Depoimento, self).save(*args, **kwargs)
+
+
 
     def __str__(self):
         return self.nome
