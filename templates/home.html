@@ -57,15 +57,15 @@
     <div class="col-xs-12 col-sm-8">
       <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
         <div class="zoom-effect">
-          <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
+          <a href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}"
               class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
         </div>
         <div class="card-body">
-          <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
+          <a class="text-decoration-none text-black" href="{{ post.get_absolute_url }}">
             <h5 class="card-title destaque_home">{{ post.title }}</h5>
           </a>
           <p class="card-text">{{ post.about }}</p>
-          <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Saiba Mais</a>
+          <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Saiba Mais</a>
         </div>
 
       </div>
@@ -132,15 +132,15 @@
     <div class="col-xs-12 col-sm-8">
       <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
         <div class="zoom-effect">
-          <a href="{% url 'postagem' post.slug %}"><img src="{{ post.featured_image.url }}"
+          <a href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}"
               class=" rounded card-img-top" alt="{{ post.img_description }}"></a>
         </div>
         <div class="card-body">
-          <a class="text-decoration-none text-black" href="{% url 'postagem' post.slug %}">
+          <a class="text-decoration-none text-black" href="{{ post.get_absolute_url }}">
             <h5 class="card-title destaque_home">{{ post.title }}</h5>
           </a>
           <p class="card-text">{{ post.about }}</p>
-          <a href="{% url 'postagem' post.slug %}" class="btn btn-primary">Saiba Mais</a>
+          <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Saiba Mais</a>
         </div>
 
       </div>
