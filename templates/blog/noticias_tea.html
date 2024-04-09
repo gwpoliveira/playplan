@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     <a class="text-decoration-none text-black" href="{{ post.get_absolute_url }}"><h5 class="card-title noticia">{{ post.title }}</h5></a>
-                    <p class="card-text">{{ post.about }}</p>
+                    <p class="card-text">{{ post.about|truncatechars:155 }}</p>
                     <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Leia Mais</a>
                 </div>
                 <div class="card-footer">
