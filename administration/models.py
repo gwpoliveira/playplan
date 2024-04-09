@@ -6,6 +6,11 @@ from django.dispatch import receiver
 from django_ckeditor_5.fields import CKEditor5Field
 from django.utils.text import slugify
 from django.urls import reverse
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import os
+
 
 class CarouselImage(models.Model):
     image = models.ImageField('Imagem',upload_to='carousel_images/')
@@ -13,6 +18,25 @@ class CarouselImage(models.Model):
     link = models.URLField(blank=True, null=True)
     ativo = models.BooleanField(default=True)
     data = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        # Abrir a imagem
+        img = Image.open(self.image)
+
+        img_io = BytesIO()
+        img.save(img_io, format='WEBP', quality=70)
+        
+        # Sobrescrever a imagem com a versão webp
+        self.image.save(
+            os.path.splitext(self.image.name)[0] + '.webp',
+            InMemoryUploadedFile(
+                img_io, None, '{}.webp'.format(self.image.name.split('.')[0]), 'image/webp', img_io.tell(), None
+            ),
+            save=False
+        )
+
+        super(CarouselImage, self).save(*args, **kwargs)
+        
 
 
     def __str__(self):
