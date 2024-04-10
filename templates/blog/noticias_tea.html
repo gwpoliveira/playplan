@@ -30,7 +30,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for post in page_obj %}
         <div class="col">
-            <div class="card h-100">
+            <div class="card h-100" style="object-fit: cover; max-width:40rem; max-height: 30rem;">
                 <div class="zoom-effect">
                     <a href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.img_description }}"></a>
                 </div>
