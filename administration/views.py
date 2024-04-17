@@ -102,6 +102,30 @@ class AtualizarContato(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Contato atualizado com sucesso!")
         return reverse('contato_list')
+    
+def MarcarComoLida(request, pk):
+    contato = get_object_or_404(Contato, pk=pk)
+    if not contato.lida:
+        contato.lida = True
+        contato.save()
+        messages.success(request, 'Mensagem marcada como lida!')
+        return redirect('contato_list')
+    else:
+        messages.info(request, 'Mensagem já está marcada como lida!')
+        return redirect('contato_list')
+    
+def MarcarComoNaoLida(request, id):
+    contato = get_object_or_404(Contato, id=id)
+    if contato.lida:
+        contato.lida = False
+        contato.save()
+        messages.success(request, 'Mensagem marcada como não lida!')
+        return redirect('contato_list')
+    else:
+        messages.info(request, 'Mensagem já está marcada como não lida!')
+        return redirect('contato_list')
+
+
 
 # ************ Blogger *************** #
 # View para criar postagens.

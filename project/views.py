@@ -11,7 +11,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
-
+from django.shortcuts import render
 
 
 
@@ -169,7 +169,7 @@ class Blog(ListView):
     context_object_name = 'post'
     ordering = '-date'
     paginate_by = 9 
-    
+  
 
 
 # Página do administrador
