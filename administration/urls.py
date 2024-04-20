@@ -13,10 +13,12 @@ urlpatterns = [
     #******************* Contato *******************#
     # path('contato/', ContatoCreateView.as_view(), name='contato'),
     path('contato_list/', ContatoListView.as_view(), name='contato_list'),
-    path('contato_list/<int:pk>', ContatoDetailView.as_view(), name='contato_list'),
+    path('contato_list/<int:pk>', ContatoDetailView.as_view(), name='contato_detail'),
     path('contato/atualizar/<int:id>', AtualizarContato.as_view(), name='atualizar_contato'),
     path('marcar_como_lida/<int:id>/', MarcarComoLida, name='marcar_como_lida' ),
     path('marcar_como_nao_lida/<int:id>/', MarcarComoNaoLida, name='marcar_como_nao_lida' ),
+    path('marcar_como_respondida/<int:id>/', MarcarComoRespondida, name='marcar_como_respondida' ),
+    path('marcar_como_nao_respondida/<int:id>/', MarcarComoNaoRespondida, name='marcar_como_nao_respondida' ),
 
     
     #******************* Blog *******************#    

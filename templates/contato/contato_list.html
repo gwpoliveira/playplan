@@ -1,11 +1,10 @@
 {% extends 'administration/painel.html' %}
 {% load static bootstrap5 %}
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
+{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de
+crianças com TDAH e Autismo.{% endblock description %}
 {% block title %}Lista de Contatos{% endblock title %}
 
 {% block conteudo %}
-
-
 
 <div class="row">
   <div class="col mt-2">
@@ -27,73 +26,73 @@
   </div>
   <div class="col d-flex justify-content-end">
     <form class="d-flex" role="search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Pesquise por nome ou email" aria-label="Search" name="pesquisa" id="pesquisa">
-        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-</div>
+      <input class="form-control me-2" type="search" placeholder="Pesquise por nome ou email" aria-label="Search"
+        name="pesquisa" id="pesquisa">
+      <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </div>
 </div>
 
-
-<table class="table  table-striped rounded">
+<table class="table table-striped rounded">
   <thead>
     <tr>
-
       <th scope="col">Nome</th>
       <th scope="col">E-mail</th>
-      <th scope="col">Status</th>
-      <th scope="col">Resposta</th>
-      <th scope="col">Opções</th>
+      <th scope="col" colspan='2'>Opções</th>
     </tr>
   </thead>
-
-  {% for contato in page_obj %}
-
   <tbody>
-
-
-    {% if contato.lida == False %}
-    <tr class="table-dark">
-
-      <td>{{contato.nome}}</td>
-      <td>{{contato.email}}</td>
-      <td><button type="button" class="btn btn-danger"><i class="fa-regular fa-envelope"></i></button></td>
-      {% if contato.status == True %}
-      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-envelope-circle-check"></i></button></td>
-      {% else %}
-      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-exclamation"></i></button></td>
-      {% endif %}
-      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button"><i
-            class="fa-solid fa-eye"></i></a></td>
-
-      {% else %}
-
-      <td>{{contato.nome}}</td>
-      <td>{{contato.email}}</td>
-      <td><button type="button" class="btn btn-secondary"><i class="fa-regular fa-envelope-open"></i></button></td>
-      {% if contato.status == True %}
-      <td><button type="button" class="btn btn-success"><i class="fa-solid fa-envelope-circle-check"></i></button></td>
-      {% else %}
-      <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-exclamation"></i></button></td>
-      {% endif %}
-      <td><a class="btn btn-primary" href="{% url 'contato_list' contato.id %}" role="button"><i
-            class="fa-solid fa-eye"></i></a></td>
-
-
-      {% endif %}
-
+    {% for contato in page_obj %}
+    <tr {% if contato.lida == False %}class="table-dark"{% endif %}>
+      <td>{{ contato.nome }}</td>
+      <td>{{ contato.email }}</td>
+      <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+            class="fa-solid fa-eye"></i></button>
+      </td>
     </tr>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Contato de {{ contato.nome }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="card-title"><i class="fa-regular fa-user"></i><span> </span><strong>Nome:
+              </strong>{{ contato.nome }}</p>
+            <p class="card-title"><i class="fa-regular fa-envelope"></i><span> </span><strong>E-mail:
+              </strong>{{ contato.email }}</p>
+            <p class="card-title"><i class="fa-solid fa-calendar-days"></i><span> </span><strong>Data:
+              </strong>{{ contato.data }}</p>
+            <p class="card-title"><i class="fa-solid fa-square-phone"></i><span> </span><strong>Telefone:
+              </strong>{{ contato.telefone }}</p>
+            <p class="card-text"><i class="fa-solid fa-envelope-open-text"></i><span> </span><strong>Mensagem:</strong>
+              {{ contato.mensagem }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="{% if contato.lida == True %}{% url 'marcar_como_nao_lida' contato.id %}{% else %}{% url 'marcar_como_lida' contato.id %}{% endif %}" class="btn btn-primary">{% if contato.lida == True %}Marcar como não Lida{% else %}Marcar como Lida{% endif %}</a>
+
+            <a href="{% if contato.status == True %}{% url 'marcar_como_nao_respondida' contato.id %}{% else %}{% url 'marcar_como_respondida' contato.id %}{% endif %}" class="btn btn-primary">
+              {% if contato.status == True %}
+              Marcar como não respondida
+              {% else %}
+                  Marcar como respondida
+              {% endif %}
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
     {% endfor %}
   </tbody>
 </table>
-
 
 {% if num_contato > 10 %}
 <div class="container">
   {% bootstrap_pagination page_obj %}
 </div>
 {% endif %}
-
-
-
 
 {% endblock conteudo %}
