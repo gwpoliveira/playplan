@@ -32,6 +32,9 @@ urlpatterns = [
     path("api/posts/tea/", PostsTEA.as_view({'get': 'list'}), name='posts-tea'),
     path("api/posts/tdah/", PostsTDAH.as_view({'get': 'list'}), name='posts-tdah'),
     path('api/posts/detalhar/<path:slug>/', DetalharPost.as_view(), name='post-detalhe'),
+    path('api/posts/nova-postagem/', CriarPost.as_view(), name='novo-post-api'),
+    path('api/posts/categorias/nova/', CriarCategoria.as_view(), name='nova-categoria-api'),
+    path('api/posts/categorias/detail/<int:pk>/', CategoriaDetail.as_view(), name='detail-categoria-api'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

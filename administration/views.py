@@ -469,7 +469,7 @@ class ApagarInscrito(LoginRequiredMixin,DeleteView):
 from .serializer import *
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view
 
 
@@ -479,18 +479,28 @@ def getRoutes(request):
     "Listas de Post": "http://127.0.0.1:8000/api/posts/",
     "Posts sobre TEA": "http://127.0.0.1:8000/api/posts/tea/",
     "Posts sobre TDAH": "http://127.0.0.1:8000/api/posts/tdah/",
+    "Nova Postagem": "http://127.0.0.1:8000/api/posts/nova-postagem/",
     "Lista de Categorias": "http://127.0.0.1:8000/api/posts/categorias/",
+    "Nova Categoria": "http://127.0.0.1:8000/api/posts/categorias/nova/",
 
 }
     return Response(routes)
+
+########################### Posts ##################################
 
 class Posts(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
 
-class Categorias(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+class DetalharPost(generics.RetrieveAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = DetalharPost
+    lookup_field = 'slug'
+
+class CriarPost(generics.CreateAPIView):
+    queryset = BlogPost.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = CriarPost
 
 class PostsTEA(viewsets.ModelViewSet):
     categoria = Category.objects.get(name='TEA')
@@ -502,7 +512,25 @@ class PostsTDAH(viewsets.ModelViewSet):
     queryset = BlogPost.objects.filter(category=categoria)
     serializer_class = BlogPostSerializer
 
-class DetalharPost(generics.RetrieveAPIView):
-    queryset = BlogPost.objects.all()
-    serializer_class = DetalharPost
-    lookup_field = 'slug'
+######################### Categorias ################################
+
+class CriarCategoria(generics.CreateAPIView):
+    queryset = Category.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = CategorySerializer
+
+class Categorias(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()    
+    serializer_class = CategorySerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
+
+######################### Depoimentos ################################
+
