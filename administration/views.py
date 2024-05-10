@@ -469,7 +469,7 @@ class ApagarInscrito(LoginRequiredMixin,DeleteView):
 from .serializer import *
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import api_view
 
 
@@ -482,6 +482,13 @@ def getRoutes(request):
     "Nova Postagem": "http://127.0.0.1:8000/api/posts/nova-postagem/",
     "Lista de Categorias": "http://127.0.0.1:8000/api/posts/categorias/",
     "Nova Categoria": "http://127.0.0.1:8000/api/posts/categorias/nova/",
+    "Listar/Criar Depoimentos": "http://127.0.0.1:8000/api/depoimentos/",
+    "Entrar em Contato": "http://127.0.0.1:8000/api/contato/",
+    "Todos os Contatos": "http://127.0.0.1:8000/api/contato/todos/",
+    "Apoiadores": "http://127.0.0.1:8000/api/apoio/",
+    "Lista de Apoiadores": "http://127.0.0.1:8000/api/apoio/lista-apoiadores/",
+    "Nova Inscrição": "http://127.0.0.1:8000/api/inscricao/",
+    "Lista de Inscrições": "http://127.0.0.1:8000/api/inscricao/lista-inscricao/",
 
 }
     return Response(routes)
@@ -534,3 +541,91 @@ class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):
 
 ######################### Depoimentos ################################
 
+class DepoimentoListECreate(generics.ListCreateAPIView):
+    queryset = Depoimento.objects.all()
+    serializer_class = DepoimentoSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class DepoimentoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Depoimento.objects.all()   
+    serializer_class = DepoimentoSerializer
+
+    def get_permissions(self):
+        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
+    
+######################### Contato ################################
+
+class ContatoAPI(generics.CreateAPIView):
+    queryset = Contato.objects.all()
+    permission_classes = (AllowAny, )
+    serializer_class = ContatoSerialiezer
+
+class ListaContatosAPI(viewsets.ModelViewSet):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoListSerialiezer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class DetalharContatoAPI(generics.RetrieveAPIView):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoDetailSerialiezer
+
+class MarcarComoLidaAPI(generics.RetrieveAPIView):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoDetailSerialiezer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        contato_id = self.kwargs["pk"]
+        contato = Contato.objects.get(pk=contato_id)
+        contato.lida = True
+        contato.save()
+        return contato
+    
+######################### Apoiador ################################
+
+class ApoiadorListECreate(generics.ListCreateAPIView):
+    queryset = Apoiador.objects.filter(visivel=True)
+    serializer_class = ApoiadorSerializer
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)        
+        return redirect('apoio-api')
+    
+class ApoiadorListAPI(viewsets.ModelViewSet):
+    queryset = Apoiador.objects.all()
+    serializer_class = ApoiadorSerializerADM
+    permission_classes = [IsAuthenticated]
+
+class ApoiadorDetailADM(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Apoiador.objects.all()    
+    serializer_class = ApoiadorSerializerADM
+    permission_classes = [IsAuthenticated]
+
+######################### Carousel Imagens ################################
+
+
+
+
+######################### Blog Post Imagens ################################
+
+
+
+
+######################### Inscrição ################################
+
+class InscricaoAPI(generics.CreateAPIView):
+    queryset = Inscricao.objects.all()
+    permission_classes = (AllowAny, )
+    serializer_class = InscricaoSerializerUser
+
+class ListaDeInscritosAPI(viewsets.ModelViewSet):
+    queryset = Inscricao.objects.all()
+    serializer_class = InscricaoSerializer
+    permission_classes = [IsAuthenticated]
+
+class InscritosDetailADM(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Inscricao.objects.all()    
+    serializer_class = InscricaoSerializer
+    permission_classes = [IsAuthenticated]

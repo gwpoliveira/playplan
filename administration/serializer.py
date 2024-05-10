@@ -12,6 +12,33 @@ class ContatoSerialiezer(serializers.ModelSerializer):
         model = Contato
         fields = ['nome', 'email', 'telefone', 'mensagem']
 
+
+class ContatoListSerialiezer(serializers.ModelSerializer):
+    link = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Contato
+        fields = ['nome', 'email', 'data', 'lida', 'status', 'link']
+
+    def get_link(self, obj):
+        request = self.context.get('request')
+        if request is not None:
+            return request.build_absolute_uri(reverse('detail-contato-api', kwargs={'pk': obj.pk}))
+        return None
+
+class ContatoDetailSerialiezer(serializers.ModelSerializer):
+    marcar_como_lida = serializers.SerializerMethodField()
+    class Meta:
+        model = Contato
+        fields = ['nome', 'email', 'telefone', 'data', 'mensagem', 'lida', 'status', 'marcar_como_lida']
+
+    def get_marcar_como_lida(self, obj):
+        request = self.context.get('request')
+        if request is not None:
+            return request.build_absolute_uri(reverse('marcar-como-lida-api', kwargs={'pk': obj.pk}))
+        return None
+
+
 class BlogPostImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPostImage
@@ -22,12 +49,43 @@ class ApoiadorSerializer(serializers.ModelSerializer):
         model = Apoiador
         fields = ['nome', 'email']
 
+class ApoiadorSerializerADM(serializers.ModelSerializer):
+    link = serializers.SerializerMethodField()
+    class Meta:
+        model = Apoiador
+        fields = ['nome', 'email', 'visivel', 'link']
+
+    def get_link(self, obj):
+        request = self.context.get('request')
+        if request is not None:
+            return request.build_absolute_uri(reverse('detail-apoio-api', kwargs={'pk': obj.pk}))
+        return None
+
 class DepoimentoSerializer(serializers.ModelSerializer):
+    link = serializers.SerializerMethodField()
     class Meta:
         model = Depoimento
-        fields = ['imagem', 'nome', 'cargo', 'descricao', 'imagem_fundo', 'ativo', 'data']
+        fields = ['imagem', 'nome', 'cargo', 'descricao', 'imagem_fundo', 'ativo', 'data', 'link']
+
+    def get_link(self, obj):
+        request = self.context.get('request')
+        if request is not None:
+            return request.build_absolute_uri(reverse('detail-depoimento-api', kwargs={'pk': obj.pk}))
+        return None
 
 class InscricaoSerializer(serializers.ModelSerializer):
+    link = serializers.SerializerMethodField()
+    class Meta:
+        model = Inscricao
+        fields = ['id','email', 'link']
+
+    def get_link(self, obj):
+        request = self.context.get('request')
+        if request is not None:
+            return request.build_absolute_uri(reverse('detail-inscricao-api', kwargs={'pk': obj.pk}))
+        return None
+
+class InscricaoSerializerUser(serializers.ModelSerializer):
     class Meta:
         model = Inscricao
         fields = ['email']

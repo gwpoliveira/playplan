@@ -35,6 +35,18 @@ urlpatterns = [
     path('api/posts/nova-postagem/', CriarPost.as_view(), name='novo-post-api'),
     path('api/posts/categorias/nova/', CriarCategoria.as_view(), name='nova-categoria-api'),
     path('api/posts/categorias/detail/<int:pk>/', CategoriaDetail.as_view(), name='detail-categoria-api'),
+    path('api/depoimentos/', DepoimentoListECreate.as_view(), name='depoimentos-api'),
+    path('api/depoimentos/detail/<int:pk>/', DepoimentoDetail.as_view(), name='detail-depoimento-api'),
+    path('api/contato/', ContatoAPI.as_view(), name='contato-api'),
+    path('api/contato/todos/', ListaContatosAPI.as_view({'get': 'list'}), name='contato-lista-api'),
+    path('api/contato/todos/detail/<int:pk>/', DetalharContatoAPI.as_view(), name='detail-contato-api'),
+    path('api/contato/todos/detail/marcar_como_lida/<int:pk>/', MarcarComoLidaAPI.as_view(), name='marcar-como-lida-api'),
+    path('api/apoio/', ApoiadorListECreate.as_view(), name='apoio-api'),
+    path('api/apoio/lista-apoiadores/', ApoiadorListAPI.as_view({'get': 'list'}), name='lista-apoio-api'),
+    path('api/apoio/lista-apoiadores/detail/<int:pk>/', ApoiadorDetailADM.as_view(), name='detail-apoio-api'),
+    path('api/inscricao/', InscricaoAPI.as_view(), name='inscricao-api'),
+    path('api/inscricao/lista-inscricao/', ListaDeInscritosAPI.as_view({'get': 'list'}), name='lista-inscritos-api'),
+    path('api/inscricao/lista-inscricao/detail/<int:pk>/', InscritosDetailADM.as_view(), name='detail-inscricao-api'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
