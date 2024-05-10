@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import views as auth_views
+from administration.views import *
 
 # 
 urlpatterns = [
@@ -24,6 +25,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('paineladm/', painel, name='painel_adm'),
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
+    ############## API / Django Rest FrameWork ##################
+    path('api/links/', getRoutes, name='get-routes'), 
+    path("api/posts/", Posts.as_view({'get': 'list'}), name='posts-api'),
+    path("api/posts/categorias/", Categorias.as_view({'get': 'list'}), name='posts-categorias'),
+    path("api/posts/tea/", PostsTEA.as_view({'get': 'list'}), name='posts-tea'),
+    path("api/posts/tdah/", PostsTDAH.as_view({'get': 'list'}), name='posts-tdah'),
+    path('api/posts/detalhar/<path:slug>/', DetalharPost.as_view(), name='post-detalhe'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

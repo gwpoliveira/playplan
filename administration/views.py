@@ -459,3 +459,50 @@ class ApagarInscrito(LoginRequiredMixin,DeleteView):
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Inscrito Apagado com sucesso!")
         return reverse('inscritos')
+    
+#################################
+#################################
+############ API ################
+#################################
+#################################
+
+from .serializer import *
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view
+
+
+@api_view(["GET"])
+def getRoutes(request):
+    routes = {
+    "Listas de Post": "http://127.0.0.1:8000/api/posts/",
+    "Posts sobre TEA": "http://127.0.0.1:8000/api/posts/tea/",
+    "Posts sobre TDAH": "http://127.0.0.1:8000/api/posts/tdah/",
+    "Lista de Categorias": "http://127.0.0.1:8000/api/posts/categorias/",
+
+}
+    return Response(routes)
+
+class Posts(viewsets.ModelViewSet):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+
+class Categorias(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class PostsTEA(viewsets.ModelViewSet):
+    categoria = Category.objects.get(name='TEA')
+    queryset = BlogPost.objects.filter(category=categoria)
+    serializer_class = BlogPostSerializer
+
+class PostsTDAH(viewsets.ModelViewSet):
+    categoria = Category.objects.get(name='TDAH')
+    queryset = BlogPost.objects.filter(category=categoria)
+    serializer_class = BlogPostSerializer
+
+class DetalharPost(generics.RetrieveAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = DetalharPost
+    lookup_field = 'slug'

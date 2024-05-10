@@ -32,12 +32,15 @@ INSTALLED_APPS = [
     'bootstrap5',    
     'administration',
     'django_ckeditor_5',
+    'rest_framework',
+    'corsheaders',
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -232,3 +235,6 @@ CKEDITOR_5_CONFIGS = {
         }
     }
 }
+
+
+CORS_ALLOW_ALL_ORIGINS = True
