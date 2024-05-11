@@ -471,6 +471,7 @@ from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import api_view
+from rest_framework.authentication import BasicAuthentication
 
 
 @api_view(["GET"])
@@ -508,6 +509,7 @@ class CriarPost(generics.CreateAPIView):
     queryset = BlogPost.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = CriarPost
+    authentication_classes = [BasicAuthentication]
 
 class PostsTEA(viewsets.ModelViewSet):
     categoria = Category.objects.get(name='TEA')
@@ -525,6 +527,7 @@ class CriarCategoria(generics.CreateAPIView):
     queryset = Category.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = CategorySerializer
+    authentication_classes = [BasicAuthentication]
 
 class Categorias(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -565,7 +568,7 @@ class ContatoAPI(generics.CreateAPIView):
 class ListaContatosAPI(viewsets.ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoListSerialiezer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
 class DetalharContatoAPI(generics.RetrieveAPIView):
     queryset = Contato.objects.all()
@@ -624,8 +627,10 @@ class ListaDeInscritosAPI(viewsets.ModelViewSet):
     queryset = Inscricao.objects.all()
     serializer_class = InscricaoSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
 
 class InscritosDetailADM(generics.RetrieveUpdateDestroyAPIView):
     queryset = Inscricao.objects.all()    
     serializer_class = InscricaoSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]

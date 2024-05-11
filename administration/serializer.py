@@ -109,15 +109,12 @@ class CriarPost(serializers.ModelSerializer):
         fields = ['title', 'about', 'date', 'category', 'featured_image', 'description', 'destaque_home', 'img_description']
 
 class BlogPostSerializer(serializers.ModelSerializer):
-    category_name = serializers.SerializerMethodField()
+    category = serializers.ReadOnlyField(source='category.name')
     link = serializers.SerializerMethodField()
-
-    def get_category_name(self, obj):
-        return obj.category.name if obj.category else None
 
     class Meta:
         model = BlogPost
-        fields = ['id', 'title', 'about', 'date', 'category_name', 'featured_image', 'link']
+        fields = ['id', 'title', 'about', 'date', 'category', 'featured_image', 'link']
 
     def get_link(self, obj):
         request = self.context.get('request')
@@ -127,13 +124,10 @@ class BlogPostSerializer(serializers.ModelSerializer):
     
 
 class DetalharPost(serializers.ModelSerializer):
-    category_name = serializers.SerializerMethodField()
-
-    def get_category_name(self, obj):
-        return obj.category.name if obj.category else None
+    category = serializers.ReadOnlyField(source='category.name')
     
     class Meta:
         model = BlogPost
-        fields = ['id', 'title', 'about', 'date', 'category_name', 'featured_image', 'img_description', 'description']
+        fields = ['id', 'title', 'about', 'date', 'category', 'featured_image', 'img_description', 'description']
 
 
