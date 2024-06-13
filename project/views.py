@@ -294,3 +294,7 @@ class QuemSomos(TemplateView):
 # Página Privacidade e Segurança
 class Privacidade(TemplateView):
     template_name = 'privacidade.html'
+
+
+class Teste(TemplateView):
+    template_name = 'administration/teste.html'

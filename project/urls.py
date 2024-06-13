@@ -15,6 +15,7 @@ urlpatterns = [
     path('contato/', contato, name='contato'),
     path('quemsomos/', QuemSomos.as_view(), name='quem-somos'),
     path('privacidade/', Privacidade.as_view(), name='privacidade'),
+    path('link/', Teste.as_view(), name='teste2'),
     path('noticias_tdah/', TDAHBlogView.as_view(), name='noticias-tdah'),
     path('noticias_tea/', TEABlogView.as_view(), name='noticias-tea'),
     path('blog/', Blog.as_view(), name='blog'),
