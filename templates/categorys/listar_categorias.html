@@ -1,12 +1,13 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
-{% block title %}Lista de Categorias{% endblock title %}
 
-{% block conteudo %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
+{% block title %}Lista de Categorias {% endblock title %}
+
+{% block main %}
 <div class="mt-2">
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+        <ol class="teste text-white breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
             <li class="breadcrumb-item">
                 <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
                     <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -26,9 +27,9 @@
 
 <ol class="list-group list-group-numbered">
     {% for categoria in page_obj %}
-    <li class="list-group-item d-flex justify-content-between align-items-start">
+    <li class="container teste text-white list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
-            <div class="fw-bold">{{categoria.name}}</div>
+            <div class="fw-bold mt-3">{{categoria.name}}</div>
             
         </div>
         <div class="mt-2">
@@ -52,4 +53,4 @@
 
 
 
-{% endblock conteudo %}
+{% endblock main %}

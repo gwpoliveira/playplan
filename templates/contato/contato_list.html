@@ -1,15 +1,15 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de
-crianças com TDAH e Autismo.{% endblock description %}
-{% block title %}Lista de Contatos{% endblock title %}
 
-{% block conteudo %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
+{% block title %}Lista de Contatos {% endblock title %}
 
-<div class="row">
+{% block main %}
+
+<div class="row teste text-white">
   <div class="col mt-2">
     <nav aria-label="breadcrumb">
-      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+      <ol class=" breadcrumb-custom overflow-hidden rounded-3">
         <li class="breadcrumb-item text-white">
           <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
             <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -24,13 +24,12 @@ crianças com TDAH e Autismo.{% endblock description %}
       </ol>
     </nav>
   </div>
-  <div class="col d-flex justify-content-end">
+  <div class="p-3 mt-1 pesquisar justify-content-end">
     <form class="d-flex" role="search" method="get">
-      <input class="form-control me-2" type="search" placeholder="Pesquise por nome ou email" aria-label="Search"
-        name="pesquisa" id="pesquisa">
-      <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-  </div>
+        <input class="campo form-control me-2" type="search" placeholder="Pesquise por nome ou cargo" aria-label="Search" name="pesquisa" id="pesquisa">
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+</div>
 </div>
 
 <table class="table table-striped rounded">
@@ -41,9 +40,9 @@ crianças com TDAH e Autismo.{% endblock description %}
       <th scope="col" colspan='2'>Opções</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="teste text-white" >
     {% for contato in page_obj %}
-    <tr {% if contato.lida == False %}class="table-dark"{% endif %}>
+    <tr  {% if contato.lida == False %}class="teste"{% endif %}>
       <td>{{ contato.nome }}</td>
       <td>{{ contato.email }}</td>
       <td>
@@ -95,4 +94,4 @@ crianças com TDAH e Autismo.{% endblock description %}
 </div>
 {% endif %}
 
-{% endblock conteudo %}
+{% endblock main %}

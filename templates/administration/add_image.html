@@ -1,14 +1,14 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
 
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
-{% block title %}Adicionar Slide{% endblock title %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
+{% block title %} Add Slide{% endblock title %}
 
-{% block conteudo %}
+{% block main %}
 
 <div>
   <nav aria-label="breadcrumb">
-      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <ol class="teste breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
           <li class="breadcrumb-item text-white">
               <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
                   <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -26,7 +26,7 @@
 </div>
 
 
-<div class="container bg-secondary-subtle rounded border p-4">
+<div class="teste text-white bg-secondary-subtle rounded border p-4">
   <h2>Adicionando Slide</h2>
 
   <form method="post" enctype="multipart/form-data">
@@ -35,6 +35,7 @@
     <button type="submit" class="btn btn-primary mt-2">Adicionar</button>
   </form>
 </div>
+
 
 
 {% endblock %}

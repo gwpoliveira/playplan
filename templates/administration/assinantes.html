@@ -1,15 +1,14 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
 
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
-{% block title %}Lista de Inscritos{% endblock title %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
+{% block title %} Assinante {% endblock title %}
 
-
-{% block conteudo %}
+{% block main %}
 <div class="row">
     <div class="col mt-2">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+            <ol class="teste text-white breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
                 <li class="breadcrumb-item text-white">
                     <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
                         href="{% url 'painel_adm' %}">
@@ -45,7 +44,7 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="teste text-white">
             {% for inscricao in page_obj %}
             <tr>
                 <th scope="row">{{ inscricao.id }}</th>
@@ -75,4 +74,4 @@
 {% endif %}
 
 
-{% endblock conteudo %}
+{% endblock main %}
