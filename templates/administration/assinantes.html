@@ -6,28 +6,26 @@
 
 {% block main %}
 <div class="row">
-    <div class="col mt-2">
+    <div class="col">
         <nav aria-label="breadcrumb">
             <ol class="teste text-white breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
                 <li class="breadcrumb-item text-white">
-                    <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
-                        href="{% url 'painel_adm' %}">
+                    <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
                         <i class="fa-solid fa-house"></i><span class="dist"></span>
                         Painel
                     </a>
                 </li>
                 <li class="breadcrumb-item text-white active">
-                    <a class="link-body-emphasis fw-semibold text-decoration-none text-white"
-                        href="{% url 'inscritos' %}">Lista de Assinantes</a>
+                    <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'inscritos' %}">Lista de Assinantes</a>
                 </li>
             </ol>
         </nav>
     </div>
-    <div class="col d-flex justify-content-end">
+    <div class="col-auto ml-auto">
         <form class="d-flex" role="search" method="get">
             <input class="form-control me-2" type="search" placeholder="Pesquise por e-mail" aria-label="Search" name="pesquisa" id="pesquisa">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
+        </form>
     </div>
 </div>
 <ul class="list-group list-group-flush">
