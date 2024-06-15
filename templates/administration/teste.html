@@ -14,8 +14,10 @@
     <title>{% block title %}Dashboard PlayPlan{% endblock title %}</title>
 
     <!-- Custom fonts for this template-->
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -28,7 +30,7 @@
         .teste {
             background-color: #303e4b;
             /* Exemplo de cor original */
-            
+
         }
 
         .butao {
@@ -40,11 +42,13 @@
             margin-right: 2px;
             margin-top: 15px;
         }
+
         .campo {
             margin-right: 8px;
         }
+
         .categoria {
-            padding-top: 23px   ;
+            padding-top: 23px;
         }
     </style>
 
@@ -55,25 +59,23 @@
 
     <div id="wrapper">
 
- 
+
         <ul class="navbar-nav teste sidebar sidebar-dark accordion" id="accordionSidebar">
 
- 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-                <div class="sidebar-brand-icon rotate-n-15">
 
-                </div>
+            <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon d-none">
+                   
                 <div class="sidebar-brand-text mx-3"><img class="logo" src="{% static 'img/logo.png' %}" alt="Logo" width="60"></div>
-            </a>
+            </a> -->
 
 
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Administração</span></a>
-            </li>
+
+            <div class="text-center d-none d-md-inline m-3">
+                <a href="#"><img class="logo" src="{% static 'img/logo.png' %}" alt="Logo" width="70"></a>
+            </div>
 
             <hr class="sidebar-divider">
 
@@ -244,7 +246,7 @@
                             </div>
                         </div>
 
-    
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -299,32 +301,32 @@
                         </div>
 
                     </div>
-                    
+
                     {% endblock main %}
 
                     <div class="row">
 
-    
+
                         <div class="col-xl-8 col-lg-7">
-                           
+
                         </div>
 
                         <div class="col-xl-4 col-lg-5">
-                            
+
                         </div>
                     </div>
 
-    
+
                     <div class="row">
 
                         <div class="col-lg-6 mb-4">
 
-                           
+
                         </div>
 
                         <div class="col-lg-6 mb-4">
 
-                        
+
 
                         </div>
                     </div>
@@ -341,7 +343,7 @@
                     </div>
                 </div>
             </footer>
-  
+
 
         </div>
 
@@ -352,7 +354,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-   
+
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
