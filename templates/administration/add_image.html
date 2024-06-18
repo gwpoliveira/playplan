@@ -2,7 +2,7 @@
 {% load static bootstrap5 %}
 
 <!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
-{% block title %} Add Slide{% endblock title %}
+{% block title %}Novo Banner | {{ block.super }} {% endblock title %}
 
 {% block main %}
 
@@ -27,7 +27,7 @@
 
 
 <div class="teste text-white bg-secondary-subtle rounded border p-4">
-  <h2>Adicionando Slide</h2>
+  <h2>Adicionando Banner</h2>
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}

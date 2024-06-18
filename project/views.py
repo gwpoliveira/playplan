@@ -298,3 +298,18 @@ class Privacidade(TemplateView):
 
 class Teste(TemplateView):
     template_name = 'administration/teste.html'
+    
+    
+def dashboard_teste(request):
+    template_name = 'administration/teste.html'
+    contatos_pendentes = Contato.objects.filter(lida=False).count()
+    noticias = BlogPost.objects.count()
+    depoimentos = Depoimento.objects.filter(ativo=True).count()
+    banners = CarouselImage.objects.count()
+    context = {
+        'contatos_pendentes': contatos_pendentes,
+        'noticias': noticias,
+        'depoimentos': depoimentos,
+        'banners': banners,
+    }
+    return render(request, template_name, context)

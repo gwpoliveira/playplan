@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'bootstrap5',    
     'administration',
     'django_ckeditor_5',
+    'widget_tweaks',
     
 ]
 
@@ -139,7 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'painel_adm'
+LOGIN_REDIRECT_URL = 'gestao_playplan'
 LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
