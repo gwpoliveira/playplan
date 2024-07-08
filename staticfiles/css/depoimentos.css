@@ -62,7 +62,7 @@
     min-height: 375px;    
     position: relative;
     /* background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg); */
-    background: url('/static/img/fundo_depoimento.jpg');
+    background: url('/static/img/fundo_depoimento.webp');
     padding-top: 50px;
     padding-bottom: 50px;
     background-position: center;
