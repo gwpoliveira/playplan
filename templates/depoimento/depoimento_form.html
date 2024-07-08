@@ -1,15 +1,15 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
 
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
 {% block title %}Criar Depoimento{% endblock title %}
 
-{% block conteudo %}
+{% block main %}
 
 
 <div class="mt-2">
   <nav aria-label="breadcrumb">
-      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+      <ol class="teste breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
           <li class="breadcrumb-item text-white">
               <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
                   <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -27,13 +27,13 @@
 </div>
 
 
-<div class="container bg-secondary-subtle rounded border p-4">
+<div class="bg-secondary-subtle rounded border p-4 text-white teste">
   <h2>{% if form.instance.pk %}Editar{% else %}Adicionar{% endif %} Depoimento</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button class="btn btn-primary" type="submit">Salvar</button>
-    <a  class="btn btn-danger" href="{% url 'depoimento-list' %}">Cancelar</a>
+    <a  class="m-2 btn btn-danger" href="{% url 'depoimento-list' %}">Cancelar</a>
   </form>
   
 </div>

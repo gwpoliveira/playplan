@@ -1,12 +1,13 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
-{% block title %}Detalhar Categoria{% endblock title %}
 
-{% block conteudo %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
+{% block title %}Criar Notícia {% endblock title %}
+
+{% block main %}
 <div class="mt-2">
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
+        <ol class="teste text-white breadcrumb breadcrumb-custom overflow-hidden text-center rounded-3">
             <li class="breadcrumb-item">
                 <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
                     <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -24,11 +25,11 @@
 </div>
 
 
-<div class="card">
+<div class="teste text-white card">
     <div class="card-body">
       <h5 class="card-title">{{categoria.name}}</h5>
       <p class="card-text">{{categoria.about}}</p>
     </div>
   </div>
 
-{% endblock conteudo %}
+{% endblock main %}

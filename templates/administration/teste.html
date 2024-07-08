@@ -1,0 +1,394 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Painel Administrativo do PlayPlan">
+    <meta name="author" content="PlayPlan">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+
+    <title>{% block title %}Dashboard PlayPlan{% endblock title %}</title>
+
+    <!-- Custom fonts for this template-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
+    <link href="{% static 'admin/css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <style>
+        .teste {
+            background-color: #303e4b;
+            /* Exemplo de cor original */
+
+        }
+
+        .butao {
+            color: #303e4b;
+
+        }
+
+        .pesquisar {
+            margin-right: 2px;
+            margin-top: 15px;
+        }
+
+        .campo {
+            margin-right: 8px;
+        }
+
+        .categoria {
+            padding-top: 23px;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+
+    <div id="wrapper">
+
+
+        <ul class="navbar-nav teste sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+            <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon d-none">
+                   
+                <div class="sidebar-brand-text mx-3"><img class="logo" src="{% static 'img/logo.png' %}" alt="Logo" width="60"></div>
+            </a> -->
+
+
+            <hr class="sidebar-divider my-0">
+
+
+            <div class="text-center d-none d-md-inline m-3">
+                <a href="{% url 'gestao_playplan' %}"><img class="logo" src="{% static 'img/logo.png' %}" alt="Logo" width="70"></a>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#depoimentos"
+                    aria-expanded="true" aria-controls="depoimentos">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <span>Depoimentos</span>
+                </a>
+                <div id="depoimentos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'depoimento-create' %}">Criar Depoimento</a>
+                        <a class="collapse-item" href="{% url 'depoimento-list' %}">Listar Depoimentos</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contato_list' %}">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>Mensagens</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#apoiadores"
+                    aria-expanded="true" aria-controls="apoiadores">
+                    <i class="fa-regular fa-handshake"></i>
+                    <span>Apoiadores</span>
+                </a>
+                <div id="apoiadores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'criar_apoiador' %}">Novo Apoiador</a>
+                        <a class="collapse-item" href="{% url 'lista_de_apoiadores' %}">Listar Apoiadores</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#noticias"
+                    aria-expanded="true" aria-controls="noticias">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>Noticias</span>
+                </a>
+                <div id="noticias" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'blog_post_create' %}">Publicar Notícia</a>
+                        <a class="collapse-item" href="{% url 'lista_de_noticias' %}">Listar Notícias</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorias"
+                    aria-expanded="true" aria-controls="categorias">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>Categorias</span>
+                </a>
+                <div id="categorias" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="{% url 'criar_categoria' %}">Nova Categoria</a>
+                        <a class="collapse-item" href="{% url 'listar_categorias' %}">Listar Categorias</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#banners"
+                    aria-expanded="true" aria-controls="banners">
+                    <i class="fa-regular fa-images"></i>
+                    <span>Banners</span>
+                </a>
+                <div id="banners" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'add_image' %}">Novo Banner</a>
+                        <a class="collapse-item" href="{% url 'image_list' %}">Listar Banners</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#boletim"
+                    aria-expanded="true" aria-controls="boletim">
+                    <i class="fa-solid fa-rss"></i>
+                    <span>Boletim</span>
+                </a>
+                <div id="boletim" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'inscritos' %}">Listar Assinantes</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sair</span></a>
+            </li>
+            {% endif %}
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-md-none">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid mt-5">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+                    </div>
+
+                    {% block main %}
+
+                    <div class="row">
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <a href="#" class="text-decoration-none">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Banners</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{banners}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-regular fa-image fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <a href="#" class="text-decoration-none">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Depoimentos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{depoimentos}}</div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                            <i class="fa-regular fa-comment-dots fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <a href="#" class="text-decoration-none">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Notícias Publicadas</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ noticias }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-regular fa-newspaper fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <a href="#" class="text-decoration-none">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Contatos Pendentes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ contatos_pendentes }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-regular fa-envelope fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div></a>  
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {% endblock main %}
+
+                    <div class="row">
+
+
+                        <div class="col-xl-8 col-lg-7">
+
+                        </div>
+
+                        <div class="col-xl-4 col-lg-5">
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-lg-6 mb-4">
+
+
+                        </div>
+
+                        <div class="col-lg-6 mb-4">
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2024 Somos Todos Nerds</span>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+
+
+    </div>
+
+    <a class="scroll-to-top rounded teste" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'admin/js/jquery.min.js' %}"></script>
+
+    <script src="{% static 'admin/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <script src="{% static 'admin/js/sb-admin-2.min.js' %}"></script>
+
+
+
+
+</body>
+
+</html>

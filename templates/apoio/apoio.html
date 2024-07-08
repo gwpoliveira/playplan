@@ -57,6 +57,8 @@
     <p class="text-center">Ou utilize a chave PIX: <strong>1429c3d2-f69f-48de-b1d7-8b0eb502e6a5</strong></p>
 </section>
 
+
+{% if num_apoiadores > 0 %}
 <section id="apoiadores" class="container my-5 texto-branco ">
     <h2 class="text-center mb-4">Apoiadores</h2>
     <p class="text-center">Agradecemos aos seguintes apoiadores que tornaram esta causa possível:</p>
@@ -71,5 +73,7 @@
     {% endif %}
 
 </section>
+
+{% endif %}
 
 {% endblock content %}

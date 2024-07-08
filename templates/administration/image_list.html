@@ -1,16 +1,16 @@
-{% extends 'administration/painel.html' %}
+{% extends 'administration/teste.html' %}
 {% load static bootstrap5 %}
 
-{% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %}
+<!-- {% block description %}O PlayPlan é uma plataforma inclusiva que busca facilitar o desenvolvimento e bem-estar de crianças com TDAH e Autismo.{% endblock description %} -->
 {% block title %}Lista de Banners{% endblock title %}
 
-{% block conteudo %}
+{% block main %}
 
 
 
-<div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
+<div class="">
+  <nav aria-label="breadcrumb teste">
+    <ol class="teste breadcrumb breadcrumb-custom overflow-hidden text-center text-white rounded-3">
       <li class="breadcrumb-item text-white">
         <a class="link-body-emphasis fw-semibold text-decoration-none text-white" href="{% url 'painel_adm' %}">
           <i class="fa-solid fa-house"></i><span class="dist"></span>
@@ -23,44 +23,49 @@
       </li>
     </ol>
   </nav>
+
+  <div class="">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Imagem</th>
+
+          <th scope="col">Link</th>
+          <th scope="col">Visibilidade</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      {% for image in page_obj %}
+      <tbody>
+        <tr>
+          <td><img src="{{ image.image.url }}" width="300" alt="..."></td>
+          {% if image.link %}
+          <td><a href="{{ image.link }}" target="_blank"><button class="btn btn-success"><i
+                  class="fa-solid fa-arrow-up-right-from-square"></i></button></a></td>
+          {% else %}
+          <td><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
+          {% endif %}
+          {% if image.ativo == True %}
+          <td><button class="btn btn-success"><i class="fa-regular fa-square-check"></i></button></td>
+          {% else %}
+          <td><button class="btn btn-secondary"><i class="fa-solid fa-file-circle-xmark"></i></button></td>
+          {% endif %}
+          <td>
+            <a class="btn btn-primary" href="{% url 'detail_image' pk=image.pk %}"><i class="fa-solid fa-eye"></i></a>
+            <a class="btn btn-primary" href="{% url 'edit_image' pk=image.pk %}"><i
+                class="fa-solid fa-rotate-right"></i></a>
+            <a class="btn btn-danger" href="{% url 'delete_image' pk=image.pk %}"><i
+                class="fa-regular fa-trash-can"></i></a>
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+
+  </div>
+
 </div>
 
-<div class="container ">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Imagem</th>        
-        
-        <th scope="col">Link</th>
-        <th scope="col">Visibilidade</th>
-        <th scope="col">Opções</th>
-      </tr>
-    </thead>
-    {% for image in page_obj %}
-    <tbody>
-      <tr>        
-        <td><img src="{{ image.image.url }}" width="300" alt="..."></td>  
-        {% if image.link %}
-        <td><a href="{{ image.link }}" target="_blank"><button class="btn btn-success"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></a></td>
-        {% else %}
-        <td><button class="btn btn-danger"><i class="fa-solid fa-ban"></i></button></td>
-        {% endif %}
-        {% if image.ativo == True %}
-       <td><button class="btn btn-success"><i class="fa-regular fa-square-check"></i></button></td>
-        {% else %}
-        <td><button class="btn btn-secondary"><i class="fa-solid fa-file-circle-xmark"></i></button></td>
-        {% endif %}
-        <td>
-          <a class="btn btn-primary" href="{% url 'detail_image' pk=image.pk %}"><i class="fa-solid fa-eye"></i></a>
-          <a class="btn btn-primary" href="{% url 'edit_image' pk=image.pk %}"><i class="fa-solid fa-rotate-right"></i></a>
-          <a class="btn btn-danger" href="{% url 'delete_image' pk=image.pk %}"><i class="fa-regular fa-trash-can"></i></a>
-        </td>
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
-
-</div>
 
 
 
@@ -73,4 +78,4 @@
 
 
 
-{% endblock %}
+{% endblock main %}

@@ -1,13 +1,13 @@
 # administration/views.py
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
 from .models import CarouselImage, Contato, BlogPost, BlogPostImage, Category, Apoiador, Depoimento, Inscricao
 from .forms import InscricaoForm, AtualizaInscricao, CarouselImageForm, AtualizarApoiador, BlogPostForm, CategoryForm, UpdateContatoForm, DepoimentoForm, AtualizaCarouselImageForm, AtualizarDepoimentoForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 # ************ Carrossel *************** 
 # View para listar as imagens do carrocel
@@ -102,6 +102,58 @@ class AtualizarContato(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         messages.add_message(self.request, messages.SUCCESS, "Contato atualizado com sucesso!")
         return reverse('contato_list')
+    
+@login_required    
+def MarcarComoLida(request, id):
+    contato = get_object_or_404(Contato, id=id)
+    if not contato.lida:
+        contato.lida = True
+        contato.save()
+        messages.success(request, 'Mensagem marcada como lida!')
+        return redirect('contato_list')
+    else:
+        messages.info(request, 'Mensagem já está marcada como lida!')
+        return redirect('contato_list')
+
+@login_required    
+def MarcarComoNaoLida(request, id):
+    contato = get_object_or_404(Contato, id=id)
+    if contato.lida:
+        contato.lida = False
+        contato.save()
+        messages.success(request, 'Mensagem marcada como não lida!')
+        return redirect('contato_list')
+    else:
+        messages.info(request, 'Mensagem já está marcada como não lida!')
+        return redirect('contato_list')
+
+
+@login_required
+def MarcarComoRespondida(request, id):
+    contato = get_object_or_404(Contato, id=id)
+    if not contato.status:
+        contato.status = True
+        contato.save()
+        messages.success(request, 'Mensagem marcada como respondida!')
+        return redirect('contato_list')
+    else:
+        messages.info(request, 'Mensagem já marcada como respondida!')
+        return redirect('contato_list')
+
+
+@login_required
+def MarcarComoNaoRespondida(request, id):
+    contato = Contato.objects.get(id=id)
+    if contato.status == True:
+        contato.status = False
+        contato.save()
+        messages.success(request, 'Mensagem marcada como não respondida!')
+        return redirect('contato_list')        
+    else:
+        messages.info(request, 'Mensagem já marcada como não respondida!')
+    return redirect('contato_list')
+
+
 
 # ************ Blogger *************** #
 # View para criar postagens.
